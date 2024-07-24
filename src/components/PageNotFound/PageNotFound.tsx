@@ -9,7 +9,7 @@ export const PageNotFound = () => {
 
         <div className="pageNotFound__image-wrapper">
           <img
-            src="/src/PageNotFound/page-not-found.png"
+            src="/src/images/page-not-found.png"
             alt="page-not-found"
             className="pageNotFound__img"
           />
