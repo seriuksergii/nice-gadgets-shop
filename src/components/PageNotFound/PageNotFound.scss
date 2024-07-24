@@ -1,14 +1,15 @@
 .pageNotFound {
-  justify-content: center;
+  & {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   &__wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 
   &__title {
     text-align: center;
