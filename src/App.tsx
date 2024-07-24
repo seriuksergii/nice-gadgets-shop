@@ -6,13 +6,14 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import  Footer  from './components/Footer/Footer'
 import { PageNotFound } from './components/PageNotFound'
+import { Header } from './components/Header'
 
 
 function App() {
 
   return (
     <>
-
+      <Header />
       <div>
         <PageNotFound />
       </div>
@@ -36,9 +37,10 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-  
+      <Footer />
+
     </>
-         <Footer />
+         
   )
 }
 
