@@ -1,0 +1,28 @@
+.pageNotFound {
+  justify-content: center;
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__image-wrapper {
+    display: flex;
+    justify-content: center;
+    height: 300px;
+    margin-block: 32px;
+  }
+
+  &__img {
+    object-fit: contain;
+    overflow: hidden;
+  }
+}
