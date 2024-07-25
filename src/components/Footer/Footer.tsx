@@ -5,7 +5,7 @@ import './footerLogo.png'
 import footerLogo from './footerLogo.png'
 import buttonBackToTop from './buttonBackToTop.png'
 
-const Footer: React.FC = () => {
+export const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -63,5 +63,3 @@ const Footer: React.FC = () => {
     </footer>
   );
 };
-
-export default Footer;
