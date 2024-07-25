@@ -1,0 +1,66 @@
+$tablet-min-width: 640px;
+$desktop-min-width: 1200px;
+$color-text-secondary: #89939a;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+.nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+
+    list-style: none;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    height: 27px;
+
+    align-items: center;
+  }
+  &__link {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: $color-text-secondary;
+  }
+}
+
+.is-active {
+  color: #313237;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 2px;
+    background-color: #313237;
+  }
+}
