@@ -5,7 +5,7 @@ import { Navigation } from "../Navigation/Navigation";
 
 export const Burger: React.FC = () => {
   return (
-    <section className="burger">
+    <section className="burger">  
       <div className="burger__top">
         <Logo className={"burger__logo"} src={"./img/icons/logo-black.svg"} />
         <button className="burger__close" type="button">
