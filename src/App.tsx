@@ -1,14 +1,16 @@
-import "./App.scss";
-import { PageNotFound } from "./PageNotFound";
+import "./App.css";
+import { Header } from "./components/Header";
+import { Outlet } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
+import { PageNotFound } from "./components/PageNotFound";
 
-function App() {
+export const App = () => {
   return (
     <>
-      <div>
-        <PageNotFound />
-      </div>
+      <Header />
+      <Outlet />
+      <Footer />
+      <PageNotFound />
     </>
   );
-}
-
-export default App;
+};
