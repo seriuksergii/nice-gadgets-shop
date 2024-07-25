@@ -1,18 +1,4 @@
-$tablet-min-width: 640px;
-$desktop-min-width: 1200px;
-$color-text-secondary: #89939a;
-
-@mixin on-tablet {
-  @media (min-width: $tablet-min-width) {
-    @content;
-  }
-}
-
-@mixin on-desktop {
-  @media (min-width: $desktop-min-width) {
-    @content;
-  }
-}
+@import '../../styles/main.scss';
 
 .burger {
   min-height: 100vh;
@@ -21,6 +7,7 @@ $color-text-secondary: #89939a;
   &__top {
     display: flex;
     justify-content: space-between;
+    border: 1px solid #e2e6e9;
   }
 
   &__logo {
@@ -28,10 +15,10 @@ $color-text-secondary: #89939a;
   }
 
   &__close {
-    border: none;
     background: transparent;
     height: 48px;
     width: 48px;
+    border: 1px solid #e2e6e9;
   }
 
   &__nav {
@@ -45,8 +32,7 @@ $color-text-secondary: #89939a;
 
   &__icon {
     flex: 1;
-    border: 1px solid #E2E6E9;
-
+    border: 1px solid #e2e6e9;
 
     display: flex;
     align-items: center;
@@ -74,11 +60,6 @@ $color-text-secondary: #89939a;
   }
   &__link {
     text-decoration: none;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 11px;
-    letter-spacing: 4%;
-    color: $color-text-secondary;
+    @include uppercase-text;
   }
 }

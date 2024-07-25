@@ -1,12 +1,17 @@
 $breakpoint-tablet: 640px;
 $breakpoint-desktop: 1200px;
 :root {
+   --color-accent: #216CFF;
+   --color-secondary-accent:#F447AF;
+
    --color-background: #fff;
    --color-surface: #B4BDC3;
-   --color-primary: #313237;
+   --color-primary: #0F0F11;
    --color-secondary: #89939A;
-   --color-icon: #fff;
+   --color-icon:#0F0F11;
    --color-elements: #E2E6E9;
    --color-hover: #FAFBFC;
+   --color-text-button: #FFFFFF;
+
 }
 

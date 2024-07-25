@@ -1,18 +1,4 @@
-$tablet-min-width: 640px;
-$desktop-min-width: 1200px;
-$color-text-secondary: #89939a;
-
-@mixin on-tablet {
-  @media (min-width: $tablet-min-width) {
-    @content;
-  }
-}
-
-@mixin on-desktop {
-  @media (min-width: $desktop-min-width) {
-    @content;
-  }
-}
+@import '../../styles/main.scss';
 
 .nav {
   &__list {
@@ -43,24 +29,23 @@ $color-text-secondary: #89939a;
   }
   &__link {
     text-decoration: none;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 11px;
-    letter-spacing: 0.04em;
-    color: $color-text-secondary;
+    @include uppercase-text;
+
+    &:hover {
+      color: var(--color-primary);
+    }
   }
 }
 
 .is-active {
-  color: #313237;
+  color: var(--color-primary);
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     width: 100%;
     bottom: 0;
     height: 2px;
-    background-color: #313237;
+    background-color: var(--color-primary);
   }
 }
