@@ -1,33 +1,117 @@
 @import './variables';
 
 @mixin on-tablet {
-   @media (min-width: $breakpoint-tablet) {
-      @content;
-   }
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
 }
 
 @mixin on-desktop {
-   @media (min-width: $breakpoint-desktop) {
-      @content;
-   }
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
 }
-
 
 @mixin section-grid {
-   display: grid;
-   grid-gap: 16px;
-   grid-template-columns: repeat(4, 1fr);
-   padding: 0 16px;
-   width: 100%;
-   justify-content: center;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0 16px;
+  width: 100%;
+  justify-content: center;
 
-   @include on-tablet {
-      grid-template-columns: repeat(12, 1fr);
-      padding: 0 24px;
-   }
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+    padding: 0 24px;
+  }
 
-   @include on-desktop {
-      grid-template-columns: repeat(24, 32px);
-      padding: 0;
-   }
+  @include on-desktop {
+    grid-template-columns: repeat(24, 32px);
+    padding: 0;
+  }
 }
+
+@mixin title-1 {
+  color: var(--color-primary);
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin title-2 {
+  color: var(--color-primary);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  text-align: left;
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin title-3 {
+  color: var(--color-primary);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: left;
+  @include on-tablet {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 31px;
+  }
+}
+
+@mixin title-4 {
+  color: var(--color-primary);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: left;
+  @include on-tablet {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+  }
+}
+
+@mixin uppercase-text {
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+@mixin button-text {
+  color: var(--color-text-button);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+@mixin body-text {
+  color: var(--color-secondary);
+font-size: 14px;
+font-weight: 600;
+line-height: 21px;
+}
+
+@mixin small-text {
+color: var(--color-secondary);
+font-size: 12px;
+font-weight: 700;
+line-height: 15px;
+text-align: left;
+}
+
+
