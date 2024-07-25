@@ -6,6 +6,7 @@ import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import { PageNotFound } from "./components/PageNotFound";
 import { Burger } from "./components/Burger/Burger";
+import { CartItem } from "./components/CartItem";
 
 
 export const App: React.FC = () => {
@@ -14,6 +15,7 @@ export const App: React.FC = () => {
       <Header />
       <ProductCard />
       <Outlet />
+      <CartItem />
       <Footer />
       <PageNotFound />
       <Burger />
