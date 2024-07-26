@@ -7,6 +7,8 @@ import { Footer } from './components/Footer/Footer';
 import { PageNotFound } from './components/PageNotFound';
 import { Burger } from './components/Burger/Burger';
 import { Grid } from './components/Grid/Grid';
+import { TechSpecs } from './components/TechSpecs';
+
 
 export const App: React.FC = () => {
   return (
@@ -19,6 +21,7 @@ export const App: React.FC = () => {
       <Outlet />
       <Footer />
       <PageNotFound />
+      <TechSpecs />
     </>
   );
 };
