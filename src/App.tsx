@@ -15,12 +15,8 @@ export const App: React.FC = () => {
     <>
       <Header />
       <Grid>
-        <GridItem>
           <ProductCard />
-        </GridItem>
-        <GridItem>
           <Burger />
-        </GridItem>
       </Grid>
       <Outlet />
       <Footer />
