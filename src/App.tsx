@@ -7,20 +7,14 @@ import { Footer } from './components/Footer/Footer';
 import { PageNotFound } from './components/PageNotFound';
 import { Burger } from './components/Burger/Burger';
 import { Grid } from './components/Grid/Grid';
-import { GridItem } from './components/Grid/GridItem';
-
 
 export const App: React.FC = () => {
   return (
     <>
       <Header />
       <Grid>
-        <GridItem>
-          <ProductCard />
-        </GridItem>
-        <GridItem>
-          <Burger />
-        </GridItem>
+        <ProductCard />
+        <Burger />
       </Grid>
       <Outlet />
       <Footer />
@@ -29,4 +23,3 @@ export const App: React.FC = () => {
   );
 };
 
-export default App;
