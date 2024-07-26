@@ -49,6 +49,10 @@
    object-fit: contain;
 }
 
+.productName{
+   @include body-text;
+}
+
 .quantityControl {
    display: flex;
    height: 32px;
@@ -117,18 +121,9 @@
 }
 
 .quantityValue {
-   font-family: Mont, sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 21px;
-      letter-spacing: 0;
+      @include body-text;
 }
 
 .price {
-   font-family: Mont, sans-serif;
-      font-size: 22px;
-      line-height: 31.8px;
-      letter-spacing: 0;
-      font-weight: 800;
-      color: var(--color-primary);
+   @include title-3
 }
