@@ -7,7 +7,9 @@ export const Burger: React.FC = () => {
   return (
     <section className="burger">  
       <div className="burger__top">
-        <Logo className={"burger__logo"} src={"./img/icons/logo-black.svg"} />
+        <div className="burger__logo">
+          <Logo src={"./img/icons/logo-black.svg"} />
+          </div>
         <button className="burger__close" type="button">
           <img src="./img/icons/close.svg" alt="" />
         </button>
