@@ -1,13 +1,11 @@
+@import '../../styles/main.scss';
+
 .color-and-capacity {
   text-align: center;
   margin-top: 50px;
 
   &__title {
-    color: #89939a;
-    font-family: Montserrat;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 16px;
+    @include small-text;
     text-align: left;
   }
 
@@ -16,7 +14,7 @@
     margin-bottom: 20px;
     gap: 8px;
     padding-bottom: 24px;
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid var(--color-elements);
   }
 
   &__color-circle {
@@ -27,13 +25,13 @@
     transition:
       transform 0.2s,
       border-color 0.3s;
-    border: 1px solid #e2e6e9;
-    box-shadow: 0 0 0 2px #fff inset;
+    border: 1px solid var(--color-elements);
+    box-shadow: 0 0 0 2px var(--color-background) inset;
   }
 
   &__color-circle:hover {
     transform: scale(1.1);
-    border: 1px solid #0f0f11;
+    border: 1px solid var(--color-primary);
   }
 
   &__capacity-selection {
@@ -41,15 +39,11 @@
     flex-direction: column;
     align-items: flex-start;
     padding-bottom: 24px;
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid var(--color-elements);
   }
 
   &__capacity-title {
-    color: #89939a;
-    font-family: Montserrat;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 16px;
+    @include small-text;
     text-align: left;
   }
 
@@ -63,39 +57,36 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-family: Montserrat;
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
     
-    background-color: #fff;
-    border: 2px solid #b4bdc3;
-    color: #0f0f11;
+    background-color: var(--color-background);
+    border: 2px solid var(--color-surface);
+    color: var(--color-primary);
     
     box-sizing: border-box;
     width: 63px;
     height: 32px;
     border-radius: 4px;
-
     
     cursor: pointer;
     transition:
       background-color 0.3s,
       color 0.3s,
       border-color 0.3s;
-    
   }
 
   &__capacity-block:hover {
-    background-color: #0f0f11;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-background);
     border: none;
   }
 
   &__capacity-block--active {
-    background-color: #0f0f11;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-background);
     border: none;
   }
 }

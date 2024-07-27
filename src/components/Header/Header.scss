@@ -1,26 +1,28 @@
-@import './variables.scss';
+
+@import '../../styles/main.scss';
+
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-inline: $spacing-medium;
+  padding-inline: var(--spacing-medium);
 
   &__left {
     display: flex;
     align-items: center;
-    gap: $spacing-medium;
+    gap: var(--spacing-medium);
   }
 
   &__nav {
     display: flex;
-    gap: $spacing-large;
+    gap: var(--spacing-large);
   }
 
   &__icons {
     display: flex;
     align-items: center;
-    gap: $spacing-small;
+    gap: var(--spacing-small);
 
     &--wrapper {
       display: flex;
@@ -28,7 +30,7 @@
       position: relative;
 
       .icon--favourites {
-        margin-right: $spacing-small;
+        margin-right: var(--spacing-small);
       }
 
       .icon--favourites::before,
@@ -54,7 +56,7 @@
 
 .nav__list {
   display: flex;
-  gap: $spacing-large;
+  gap: var(--spacing-large);
   padding: 0;
   margin: 0;
   list-style: none;
@@ -68,16 +70,16 @@
   padding: 0;
   margin: 0;
   text-decoration: none;
-  color: $color-text-secondary;
+  color: var(--color-secondary);
   text-transform: uppercase;
   font-weight: 500;
   font-style: normal;
-  font-size: $font-size;
-  line-height: $line-height;
+  font-size: 12px;
+  line-height: 11px;
 
   &:hover,
   &.is-active {
-    color: $color-text-primary;
+    color: var(--color-primary);
   }
 }
 
@@ -88,16 +90,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: $indicator-height;
-  background-color: $color-background-active;
-  border-radius: $indicator-radius;
+  height: 4px;
+  background-color: var(--color-primary);
+  border-radius: 8px;
 }
 
 .icon {
   background-repeat: no-repeat;
   background-size: contain;
-  width: $icon-size;
-  height: $icon-size;
   transition: transform .3s;
   display: block;
   z-index: 1;
@@ -115,7 +115,7 @@
   }
 }
 
-// Responsive Styles
+
 @media (max-width: 640px) {
   .header__nav,
   .header__icons {
