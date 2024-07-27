@@ -7,16 +7,17 @@ import { Footer } from './components/Footer/Footer';
 import { PageNotFound } from './components/PageNotFound';
 import { Burger } from './components/Burger/Burger';
 import { Grid } from './components/Grid/Grid';
-import { GridItem } from './components/Grid/GridItem';
-
+import { SliderSwiper } from './components/SliderSwiper';
+// import { GridItem } from './components/Grid/GridItem';
 
 export const App: React.FC = () => {
   return (
     <>
       <Header />
+      <SliderSwiper />
       <Grid>
-          <ProductCard />
-          <Burger />
+        <ProductCard />
+        <Burger />
       </Grid>
       <Outlet />
       <Footer />
