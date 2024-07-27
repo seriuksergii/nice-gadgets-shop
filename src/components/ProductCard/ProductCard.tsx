@@ -2,14 +2,14 @@ import React from 'react';
 import './ProductCard.scss';
 
 import { MainButton } from '../MainButton';
-import { AddToFavButton } from '../AddToFavButton';
+import { AddToFavButton } from '../AddToFavButton';``
 
 export const ProductCard: React.FC = () => {
   return (
     <article className="productCard">
       <img className="productCard_image" src="/src/images/example-phone-photo.jpg" alt="Phone" />
       <p className="productCard_title">Apple iPhone 11 128GB Black</p>
-      <div className="productCard_prices">
+      <div className="productCard__prices">
         <span className="productCard__prices-discount">$1050</span>
         <span className="productCard__prices-full">$1100</span>
       </div>
