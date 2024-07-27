@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { Outlet } from 'react-router-dom';
 import { Footer } from './components/Footer/Footer';
 import { PageNotFound } from './components/PageNotFound';
+import { ColorAndCapacity } from './components/ColorAndCapacity';
 
 export const App: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ export const App: React.FC = () => {
         <main className='main'>
         <Outlet />
         <PageNotFound />
+        <ColorAndCapacity />
       </main>
         <Footer />
     </>
