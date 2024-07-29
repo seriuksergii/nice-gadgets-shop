@@ -6,6 +6,7 @@ import { MainButton } from '../MainButton';
 import { Container } from '../Container';
 import { CartItem } from '../CartItem';
 
+
 export const Cart: React.FC = () => {
   return (
     <section className="cart">
@@ -29,9 +30,7 @@ export const Cart: React.FC = () => {
               <p className="cart__total">$2657</p>
               <p className="cart__count">Total for 3 items</p>
             </div>
-
             <div className="cart__line"></div>
-
             <MainButton text = {'Checkout'} handler={() => true} />
           </div>
         </Grid>

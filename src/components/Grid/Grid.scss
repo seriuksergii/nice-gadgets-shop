@@ -1,25 +1,20 @@
+@import '../../styles/main.scss';
+
 .grid {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
-  padding-inline: 16px;
 }
 
-@media (min-width: 320px) and (max-width: 639px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (min-width: 640px) and (max-width: 1199px) {
+@include on-tablet {
   .grid {
     grid-template-columns: repeat(12, 1fr);
-    padding-inline: 24px;
   }
 }
 
 
-@media (min-width: 1200px) {
+@include on-desktop {
   .grid {
-    grid-template-columns: repeat(24, 32px);
+    grid-template-columns: repeat(24, 1fr);
   }
 }

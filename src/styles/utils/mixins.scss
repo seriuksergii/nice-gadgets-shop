@@ -31,13 +31,19 @@
   }
 }
 
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $effect-duration;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
 @mixin title-1 {
   color: var(--color-primary);
   font-size: 32px;
   font-weight: 800;
   line-height: 41px;
   letter-spacing: -0.01em;
-  text-align: left;
   @include on-tablet {
     font-size: 48px;
     line-height: 56px;
@@ -49,7 +55,6 @@
   font-size: 22px;
   font-weight: 800;
   line-height: 31px;
-  text-align: left;
   @include on-tablet {
     font-size: 32px;
     line-height: 41px;
@@ -62,7 +67,6 @@
   font-size: 20px;
   font-weight: 700;
   line-height: 26px;
-  text-align: left;
   @include on-tablet {
     font-size: 22px;
     font-weight: 800;
@@ -75,7 +79,6 @@
   font-size: 16px;
   font-weight: 700;
   line-height: 21px;
-  text-align: left;
   @include on-tablet {
     font-size: 20px;
     font-weight: 700;
@@ -110,8 +113,7 @@ line-height: 21px;
 color: var(--color-secondary);
 font-size: 12px;
 font-weight: 700;
-line-height: 15px;
-text-align: left;
+line-height: 16px;
 }
 
 

@@ -3,12 +3,11 @@ import "./Logo.scss";
 
 interface Props {
   src: string;
-  className: string;
 }
 
-export const Logo: React.FC<Props> = ({ src, className }) => {
+export const Logo: React.FC<Props> = ({ src }) => {
   return (
-    <a className={`"logo" ${className}`}  href="#">
+    <a className="logo"  href="#">
           <img
             className="logo__img"
             src={src}

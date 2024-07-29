@@ -10,8 +10,8 @@
    width: 100;
    right: 16px;
    border-radius: 16px;
-   // width: 752px;
    margin-bottom: 16px;
+
    
 
    @include on-tablet {
@@ -29,6 +29,8 @@
    width: 100%;
    align-items: center;
    gap: 16px;
+  
+   
 
 }
 
@@ -50,15 +52,18 @@
    height: 16px;
 }
 
+.productImage {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 80px;
+   height: 80px;
+}
 
 .image {
    width: 66px;
    height: 66px;
    object-fit: contain;
-}
-
-.productName{
-   @include body-text;
 }
 
 .quantityControl {
@@ -90,8 +95,7 @@
    height: 32px;
    cursor: pointer;
 
-
-   transition: transform 0.5s ease;
+   transition: transform 05s ease;
 
    &:hover {
       transform: scale(1.1);
@@ -113,7 +117,6 @@
 }
 
 .controlButtonIcon {
-   border-radius:10%;
    width: 16px;
    height: 16px;
    border: none;
@@ -128,10 +131,11 @@
    width: 32px;
 }
 
-.quantityValue {
-      @include body-text;
-}
-
 .price {
-   @include title-3
+   font-family: Mont, sans-serif;
+      font-size: 22px;
+      line-height: 31.8px;
+      letter-spacing: 0;
+      font-weight: 800;
+      color: var(--color-primary);
 }
