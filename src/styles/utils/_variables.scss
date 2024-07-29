@@ -1,5 +1,7 @@
 $breakpoint-tablet: 640px;
 $breakpoint-desktop: 1200px;
+
+$effect-duration: 0.3s;
 :root {
    --color-accent: #216CFF;
    --color-secondary-accent:#F447AF;
@@ -13,7 +15,12 @@ $breakpoint-desktop: 1200px;
    --color-hover: #FAFBFC;
    --color-button: #216CFF;
 
+
    --hight-header-mobile: 48px;
    --hight-header-desktop: 64px;
+   --spacing-small: 20px;
+   --spacing-medium: 24px;
+   --spacing-large: 64px;
+   --hover-shadow-color: 0 2px 16px 0 #0000001A;
 }
 
