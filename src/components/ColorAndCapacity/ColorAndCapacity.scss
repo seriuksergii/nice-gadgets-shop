@@ -51,10 +51,10 @@
   }
 
   &__capacity-block {
+    @include body-text;
     display: flex;
     align-items: center;
     justify-content: center;
-    @include body-text; // Using the body-text mixin
     background-color: var(--color-background);
     border: 2px solid var(--color-surface);
     color: var(--color-primary);
