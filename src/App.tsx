@@ -8,8 +8,7 @@ import { PageNotFound } from "./components/PageNotFound";
 import { Burger } from "./components/Burger/Burger";
 import { CartItem } from "./components/CartItem";
 import { Footer } from './components/Footer/Footer';
-import { Grid } from './components/Grid/Grid';
-import { GridItem } from './components/Grid/GridItem';
+import { SliderSwiper } from './components/SliderSwiper';
 
 
 
@@ -17,15 +16,10 @@ export const App: React.FC = () => {
   return (
     <>
       <Header />
-      <Grid>
-        <GridItem>
-          <ProductCard />
-        </GridItem>
-        <GridItem>
-          <Burger />
-        </GridItem>
-      </Grid>
-      <Outlet />
+        <main className='main'>
+         <SliderSwiper />
+        <Outlet />
+      </main>
         <Footer />
         <CartItem/>
       <PageNotFound />
