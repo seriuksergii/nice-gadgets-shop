@@ -1,11 +1,10 @@
-
 import React from 'react';
 import './App.scss';
 import { Header } from './components/Header';
 import { Outlet } from 'react-router-dom';
 import { Footer } from './components/Footer/Footer';
-import { SliderSwiper } from './components/SliderSwiper';
-
+import { PageNotFound } from './components/PageNotFound';
+import { HomePage } from './pages/HomePage';
 
 
 export const App: React.FC = () => {
@@ -13,7 +12,7 @@ export const App: React.FC = () => {
     <>
       <Header />
         <main className='main'>
-         <SliderSwiper />
+         <HomePage />
         <Outlet />
       </main>
         <Footer />

@@ -1,4 +1,5 @@
 export interface Product {
+  map(arg0: (product: any) => import("react/jsx-runtime").JSX.Element): import("react").ReactNode;
   id: number;
   category: string;
   itemId: string;
