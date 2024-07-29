@@ -14,7 +14,6 @@ export const App: React.FC = () => {
         <main className='main'>
          <HomePage />
         <Outlet />
-        <PageNotFound />
       </main>
         <Footer />
     </>
