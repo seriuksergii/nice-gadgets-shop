@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Grid } from '../Grid/Grid';
 import { MainButton } from '../MainButton';
 import { Container } from '../Container';
+import { CartItem } from '../CartItem';
+
 
 export const Cart: React.FC = () => {
   return (
@@ -18,18 +20,17 @@ export const Cart: React.FC = () => {
       <h1 className="cart__title">Cart</h1>
 
       <div className="cart__content">
-        <Grid>
-          <div className="cart__items"></div>
-
+              <Grid>
+               <div className="cart__items">
+                 <CartItem/>
+                 <CartItem />
+                 </div>
           <div className="cart__info">
             <div className="cart__check">
               <p className="cart__total">$2657</p>
-
               <p className="cart__count">Total for 3 items</p>
             </div>
-
             <div className="cart__line"></div>
-
             <MainButton text = {'Checkout'} handler={() => true} />
           </div>
         </Grid>
