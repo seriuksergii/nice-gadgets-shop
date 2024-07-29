@@ -5,7 +5,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './SliderSwiper.scss';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { SliderSwiperData } from '../SliderSwiper/constants';
+import { SliderSwiperData } from './SliderSwiperData';
 
 export const SliderSwiper: React.FC = () => {
   return (
@@ -18,6 +18,7 @@ export const SliderSwiper: React.FC = () => {
       }}
       pagination={{
         clickable: true,
+        dynamicBullets: true,
       }}
       navigation={false}
       modules={[Autoplay, Pagination, Navigation]}

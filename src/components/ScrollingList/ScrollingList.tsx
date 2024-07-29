@@ -11,7 +11,7 @@ import { Loader } from "../Loader";
 
 interface Props {
   title: string;
-  products: Product
+  products: Product[];
 }
 
 export const ScrollingList: React.FC<Props> = ({  title, products }) => {

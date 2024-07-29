@@ -5,22 +5,20 @@ import { Product } from '../../types';
 
 import { getAllProducts } from '../../services';
 
-import { Container } from '../../components/Container';
 import { SliderSwiper } from '../../components/SliderSwiper';
 import { ScrollingList } from '../../components/ScrollingList';
+import { ShopByCategory } from '../../components/ShopByCategory';
 
 export const HomePage = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
 
-  const getNewModels = (models: Product[]) => {
-    return models.filter((model) => model.year === 2022);
-  };
+  const getNewModels = (models: Product[]) => models.filter((model) => model.year === 2022);
 
-  const getHotPrices = (products: Product[]) => {
-    return products.sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
-  };
+  const getHotPrices = (products: Product[]) =>
+    products.sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     getAllProducts().then((products) => setAllProducts(products));
   }, []);
 
@@ -34,6 +32,7 @@ export const HomePage = () => {
         <SliderSwiper />
       </section>
       <ScrollingList products={newModels} title={'Brand new models'} />
+      <ShopByCategory products={allProducts} />
       <ScrollingList products={hotPrices} title={'Hot prices'} />
     </div>
   );
