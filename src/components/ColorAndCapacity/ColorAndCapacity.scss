@@ -22,9 +22,7 @@
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
-    transition:
-      transform 0.2s,
-      border-color 0.3s;
+    transition: transform 0.2s, border-color 0.3s;
     border: 1px solid var(--color-elements);
     box-shadow: 0 0 0 2px var(--color-background) inset;
   }
@@ -44,7 +42,6 @@
 
   &__capacity-title {
     @include small-text;
-    text-align: left;
   }
 
   &__capacity-blocks {
@@ -57,25 +54,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: Montserrat;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
-    
+    @include body-text; // Using the body-text mixin
     background-color: var(--color-background);
     border: 2px solid var(--color-surface);
     color: var(--color-primary);
-    
     box-sizing: border-box;
     width: 63px;
     height: 32px;
     border-radius: 4px;
-    
     cursor: pointer;
-    transition:
-      background-color 0.3s,
-      color 0.3s,
-      border-color 0.3s;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   }
 
   &__capacity-block:hover {
