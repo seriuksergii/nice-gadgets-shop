@@ -1,0 +1,19 @@
+@import '../../styles/main';
+
+.add-to-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  background-color: var(--color-button);
+  border: 1px solid var(--button-border-color);
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  color: var(--color-background);
+  font-weight: 600;
+  font-size: 14px;
+  flex-grow: 1;
+
+  cursor: pointer;
+}
