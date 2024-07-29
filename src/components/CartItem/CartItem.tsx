@@ -6,6 +6,8 @@ import deleteIcon from '../../images/icons/delete-icon.svg';
 import minusIcon from '../../images/icons/minus-icon.svg';
 import iphneIcon from '../../../public/img/phones/apple-iphone-11-pro/gold/00.webp'
 
+
+
 export const CartItem = () => {
 const [quantity, setQuantity] = useState(1);
 
