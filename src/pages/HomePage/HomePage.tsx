@@ -5,6 +5,7 @@ import { Product } from '../../types';
 
 import { getAllProducts } from '../../services';
 
+import { Container } from '../../components/Container';
 import { SliderSwiper } from '../../components/SliderSwiper';
 import { ScrollingList } from '../../components/ScrollingList';
 import { ShopByCategory } from '../../components/ShopByCategory';
@@ -26,14 +27,19 @@ export const HomePage = () => {
   const hotPrices = getHotPrices(allProducts);
 
   return (
-    <div className="homepage">
-      <h1 className="homepage__title">Welcome to Nice Gadgets store!</h1>
-      <section className="sliderswiper-wrapper">
-        <SliderSwiper />
-      </section>
-      <ScrollingList products={newModels} title={'Brand new models'} />
-      <ShopByCategory products={allProducts} />
-      <ScrollingList products={hotPrices} title={'Hot prices'} />
-    </div>
+    <Container
+      // eslint-disable-next-line react/no-children-prop
+      children={
+        <div className="homepage">
+          <h1 className="homepage__title">Welcome to Nice Gadgets store!</h1>
+          <section className="sliderswiper-wrapper">
+            <SliderSwiper />
+          </section>
+          <ScrollingList products={newModels} title={'Brand new models'} />
+          <ShopByCategory products={allProducts} />
+          <ScrollingList products={hotPrices} title={'Hot prices'} />
+        </div>
+      }
+    />
   );
 };
