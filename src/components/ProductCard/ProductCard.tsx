@@ -1,38 +1,61 @@
 import React from 'react';
 import './ProductCard.scss';
+import { Link } from 'react-router-dom';
+
+import { Product } from '../../types';
 
 import { MainButton } from '../MainButton';
-import { AddToFavButton } from '../AddToFavButton';``
+import { AddToFavButton } from '../AddToFavButton';
 
-export const ProductCard: React.FC = () => {
+interface Props {
+  product: Product;
+}
+
+export const ProductCard: React.FC<Props> = ({ product }) => {
+  const {
+    itemId,
+    category,
+    image,
+    name,
+    price,
+    fullPrice,
+    screen,
+    capacity,
+    ram 
+  } = product;
+
+  const URL = `/${category}/${itemId}`;
+
   return (
     <article className="productCard">
-      <img className="productCard_image" src="/src/images/example-phone-photo.jpg" alt="Phone" />
-      <p className="productCard_title">Apple iPhone 11 128GB Black</p>
-      <div className="productCard__prices">
-        <span className="productCard__prices-discount">$1050</span>
-        <span className="productCard__prices-full">$1100</span>
-      </div>
+      <Link to={URL}>
+        <img className="productCard__image" src={image} alt={name} />
+        <p className="productCard__title">{name}</p>
+        <div className="productCard__prices">
+          <span className="productCard__prices-discount">${price}</span>
+          <span className="productCard__prices-full">${fullPrice}</span>
+        </div>
+      </Link>
 
       <div className="productCard__params">
         <div className="productCard__params-pair">
           <p className="productCard__param">Screen</p>
-          <p className="productCard__value">6.1 IPS</p>
+          <p className="productCard__value">{screen}</p>
         </div>
 
         <div className="productCard__params-pair">
           <p className="productCard__param">Capacity</p>
-          <p className="productCard__value">128GB</p>
+          <p className="productCard__value">{capacity}</p>
         </div>
 
         <div className="productCard__params-pair">
           <p className="productCard__param">Ram</p>
-          <p className="productCard__value">4 GB</p>
+          <p className="productCard__value">{ram}</p>
         </div>
       </div>
 
       <div className="productCard__buttons">
-        <MainButton text = {'Add to cart'} handler={() => true} />
+        <MainButton text={'Add to cart'} handler={() => true} />
         <AddToFavButton />
       </div>
     </article>
