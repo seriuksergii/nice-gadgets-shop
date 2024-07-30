@@ -2,28 +2,26 @@
 
 .header {
   &__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  height: 48px;
-  box-shadow: 0px 1px 0px var(--color-elements);
-  }
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: var(--hight-header-mobile);
+    box-shadow: 0px 1px 0px var(--color-elements);
 
+    @include on-tablet {
+      gap: 16px;
+    }
 
-  @include on-tablet {
-    gap: 16px;
-  }
-
-  @include on-desktop {
-    gap: 24px;
-    height: 64px;
+    @include on-desktop {
+      gap: 24px;
+      height: 64px;
+    }
   }
 
   &__logo {
     display: flex;
     align-items: center;
     padding-inline: 16px;
-
 
     @include on-desktop {
       padding-inline: 24px;
@@ -34,35 +32,33 @@
     display: none;
 
     @include on-tablet {
-        display: flex;
-        flex: 1 0 auto;
-      }
+      display: flex;
+      flex: 1 0 auto;
+    }
   }
 
   &__icons--info {
     display: none;
 
     @include on-tablet {
-        display: flex;
-      }
-    }
-
-    &__icons--burger {
-      height: 100%;
-      width: var(--hight-header-mobile);
-      box-shadow: -1px 0px var(--color-elements);
-  
       display: flex;
-      align-items: center;
-      justify-content: center;
-  
-      @include on-tablet {
-          display: none;
-        }
     }
   }
 
+  &__icons--burger {
+    height: 100%;
+    width: var(--hight-header-mobile);
+    box-shadow: -1px 0px var(--color-elements);
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+}
 
 .icon {
   display: flex;
