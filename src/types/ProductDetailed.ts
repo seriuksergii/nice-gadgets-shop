@@ -1,6 +1,6 @@
 import { Category } from './Category';
 
-export type ProductDetailed = {
+export interface ProductDetailed {
   id: string;
   category: Category;
   namespaceId: string;
