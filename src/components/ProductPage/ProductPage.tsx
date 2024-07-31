@@ -72,8 +72,9 @@ export const ProductPage: React.FC = () => {
 
   const getTitle = () => {
     if (!product) return '';
-    const baseTitle = product.name.split(' ').slice(0, -2).join(' ');
-    return `${baseTitle} ${selectedCapacity} ${modelColor.charAt(0).toUpperCase() + modelColor.slice(1)}`;
+    const baseTitle = product.name.split(' ').slice(0, -3).join(' ');
+    const currentCapacity = selectedCapacity || product.capacity;
+    return `${baseTitle} ${currentCapacity} ${modelColor.charAt(0).toUpperCase() + modelColor.slice(1)}`;
   };
 
   if (loading) {
