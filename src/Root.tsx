@@ -6,6 +6,8 @@ import { Cart } from './components/Cart/Cart';
 import { ProductPage } from './components/ProductPage/ProductPage';
 import { ActionUserProvider } from './Contexts/UserActionProvider';
 import { HomePage } from './pages/HomePage';
+import { PhonePage } from './pages/PhonePage';
+import { FavouritesPage } from './pages/FavouritesPage';
 
 
 export const Root = () => (
@@ -15,7 +17,9 @@ export const Root = () => (
         <Routes>
           <Route element={<App />}>
             <Route path="/" element={<HomePage />} />
+            <Route path="phone" element={<PhonePage />} />
             <Route path="cart" element={<Cart />} />
+            <Route path="favourites" element={<FavouritesPage />} />
             <Route path=":category/:itemId" element={<ProductPage />} />
             <Route path="*" element={<PageNotFound />} />
           </Route>
