@@ -1,31 +1,32 @@
-@import '../../styles/main.scss';
-
 .info-buttons {
   display: flex;
   height: 64px;
-  
+
   @include on-tablet {
     height: 100%;
   }
 
-  &__icon {
+  &__link {
     flex: 1;
     outline: 1px solid var(--color-elements);
 
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     @include on-tablet {
-     width: var(--hight-header-mobile);
+      width: var(--hight-header-mobile);
+      height: 100%;
     }
 
     @include on-desktop {
       width: var(--hight-header-desktop);
     }
   }
+}
 
-  &__link {
-    display: flex;
-  }
+.is-active {
+  color: var(--color-primary);
+  @include active-link-underline;
 }

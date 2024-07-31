@@ -1,4 +1,4 @@
-@import '../../styles/main.scss';
+
 
 .nav {
   &__list {
@@ -35,6 +35,8 @@
   }
   &__link {
     display: flex;
+    padding-block: 10px;
+
     text-decoration: none;
     @include uppercase-text;
 
@@ -49,16 +51,5 @@
 .is-active {
   color: var(--color-primary);
 
-  &::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    height: 2px;
-    background-color: var(--color-primary); 
-
-    @include on-tablet {
-      height: 3px;
-    }
-  }
+  @include active-link-underline;
 }

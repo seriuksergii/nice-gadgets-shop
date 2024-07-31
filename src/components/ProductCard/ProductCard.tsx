@@ -4,27 +4,37 @@ import { Link } from 'react-router-dom';
 
 import { Product } from '../../types';
 
-import { MainButton } from '../MainButton';
+import { AddToCartButton} from '../AddToCartButton';
 import { AddToFavButton } from '../AddToFavButton';
+import { useUserActions } from '../../Contexts/useUserActions';
+import { ActionTypes } from '../../Contexts/reduser';
+import { KEY_FAVORITES } from '../../services/localStorageHelper';
 
 interface Props {
   product: Product;
 }
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const {
-    itemId,
-    category,
-    image,
-    name,
-    price,
-    fullPrice,
-    screen,
-    capacity,
-    ram 
-  } = product;
+  const { id, itemId, category, image, name, price, fullPrice, screen, capacity, ram } = product;
 
   const URL = `/${category}/${itemId}`;
+
+  const { userAction, dispatch } = useUserActions();
+  const { favorites, cart } = userAction;
+
+  const isFavorites = favorites.some((p) => p.id === id);
+  const isInCart = cart.some((p) => p.id == id);
+
+  const handlerOnAddToCart = () => {
+    dispatch({ type: ActionTypes.onAddToCart, payload: product });
+  };
+
+  const toggleFavorites = () => {
+    console.log(!isFavorites);
+    !isFavorites
+      ? dispatch({ type: ActionTypes.onAddToFavorites, payload: product })
+      : dispatch({ type: ActionTypes.onDelete, payload: { id: id, key: KEY_FAVORITES } });
+  };
 
   return (
     <article className="productCard">
@@ -55,8 +65,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="productCard__buttons">
-        <MainButton text={'Add to cart'} handler={() => true} />
-        <AddToFavButton />
+        <AddToCartButton
+          text={isInCart ? 'Added' : 'Add to cart'}
+          handler={handlerOnAddToCart}
+          disabled={isInCart}
+        />
+        <AddToFavButton isFavorites={isFavorites} handler={toggleFavorites} />
       </div>
     </article>
   );

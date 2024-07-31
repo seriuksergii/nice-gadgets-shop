@@ -4,6 +4,7 @@ import { Logo } from '../Logo/Logo';
 import { FavAndCartBlock } from '../FavAndCartBlock/FavAndCartBlock';
 import { useState } from 'react';
 import { Burger } from '../Burger';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   const [isActive, setIsActive] = useState(false);
@@ -30,9 +31,9 @@ export const Header = () => {
     </div>
 
     <div className="header__icons header__icons--burger">
-      <a href="#5" className="icon icon--burgerMenu">
+      <Link to={"menu"} className="icon icon--burgerMenu">
         <img onClick={showBurger} src="\img\icons\menu.svg" alt="burger menu" />
-      </a>
+      </Link>
       </div>
     </div>
     <Burger isActive = {isActive} closeBurger={closeBurger}/>

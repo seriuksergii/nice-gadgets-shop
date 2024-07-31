@@ -1,87 +1,68 @@
-import { useState } from 'react';
 import styles from './CartItem.module.scss';
 import cn from 'classnames';
 import deleteIcon from '../../images/icons/delete-icon.svg';
-import plusIcon from '../../images/icons/plus-icon.svg'
+import plusIcon from '../../images/icons/plus-icon.svg';
 import minusIcon from '../../images/icons/minus-icon.svg';
-import iphneIcon from '../../../public/img/phones/apple-iphone-11-pro/gold/00.webp'
+import { ProductCart } from '../../types';
+import { ActionTypes } from '../../Contexts/reduser';
+import { useUserActions } from '../../Contexts/useUserActions';
+import { KEY_CART } from '../../services/localStorageHelper';
 
+interface Props {
+  product: ProductCart,
+}
 
+export const CartItem: React.FC<Props> = ({ product }) => {
+  const { dispatch } = useUserActions();
+  const { name, price, image, quantity, id } = product;
+  const total = price * quantity;
 
-export const CartItem = () => {
-const [quantity, setQuantity] = useState(1);
-
-const handleIncrease = () => {
-    setQuantity(prevQuantity => prevQuantity + 1);
+  const handleIncrease = () => {
+    dispatch({ type: ActionTypes.increaseQuantity, payload: id });
   };
 
   const handleDecrease = () => {
-    setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+    dispatch({ type: ActionTypes.decreaseQuantity, payload: id });
   };
-   
-//     const handleDeleteItem = () => {
-//     
-//   };
 
+  const handleDeleteItem = () => {
+    dispatch({ type: ActionTypes.onDelete, payload: { id: id, key: KEY_CART } });
+  };
 
   return (
     <div className={styles.cartItem}>
       <div className={styles.mainContainer}>
-           <button
-            //   onClick={handleDeleteItem}
-              className={styles.deleteButton}>
-          <img
-            src={deleteIcon}
-            alt="Delete"
-            className={styles.deleteButtonIcon}
-          />
+        <button
+          onClick={handleDeleteItem}
+          className={styles.deleteButton}
+        >
+          <img src={deleteIcon} alt="Delete" className={styles.deleteButtonIcon} />
         </button>
-           
-          <img
-            src={iphneIcon}
-            alt='ipone'
-            className={styles.image}
-          />
-        
-           <p className={styles.productName}>
-            Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-           </p>
+
+        <img src={image} alt={name} className={styles.image} />
+
+        <p className={styles.productName}>{name}</p>
       </div>
       <div className={styles.quantityControl}>
         <div className={styles.quantity}>
           <button
-             onClick={handleDecrease}
+            onClick={handleDecrease}
             disabled={quantity <= 1}
             className={cn(styles.button, {
-              [styles.disabled]:  quantity <= 1,
+              [styles.disabled]: quantity <= 1,
             })}
           >
-            <img
-              src={minusIcon}
-              alt="Decrease"
-              className={styles.controlButtonIcon}
-            />
+            <img src={minusIcon} alt="Decrease" className={styles.controlButtonIcon} />
           </button>
           <div className={styles.quantityValueContainer}>
-                 <p className={styles.quantityValue}>{quantity}</p>
+            <p className={styles.quantityValue}>{quantity}</p>
           </div>
-          <button
-            onClick={handleIncrease}
-            className={styles.button}
-          >
-            <img
-              src={plusIcon}
-              alt="Increase"
-              className={styles.controlButtonIcon}
-            />
+          <button onClick={handleIncrease} className={styles.button}>
+            <img src={plusIcon} alt="Increase" className={styles.controlButtonIcon} />
           </button>
         </div>
-           <h3 className={styles.price}>
-              $985
-           </h3>
+        <h3 className={styles.price}>{total}</h3>
       </div>
     </div>
   );
 };
-
-
