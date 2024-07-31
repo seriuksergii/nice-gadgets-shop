@@ -61,7 +61,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             <img src={plusIcon} alt="Increase" className={styles.controlButtonIcon} />
           </button>
         </div>
-        <h3 className={styles.price}>{total}</h3>
+        <h3 className={styles.price}>${total}</h3>
       </div>
     </div>
   );
