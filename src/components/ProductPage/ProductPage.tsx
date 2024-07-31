@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './ProductPage.scss';
 import { useParams } from 'react-router-dom';
+import { useSwipeable } from 'react-swipeable';
 
 import { Product } from '../../types';
 import { getAllProducts } from '../../services';
 import { Loader } from '../../components/Loader';
+import { Container } from '../../components/Container';
 
 const colors = ['#FCDBC1', '#5F7170', '#4C4C4C', '#F0F0F0'];
 const capacities = ['64 GB', '256 GB', '512 GB'];
@@ -16,6 +18,7 @@ export const ProductPage: React.FC = () => {
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
   const [images, setImages] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -40,7 +43,7 @@ export const ProductPage: React.FC = () => {
 
   const generateImageUrls = (baseImage: string) => {
     const baseFileName = baseImage.substring(0, baseImage.lastIndexOf('00.webp'));
-    const imageUrls = Array.from({ length: 5 }, (_, i) => `${baseFileName}0${i}.webp`);
+    const imageUrls = Array.from({ length: 4 }, (_, i) => `${baseFileName}0${i}.webp`);
     return imageUrls;
   };
 
@@ -56,6 +59,25 @@ export const ProductPage: React.FC = () => {
     setSelectedCapacity(capacity);
   };
 
+  const handleThumbnailClick = (index: number) => {
+    setActiveImageIndex(index);
+  };
+
+  const handleSwipeLeft = () => {
+    setActiveImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const handleSwipeRight = () => {
+    setActiveImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: handleSwipeLeft,
+    onSwipedRight: handleSwipeRight,
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+
   if (loading) {
     return <Loader />;
   }
@@ -65,48 +87,66 @@ export const ProductPage: React.FC = () => {
   }
 
   return (
-    <div className="product-page">
-      <h1 className="product-page__title">{product.name}</h1>
-      <div className="product-page__main-content">
-        <div className="product-page__images">
-          {images.map((imgSrc, index) => (
-            <img key={index} src={`/${imgSrc}`} alt={`${product.name} ${index}`} className="product-page__image" />
-          ))}
-        </div>
-        <div className="product-page__details">
-          <p className="product-page__price">${product.price}</p>
-          <div className="color-and-capacity">
-            <h2 className="color-and-capacity__title">Available Colors</h2>
-            <div className="color-and-capacity__color-palette">
-              {colors.map((color) => (
-                <div
-                  key={color}
-                  className={`color-and-capacity__color-circle ${
-                    modelColor === color ? 'color-and-capacity__color-circle--active' : ''
+    <Container>
+      <div className="product-page">
+        <h1 className="product-page__title">{product.name}</h1>
+        <div className="product-page__main-content">
+          <div className="product-page__images" {...swipeHandlers}>
+            <img
+              src={`/${images[activeImageIndex]}`}
+              alt={`${product.name} primary`}
+              className="product-page__images__primary"
+            />
+            <div className="product-page__images__thumbnails">
+              {images.map((imgSrc, index) => (
+                <img
+                  key={index}
+                  src={`/${imgSrc}`}
+                  alt={`${product.name} ${index}`}
+                  className={`product-page__images__thumbnails__thumbnail ${
+                    activeImageIndex === index ? 'product-page__images__thumbnails__thumbnail--active' : ''
                   }`}
-                  style={{ backgroundColor: color }}
-                  onClick={() => handleColorClick(color)}
-                ></div>
+                  onClick={() => handleThumbnailClick(index)}
+                />
               ))}
             </div>
-            <h2 className="color-and-capacity__capacity-title">Select Capacity</h2>
-            <div className="color-and-capacity__capacity-blocks">
-              {capacities.map((capacity) => (
-                <div
-                  key={capacity}
-                  className={`color-and-capacity__capacity-block ${
-                    selectedCapacity === capacity ? 'color-and-capacity__capacity-block--active' : ''
-                  }`}
-                  role="button"
-                  onClick={() => handleCapacityClick(capacity)}
-                >
-                  {capacity}
-                </div>
-              ))}
+          </div>
+          <div className="product-page__details">
+            <div className="product-page__colors">
+              <h2 className="product-page__colors__title">Available Colors</h2>
+              <div className="product-page__colors__palette">
+                {colors.map((color) => (
+                  <div
+                    key={color}
+                    className={`product-page__colors__circle ${
+                      modelColor === color ? 'product-page__colors__circle--active' : ''
+                    }`}
+                    style={{ backgroundColor: color }}
+                    onClick={() => handleColorClick(color)}
+                  ></div>
+                ))}
+              </div>
+            </div>
+            <div className="product-page__capacity">
+              <h2 className="product-page__capacity__title">Select Capacity</h2>
+              <div className="product-page__capacity__blocks">
+                {capacities.map((capacity) => (
+                  <div
+                    key={capacity}
+                    className={`product-page__capacity__block ${
+                      selectedCapacity === capacity ? 'product-page__capacity__block--active' : ''
+                    }`}
+                    role="button"
+                    onClick={() => handleCapacityClick(capacity)}
+                  >
+                    {capacity}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
