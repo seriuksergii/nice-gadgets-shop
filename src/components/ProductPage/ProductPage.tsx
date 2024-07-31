@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ProductPage.scss';
 import { useParams } from 'react-router-dom';
+import { useSwipeable } from 'react-swipeable';
 
 import { Product } from '../../types';
 import { getAllProducts } from '../../services';
@@ -62,6 +63,21 @@ export const ProductPage: React.FC = () => {
     setActiveImageIndex(index);
   };
 
+  const handleSwipeLeft = () => {
+    setActiveImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const handleSwipeRight = () => {
+    setActiveImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: handleSwipeLeft,
+    onSwipedRight: handleSwipeRight,
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+
   if (loading) {
     return <Loader />;
   }
@@ -75,7 +91,7 @@ export const ProductPage: React.FC = () => {
       <div className="product-page">
         <h1 className="product-page__title">{product.name}</h1>
         <div className="product-page__main-content">
-          <div className="product-page__images">
+          <div className="product-page__images" {...swipeHandlers}>
             <img
               src={`/${images[activeImageIndex]}`}
               alt={`${product.name} primary`}
@@ -96,27 +112,29 @@ export const ProductPage: React.FC = () => {
             </div>
           </div>
           <div className="product-page__details">
-            <div className="color-and-capacity">
-              <h2 className="color-and-capacity__title">Available Colors</h2>
-              <div className="color-and-capacity__color-palette">
+            <div className="product-page__colors">
+              <h2 className="product-page__colors__title">Available Colors</h2>
+              <div className="product-page__colors__palette">
                 {colors.map((color) => (
                   <div
                     key={color}
-                    className={`color-and-capacity__color-circle ${
-                      modelColor === color ? 'color-and-capacity__color-circle--active' : ''
+                    className={`product-page__colors__circle ${
+                      modelColor === color ? 'product-page__colors__circle--active' : ''
                     }`}
                     style={{ backgroundColor: color }}
                     onClick={() => handleColorClick(color)}
                   ></div>
                 ))}
               </div>
-              <h2 className="color-and-capacity__capacity-title">Select Capacity</h2>
-              <div className="color-and-capacity__capacity-blocks">
+            </div>
+            <div className="product-page__capacity">
+              <h2 className="product-page__capacity__title">Select Capacity</h2>
+              <div className="product-page__capacity__blocks">
                 {capacities.map((capacity) => (
                   <div
                     key={capacity}
-                    className={`color-and-capacity__capacity-block ${
-                      selectedCapacity === capacity ? 'color-and-capacity__capacity-block--active' : ''
+                    className={`product-page__capacity__block ${
+                      selectedCapacity === capacity ? 'product-page__capacity__block--active' : ''
                     }`}
                     role="button"
                     onClick={() => handleCapacityClick(capacity)}

@@ -8,7 +8,7 @@ interface Props {
 };
 
 
-export const TodosProvider: React.FC<Props> = ({ children }) => {
+export const ActionUserProvider: React.FC<Props> = ({ children }) => {
   const [userAction, dispatch] = useReducer(userActionReducer, initialState);
 
   useEffect(() => {

@@ -27,7 +27,7 @@ export const Burger: React.FC<Props> = ({ isActive, closeBurger }) => {
           <Logo src={'./img/icons/logo-black.svg'} />
         </div>
         <div className="burger__close">
-          <img onClick={closeBurger} src="./img/icons/close.svg" alt="" />
+          <img  onClick={closeBurger} src="./img/icons/close.svg" alt="" />
         </div>
       </div>
 

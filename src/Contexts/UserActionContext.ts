@@ -4,7 +4,7 @@ import { Action} from "./reduser";
 
 export interface TypeUserActionContext {
   userAction: UserAction,
-  dispatch?: Dispatch<Action>,
+  dispatch: Dispatch<Action>,
 }
 
 
@@ -15,4 +15,5 @@ export const initialState: UserAction = {
 
 export const UserActionContext = createContext<TypeUserActionContext>({
   userAction: initialState,
+  dispatch: (value: Action) => { value },
 });

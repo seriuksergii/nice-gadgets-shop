@@ -1,10 +1,19 @@
 import React from "react";
 import "./AddToFavButton.scss";
+import cn from "classnames";
 
-export const AddToFavButton: React.FC = () => {
+interface Props {
+  isFavorites: boolean;
+  handler: () => void;
+}
+
+export const AddToFavButton: React.FC<Props> = ({ isFavorites, handler }) => {
+  
   return (
-    <button className="add-to-fav">
-      <img className="icon" src="/src/images/AddToFavButton.svg" alt="#" />
+    <button onClick={handler} className={cn("fav", {
+      "add-to-fav": !isFavorites,
+      "is-fav": isFavorites
+    })}>
     </button>
   );
 };

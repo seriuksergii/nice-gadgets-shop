@@ -1,7 +1,11 @@
-@import '../../styles/main.scss';
+
+
+* {
+  box-sizing: border-box;
+}
 
 .product-page {
-  padding: 2rem;
+  padding-block: 2rem;
 
   &__title {
     @include title-1;
@@ -58,6 +62,7 @@
       &__thumbnail {
         width: 60px;
         height: 60px;
+        border-radius: 4px;
         object-fit: contain;
         cursor: pointer;
         border: 1px solid var(--color-elements);
@@ -93,97 +98,97 @@
       margin-bottom: 1rem;
     }
   }
-}
 
-.color-and-capacity {
-  text-align: center;
-  margin-top: 50px;
+  &__colors {
+    text-align: center;
+    margin-top: 50px;
 
-  @include on-tablet {
-    text-align: left;
-    margin-top: 0;
+    @include on-tablet {
+      text-align: left;
+      margin-top: 0;
+    }
+
+    &__title {
+      @include small-text;
+      padding-bottom: 8px;
+      text-align: left;
+    }
+
+    &__palette {
+      display: flex;
+      margin-bottom: 20px;
+      gap: 8px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--color-elements);
+    }
+
+    &__circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.3s;
+      border: 1px solid var(--color-elements);
+      box-shadow: 0 0 0 2px var(--color-background) inset;
+    }
+
+    &__circle:hover {
+      transform: scale(1.1);
+      border: 1px solid var(--color-primary);
+    }
+
+    &__circle--active {
+      border: 2px solid var(--color-primary);
+    }
   }
 
-  &__title {
-    @include small-text;
-    text-align: left;
-  }
+  &__capacity {
+    text-align: center;
+    margin-top: 50px;
 
-  &__color-palette {
-    display: flex;
-    margin-bottom: 20px;
-    gap: 8px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--color-elements);
-  }
+    @include on-tablet {
+      text-align: left;
+      margin-top: 0;
+    }
 
-  &__color-circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.2s, border-color 0.3s;
-    border: 1px solid var(--color-elements);
-    box-shadow: 0 0 0 2px var(--color-background) inset;
-  }
+    &__title {
+      @include small-text;
+      padding-bottom: 8px;
+      text-align: left;
+    }
 
-  &__color-circle:hover {
-    transform: scale(1.1);
-    border: 1px solid var(--color-primary);
-  }
+    &__blocks {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
 
-  &__color-circle--active {
-    border: 2px solid var(--color-primary);
-  }
+    &__block {
+      @include body-text;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-background);
+      border: 2px solid var(--color-surface);
+      color: var(--color-primary);
+      box-sizing: border-box;
+      width: 63px;
+      height: 32px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
 
-  &__capacity-title {
-    @include title-3;
-    text-align: left;
-  }
+    &__block:hover {
+      background-color: var(--color-primary);
+      color: var(--color-background);
+      border: none;
+    }
 
-  &__capacity-selection {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--color-elements);
-  }
-
-  &__capacity-title {
-    @include small-text;
-  }
-
-  &__capacity-blocks {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 10px;
-  }
-
-  &__capacity-block {
-    @include body-text;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-background);
-    border: 2px solid var(--color-surface);
-    color: var(--color-primary);
-    box-sizing: border-box;
-    width: 63px;
-    height: 32px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-  }
-
-  &__capacity-block:hover {
-    background-color: var(--color-primary);
-    color: var(--color-background);
-    border: none;
-  }
-
-  &__capacity-block--active {
-    background-color: var(--color-primary);
-    color: var(--color-background);
-    border: none;
+    &__block--active {
+      background-color: var(--color-primary);
+      color: var(--color-background);
+      border: none;
+    }
   }
 }
