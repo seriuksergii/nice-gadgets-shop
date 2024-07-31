@@ -3,10 +3,13 @@ import './ProductPage.scss';
 import { useParams } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 
-import { Product } from '../../types';
-import { getPhones } from '../../services';
-import { Loader } from '../../components/Loader';
-import { Container } from '../../components/Container';
+import { Product } from '../types';
+import { getPhones } from '../services';
+import { Loader } from '../components/Loader';
+import { Container } from '../components/Container';
+import { colorHexMap } from '../types/colors';
+
+
 
 export const ProductPage: React.FC = () => {
   const { category, itemId } = useParams<{ category: string; itemId: string }>();
@@ -41,7 +44,7 @@ export const ProductPage: React.FC = () => {
   const handleColorClick = (color: string) => {
     setModelColor(color);
     if (product) {
-      const updatedImages = product.images.map(image => image.replace(product.color, color));
+      const updatedImages = product.images.map((image) => image.replace(product.color, color));
       setImages(updatedImages);
     }
   };
@@ -69,6 +72,13 @@ export const ProductPage: React.FC = () => {
     trackMouse: true,
   });
 
+  const getTitle = () => {
+    if (!product) return '';
+    const baseTitle = product.name.split(' ').slice(0, -3).join(' ');
+    const currentCapacity = selectedCapacity || product.capacity;
+    return `${baseTitle} ${currentCapacity} ${modelColor.charAt(0).toUpperCase() + modelColor.slice(1)}`;
+  };
+
   if (loading) {
     return (
       <div className="loader-container">
@@ -84,7 +94,7 @@ export const ProductPage: React.FC = () => {
   return (
     <Container>
       <div className="product-page">
-        <h1 className="product-page__title">{product.name}</h1>
+        <h1 className="product-page__title">{getTitle()}</h1>
         <div className="product-page__main-content">
           <div className="product-page__images" {...swipeHandlers}>
             <img
@@ -99,7 +109,9 @@ export const ProductPage: React.FC = () => {
                   src={`/${imgSrc}`}
                   alt={`${product.name} ${index}`}
                   className={`product-page__images__thumbnails__thumbnail ${
-                    activeImageIndex === index ? 'product-page__images__thumbnails__thumbnail--active' : ''
+                    activeImageIndex === index
+                      ? 'product-page__images__thumbnails__thumbnail--active'
+                      : ''
                   }`}
                   onClick={() => handleThumbnailClick(index)}
                 />
@@ -116,7 +128,7 @@ export const ProductPage: React.FC = () => {
                     className={`product-page__colors__circle ${
                       modelColor === color ? 'product-page__colors__circle--active' : ''
                     }`}
-                    style={{ backgroundColor: color }}
+                    style={{ backgroundColor: colorHexMap[color] }}
                     onClick={() => handleColorClick(color)}
                   ></div>
                 ))}
