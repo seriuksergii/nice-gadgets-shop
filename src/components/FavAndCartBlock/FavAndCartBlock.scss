@@ -39,39 +39,14 @@
    width: 14px;
    height: 14px;
    border-radius: 50%;
-   border: 1px solid var(--color-secondary-accent);
+   border: 1px solid var(--color-background);
    background-color: var(--color-secondary-accent);
-   top: 12px;
-   right: 13px;
-
-   @include on-tablet {
-      width: 13px;
-      height: 13px;
-      top: 10px;
-      right: 10px;
-   }
-
-   @include on-desktop {
-      width: 14px;
-      height: 14px;
-      top: 12px;
-      right: 14px;
-   }
+   transform: translate(50%, -50%);
+ }
 
 .countText {
    color: var(--color-background);
    font-size: 9px;
    font-weight: 700;
-   line-height: 11.5px;
    text-align: center;
-
-   @include on-tablet {
-      font-size: 9px;
-      line-height: 11.5px;
-   }
-
-   @include on-desktop {
-      font-size: 9px;
-      line-height: 11.5px;
-   }
 }
