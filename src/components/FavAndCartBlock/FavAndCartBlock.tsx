@@ -6,12 +6,14 @@ import { getNavlinkStyle } from '../../services/styleHelpers';
 export const FavAndCartBlock: React.FC = () => {
   return (
     <div className="info-buttons">
-      
         <NavLink
           to={'/favorites'}
           className={({ isActive }) => getNavlinkStyle(isActive, 'info-buttons__link')}
         >
           <img className='icon' src="/img/icons/favourites.svg" alt="favorites" />
+         <span className="count">
+            <p className='countText'>1</p>
+          </span>
         </NavLink>
      
 
@@ -21,8 +23,10 @@ export const FavAndCartBlock: React.FC = () => {
           className={({ isActive }) => getNavlinkStyle(isActive, 'info-buttons__link')}
         >
           <img className='icon' src="/img/icons/shopping-bag.svg" alt="cart" />
+         <span className="count">
+            <p className='countText'>1</p>
+          </span>
         </NavLink>
-     
     </div>
   );
 };
