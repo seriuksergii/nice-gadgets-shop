@@ -4,12 +4,9 @@ import { useParams } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 
 import { Product } from '../../types';
-import { getAllProducts } from '../../services';
+import { getPhones } from '../../services';
 import { Loader } from '../../components/Loader';
 import { Container } from '../../components/Container';
-
-const colors = ['#FCDBC1', '#5F7170', '#4C4C4C', '#F0F0F0'];
-const capacities = ['64 GB', '256 GB', '512 GB'];
 
 export const ProductPage: React.FC = () => {
   const { category, itemId } = useParams<{ category: string; itemId: string }>();
@@ -23,13 +20,13 @@ export const ProductPage: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const products = await getAllProducts();
-        const foundProduct = products.find((p) => p.category === category && p.itemId === itemId);
+        const products = await getPhones();
+        const foundProduct = products.find((p) => p.category === category && p.id === itemId);
         if (foundProduct) {
           setProduct(foundProduct);
           setModelColor(foundProduct.color);
           setSelectedCapacity(foundProduct.capacity);
-          setImages(generateImageUrls(foundProduct.image));
+          setImages(foundProduct.images);
         }
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -41,17 +38,11 @@ export const ProductPage: React.FC = () => {
     fetchProducts();
   }, [category, itemId]);
 
-  const generateImageUrls = (baseImage: string) => {
-    const baseFileName = baseImage.substring(0, baseImage.lastIndexOf('00.webp'));
-    const imageUrls = Array.from({ length: 4 }, (_, i) => `${baseFileName}0${i}.webp`);
-    return imageUrls;
-  };
-
   const handleColorClick = (color: string) => {
     setModelColor(color);
     if (product) {
-      const updatedBaseImage = product.image.replace(product.color, color);
-      setImages(generateImageUrls(updatedBaseImage));
+      const updatedImages = product.images.map(image => image.replace(product.color, color));
+      setImages(updatedImages);
     }
   };
 
@@ -79,7 +70,11 @@ export const ProductPage: React.FC = () => {
   });
 
   if (loading) {
-    return <Loader />;
+    return (
+      <div className="loader-container">
+        <Loader />
+      </div>
+    );
   }
 
   if (!product) {
@@ -115,7 +110,7 @@ export const ProductPage: React.FC = () => {
             <div className="product-page__colors">
               <h2 className="product-page__colors__title">Available Colors</h2>
               <div className="product-page__colors__palette">
-                {colors.map((color) => (
+                {product.colorsAvailable.map((color) => (
                   <div
                     key={color}
                     className={`product-page__colors__circle ${
@@ -130,7 +125,7 @@ export const ProductPage: React.FC = () => {
             <div className="product-page__capacity">
               <h2 className="product-page__capacity__title">Select Capacity</h2>
               <div className="product-page__capacity__blocks">
-                {capacities.map((capacity) => (
+                {product.capacityAvailable.map((capacity) => (
                   <div
                     key={capacity}
                     className={`product-page__capacity__block ${
