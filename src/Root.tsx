@@ -3,7 +3,7 @@ import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 import { App } from './App';
 import { PageNotFound } from './components/PageNotFound/PageNotFound';
 import { Cart } from './components/Cart/Cart';
-import { ProductPage } from './components/ProductPage/ProductPage';
+import { ProductPage } from './ProductPage';
 import { ActionUserProvider } from './Contexts/UserActionProvider';
 import { HomePage } from './pages/HomePage';
 import { PhonePage } from './pages/PhonePage';
