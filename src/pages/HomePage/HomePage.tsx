@@ -28,15 +28,15 @@ export const HomePage = () => {
 
   return (
     <Container>
-        <div className="homepage">
-          <h1 className="homepage__title">Welcome to Nice Gadgets store!</h1>
-          <section className="sliderswiper-wrapper">
-            <SliderSwiper />
-          </section>
-          <ScrollingList products={newModels} title={'Brand new models'} />
-          <ShopByCategory products={allProducts} />
-          <ScrollingList products={hotPrices} title={'Hot prices'} />
-        </div>
-   </Container>
+      <div className="homepage">
+        <h1 className="homepage__title">Welcome to Nice Gadgets store!</h1>
+        <section className="sliderswiper-wrapper">
+          <SliderSwiper />
+        </section>
+        <ScrollingList products={newModels} title={'Brand new models'} />
+        <ShopByCategory products={allProducts} />
+        <ScrollingList products={hotPrices} title={'Hot prices'} />
+      </div>
+    </Container>
   );
 };
