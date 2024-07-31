@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from './Footer.module.scss';
-import './buttonBackToTop.png'
-import './footerLogo.png'
-import footerLogo from './footerLogo.png'
-import buttonBackToTop from './buttonBackToTop.png'
+import buttonBackToTop from '../../images/icons/buttonBackToTop.png'
+import { Logo } from '../Logo/Logo';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -18,7 +16,7 @@ export const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <div className={styles.wrapper}>
         <a href="https://github.com/fs-apr24-Tech-Titans" className={styles.logoLink}>
-              <img src={footerLogo} alt="logo" className={styles.logo} />
+             <Logo src="/img/icons/logo-pink.svg" />
         </a>
         <nav className={styles.nav}>
           <a
@@ -33,7 +31,7 @@ export const Footer: React.FC = () => {
             className={styles.item}
             target="_blank"
           >
-            Contact
+            About us
           </a>
           <a
             href="https://github.com/fs-apr24-Tech-Titans"
