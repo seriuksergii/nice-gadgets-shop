@@ -27,9 +27,7 @@ export const HomePage = () => {
   const hotPrices = getHotPrices(allProducts);
 
   return (
-    <Container
-      // eslint-disable-next-line react/no-children-prop
-      children={
+    <Container>
         <div className="homepage">
           <h1 className="homepage__title">Welcome to Nice Gadgets store!</h1>
           <section className="sliderswiper-wrapper">
@@ -39,7 +37,6 @@ export const HomePage = () => {
           <ShopByCategory products={allProducts} />
           <ScrollingList products={hotPrices} title={'Hot prices'} />
         </div>
-      }
-    />
+   </Container>
   );
 };
