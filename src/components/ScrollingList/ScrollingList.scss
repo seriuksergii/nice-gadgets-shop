@@ -1,4 +1,4 @@
-@import '../../styles/main.scss';
+
 
 .scrollingList {
   &__top {
@@ -48,18 +48,18 @@
   cursor: pointer;
 
   &--left {
-    background-image: url('../../../public/img/icons/left-dark.svg');
+    background-image: url('/img/icons/left-dark.svg');
 
     &-disabled {
-      background-image: url('../../../public/img/icons/left.svg');
+      background-image: url('/img/icons/left.svg');
     }
   }
 
   &--right {
-    background-image: url('../../../public/img/icons/right-dark.svg');
+    background-image: url('/img/icons/right-dark.svg');
 
     &-disabled {
-      background-image: url('../../../public/img/icons/right.svg');
+      background-image: url('/img/icons/right.svg');
     }
   }
 }
