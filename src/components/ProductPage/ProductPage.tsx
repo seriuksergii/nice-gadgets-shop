@@ -41,6 +41,7 @@ export const ProductPage: React.FC = () => {
       }
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchProducts();
   }, [category, itemId]);
 

@@ -1,11 +1,11 @@
 {
     "id": "apple-iphone-11-pro-256gb-gold",
-	"namespaceId": "apple-iphone-11-pro",
+	"itemId": "apple-iphone-11-pro",
 	"name": "Apple iPhone 11 Pro 256GB Gold",
 	"capacityAvailable": ["64GB", "256GB", "512GB"],
 	"capacity": "256GB",
-	"priceRegular": 1640,
-	"priceDiscount": 1570,
+	"price": 1640,
+	"fullPrice": 1570,
 	"colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
 	"color": "gold",
 	"images": [

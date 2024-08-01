@@ -1,11 +1,11 @@
 {
   "id": "apple-iphone-7-32gb-gold",
-  "namespaceId": "apple-iphone-7",
+  "itemId": "apple-iphone-7",
   "name": "Apple iPhone 7 32GB Gold",
   "capacityAvailable": ["32GB"],
   "capacity": "32GB",
-  "priceRegular": 400,
-  "priceDiscount": 375,
+  "price": 400,
+  "fullPrice": 375,
   "colorsAvailable": ["black", "rosegold", "gold", "silver"],
   "color": "gold",
   "images": [

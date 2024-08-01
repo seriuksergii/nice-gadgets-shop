@@ -1,11 +1,11 @@
 {
     "id": "apple-iphone-11-pro-512gb-midnightgreen",
-	"namespaceId": "apple-iphone-11-pro",
+	"itemId": "apple-iphone-11-pro",
 	"name": "Apple iPhone 11 Pro 512GB Midnight green",
 	"capacityAvailable": ["64GB", "256GB", "512GB"],
 	"capacity": "512GB",
-	"priceRegular": 1880,
-	"priceDiscount": 1780,
+	"price": 1880,
+	"fullPrice": 1780,
 	"colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
 	"color": "midnightgreen",
 	"images": [

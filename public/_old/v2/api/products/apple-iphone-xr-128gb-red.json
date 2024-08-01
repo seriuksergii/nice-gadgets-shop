@@ -1,11 +1,11 @@
 {
     "id": "apple-iphone-xr-128gb-red",
-	"namespaceId": "apple-iphone-xr",
+	"itemId": "apple-iphone-xr",
 	"name": "Apple iPhone XR 128GB Red",
 	"capacityAvailable": ["64GB", "128GB"],
 	"capacity": "128GB",
-	"priceRegular": 880,
-	"priceDiscount": 815,
+	"price": 880,
+	"fullPrice": 815,
 	"colorsAvailable": ["white", "yellow", "red", "coral"],
 	"color": "red",
 	"images": [
