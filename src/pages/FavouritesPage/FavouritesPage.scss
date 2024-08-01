@@ -2,7 +2,6 @@
 @import '/src/styles/utils/mixins';
 
 .favourites {
-  padding-top: 24px;
   padding-bottom: 56px;
 
   @include on-tablet {

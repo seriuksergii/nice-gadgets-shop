@@ -4,7 +4,7 @@ import { Container } from '../../components/Container';
 import { ProductCard } from '../../components/ProductCard';
 import { useUserActions } from '../../Contexts/useUserActions';
 import { EmptyFavouritesPage } from '../EmptyFavouritesPage/EmptyFavouritesPage';
-import { BreadCrumbs } from '../../components/BreadCrumbs';
+import { Link } from 'react-router-dom';
 
 export const FavouritesPage: React.FC = () => {
   const { userAction } = useUserActions();
@@ -13,13 +13,15 @@ export const FavouritesPage: React.FC = () => {
 
   return (
     <Container>
+      <div className="cart__back">
+        <img src="/img/icons/arrow-right.svg" alt="Arrov right" />
+        <Link className="cart__back--text" to={'/'}>
+          Back
+        </Link>
+      </div>
       <section className="favourites">
-        
-        <div className="favourites__back">
-        <BreadCrumbs />
-        </div>
         <h1 className="favourites__title">Favourites</h1>
-        {count > 0 && <p className='favourites__count'>{count} items</p>}
+        {count > 0 && <p className="favourites__count">{count} items</p>}
 
         <div className="favourites__content">
           <ul className="favourites__items">

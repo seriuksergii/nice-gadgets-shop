@@ -1,12 +1,11 @@
 @import '../../styles/utils/mixins';
 
-.favIsEmpty {
+.cartIsEmpty {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   grid-column: 1 / -1;
-  padding-top: 25px;
 
   &__message {
     font-size: 24px;
