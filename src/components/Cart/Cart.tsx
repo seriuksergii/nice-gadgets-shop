@@ -5,6 +5,7 @@ import { Grid } from '../Grid/Grid';
 import { Container } from '../Container';
 import { CartItem } from '../CartItem';
 import { useUserActions } from '../../Contexts/useUserActions';
+import { EmptyCart } from '../../pages/EmptyCart';
 
 export const Cart: React.FC = () => {
   const { userAction } = useUserActions();
@@ -31,21 +32,27 @@ export const Cart: React.FC = () => {
         <h1 className="cart__title">Cart</h1>
 
         <div className="cart__content">
-          <Grid>
-            <div className="cart__items">
-              {cart.map((product) => (
-                <CartItem product={product} key={product.id} />
-              ))}
-            </div>
-            <div className="cart__info">
-              <div className="cart__check">
-                <p className="cart__total">${calculateTotalPrice}</p>
-                <p className="cart__count">Total for {cart.length} items</p>
+          {cart.length === 0 ? (
+            <EmptyCart />
+          ) : (
+            <Grid>
+              <div className="cart__items">
+                {cart.map((product) => (
+                  <CartItem product={product} key={product.id} />
+                ))}
               </div>
-              <div className="cart__line"></div>
-              <button onClick={handlerCheckout} className='cart__button'>Checkout</button>
-            </div>
-          </Grid>
+              <div className="cart__info">
+                <div className="cart__check">
+                  <p className="cart__total">${calculateTotalPrice}</p>
+                  <p className="cart__count">Total for {cart.length} items</p>
+                </div>
+                <div className="cart__line"></div>
+                <button onClick={handlerCheckout} className="cart__button">
+                  Checkout
+                </button>
+              </div>
+            </Grid>
+          )}
         </div>
       </Container>
     </section>
