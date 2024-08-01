@@ -1,9 +1,8 @@
 .cart {
-  
-   &__content {
-      padding-block: 32px;
-   }
-   
+  &__content {
+    padding-block: 32px;
+  }
+
   &__back {
     display: flex;
     align-items: center;
@@ -17,9 +16,12 @@
     &--text {
       @include small-text;
       line-height: 12px;
+
+      &:hover {
+        color: var(--color-primary);
+      }
     }
   }
-
 
   &__title {
     @include title-1;
@@ -34,7 +36,7 @@
 
     @include on-desktop {
       display: flex;
-      grid-column: 1/ span 16;
+      grid-column: 1 / span 16;
       height: fit-content;
     }
   }
@@ -50,10 +52,9 @@
     grid-column: 1/-1;
 
     @include on-desktop {
-      grid-column: 17/ span 8;
+      grid-column: 17 / span 8;
       gap: 24px;
     }
-
   }
 
   &__button {

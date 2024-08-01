@@ -9,7 +9,7 @@
   &__title {
     @include title-2;
   }
-  
+
   &__items {
     display: grid;
     gap: 16px;
@@ -45,6 +45,11 @@
   border-radius: 48px;
   background-color: var(--color-background);
   cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
 
   &--left {
     background-image: url('/img/icons/left-dark.svg');
