@@ -6,21 +6,33 @@
   justify-content: center;
   align-items: center;
   grid-column: 1 / -1;
-  padding-top: 25px;
 
   &__message {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 500;
+
+    @include on-tablet {
+      font-size: 24px;
+      font-weight: 700;
+    }
   }
 
   &__advice {
-    margin-bottom: 24px;
-    font-size: 24px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 500;
+
+    @include on-tablet {
+      font-size: 24px;
+      font-weight: 700;
+    }
   }
 
   &__img {
     width: 100%;
-    max-width: 300px;
+    max-width: 150px;
+
+    @include on-tablet {
+      max-width: 300px;
+    }
   }
 }
