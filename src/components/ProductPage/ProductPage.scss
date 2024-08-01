@@ -164,7 +164,8 @@
     &__blocks {
       display: flex;
       gap: 8px;
-      margin-bottom: 10px;
+      border-bottom: 1px solid #E2E6E9;
+      padding-bottom: 24px;
     }
 
     &__block {

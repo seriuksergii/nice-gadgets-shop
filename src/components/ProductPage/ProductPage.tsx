@@ -1,3 +1,4 @@
+// ProductPage.tsx
 import React, { useState, useEffect } from 'react';
 import './ProductPage.scss';
 import { useParams } from 'react-router-dom';
@@ -8,6 +9,10 @@ import { getPhones } from '../../services';
 import { Loader } from '../Loader';
 import { Container } from '../Container';
 import { colorHexMap } from '../../types/colors';
+import { TechSpecs } from '../TechSpecs';
+import { ItemCardAboutSection } from '../ItemCardAboutSection';
+// import { AddToCartButton } from '../AddToCartButton';
+// import { AddToFavButton } from '../AddToFavButton';
 
 export const ProductPage: React.FC = () => {
   const { category, itemId } = useParams<{ category: string; itemId: string }>();
@@ -148,9 +153,30 @@ export const ProductPage: React.FC = () => {
                   </div>
                 ))}
               </div>
+              {/* <div className="product-page__buttons">
+              <AddToCartButton
+                text="Add to cart"
+                handler={() => console.log('Add to cart clicked')}
+                disabled={false}
+              />
+              <AddToFavButton
+                isFavorites={false}
+                handler={() => console.log('Add to favorites clicked')}
+              />
+            </div> */}
             </div>
           </div>
         </div>
+        <ItemCardAboutSection description={product.description} />
+        <TechSpecs
+          screen={product.screen}
+          resolution={product.resolution}
+          processor={product.processor}
+          ram={product.ram}
+          camera={product.camera}
+          zoom={product.zoom}
+          cell={product.cell}
+        />
       </div>
     </Container>
   );
