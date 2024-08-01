@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .product-page {
   padding-block: 2rem;
 
