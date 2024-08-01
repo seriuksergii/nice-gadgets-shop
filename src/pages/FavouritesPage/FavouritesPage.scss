@@ -17,10 +17,10 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    margin: 24px 0;
+    margin-bottom: 24px;
 
-    @include on-desktop {
-      margin: 40px 0 16px;
+    @include on-tablet {
+      margin-bottom: 40px;
     }
 
     &--text {
@@ -31,31 +31,26 @@
 
   &__title {
     @include title-1;
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    @include body-text;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
   }
 
   &__items {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-
-    grid-column: 1/-1;
-
-    @include on-desktop {
-      display: flex;
-      grid-column: 1 / span 16;
-      height: fit-content;
-    }
-
-    @media (max-width: 639px) {
-      grid-template-columns: 1fr;
-    }
-
-    @media (max-width: 1199px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (min-width: 1200px) {
-      grid-template-columns: repeat(4, 1fr);
-    }
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 40px 16px;
   }
+}
+
+.item {
+  display: flex;
+  justify-content: center;
 }

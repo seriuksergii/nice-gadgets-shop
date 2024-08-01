@@ -12,6 +12,10 @@
     @include small-text;
   }
 
+  &__advice {
+    margin-bottom: 24px;
+  }
+
   &__image {
     width: 100%;
     max-width: 200px;

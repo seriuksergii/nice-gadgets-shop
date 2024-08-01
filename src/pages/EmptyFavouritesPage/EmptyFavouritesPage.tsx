@@ -8,7 +8,7 @@ export const EmptyFavouritesPage = () => {
 
       <div className="favIsEmpty__image-wrapper">
         <img
-          src="/public/img/empty-favourites-page.png"
+          src="/img/empty-favourites-page.png"
           alt="fav-is-empty"
           className="favIsEmpty__img"
         />
