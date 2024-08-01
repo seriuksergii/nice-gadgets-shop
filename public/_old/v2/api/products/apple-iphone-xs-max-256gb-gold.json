@@ -1,11 +1,11 @@
 {
     "id": "apple-iphone-xs-max-256gb-gold",
-	"namespaceId": "apple-iphone-xs-max",
+	"itemId": "apple-iphone-xs-max",
 	"name": "Apple iPhone XS Max 256GB Gold",
 	"capacityAvailable": ["64GB", "256GB"],
 	"capacity": "256GB",
-	"priceRegular": 1080,
-	"priceDiscount": 1000,
+	"price": 1080,
+	"fullPrice": 1000,
 	"colorsAvailable": ["spacegray", "gold", "silver"],
 	"color": "gold",
 	"images": [

@@ -1,11 +1,11 @@
 {
     "id": "apple-iphone-11-64gb-yellow",
-	"namespaceId": "apple-iphone-11",
+	"itemId": "apple-iphone-11",
 	"name": "Apple iPhone 11 64GB Yellow",
 	"capacityAvailable": ["64GB", "128GB", "256GB"],
 	"capacity": "64GB",
-	"priceRegular": 932,
-	"priceDiscount": 880,
+	"price": 932,
+	"fullPrice": 880,
 	"colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
 	"color": "yellow",
 	"images": [

@@ -1,15 +1,16 @@
 export interface Product {
-  id: string;
+  id: number;
   category: string;
-  namespaceId: string;
+  itemId: string;
   name: string;
   capacityAvailable: string[];
   capacity: string;
-  priceRegular: number;
-  priceDiscount: number;
+  price: number;
+  fullPrice: number;
   colorsAvailable: string[];
   color: string;
   images: string[];
+  image: string;
   description: {
     title: string;
     text: string[];
@@ -20,5 +21,6 @@ export interface Product {
   ram: string;
   camera: string;
   zoom: string;
+  year: number;
   cell: string[];
 }

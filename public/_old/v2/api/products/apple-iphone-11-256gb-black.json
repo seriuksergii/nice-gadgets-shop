@@ -1,11 +1,11 @@
 {
     "id": "apple-iphone-11-256gb-black",
-	"namespaceId": "apple-iphone-11",
+	"itemId": "apple-iphone-11",
 	"name": "Apple iPhone 11 256GB Black",
 	"capacityAvailable": ["64GB", "128GB", "256GB"],
 	"capacity": "256GB",
-	"priceRegular": 1172,
-	"priceDiscount": 1115,
+	"price": 1172,
+	"fullPrice": 1115,
 	"colorsAvailable": ["black", "green", "yellow", "white", "purple", "red"],
 	"color": "black",
 	"images": [

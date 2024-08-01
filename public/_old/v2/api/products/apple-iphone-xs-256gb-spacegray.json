@@ -1,11 +1,11 @@
 {
     "id": "apple-iphone-xs-256gb-spacegray",
-	"namespaceId": "apple-iphone-xs",
+	"itemId": "apple-iphone-xs",
 	"name": "Apple iPhone XS 256GB Spacegray",
 	"capacityAvailable": ["64GB", "256GB"],
 	"capacity": "256GB",
-	"priceRegular": 960,
-	"priceDiscount": 900,
+	"price": 960,
+	"fullPrice": 900,
 	"colorsAvailable": ["spacegray", "gold"],
 	"color": "spacegray",
 	"images": [

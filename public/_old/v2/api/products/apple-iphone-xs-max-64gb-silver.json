@@ -1,11 +1,11 @@
 {
     "id": "apple-iphone-xs-max-64gb-silver",
-	"namespaceId": "apple-iphone-xs-max",
+	"itemId": "apple-iphone-xs-max",
 	"name": "Apple iPhone XS Max 64GB Silver",
 	"capacityAvailable": ["64GB", "256GB"],
 	"capacity": "64GB",
-	"priceRegular": 960,
-	"priceDiscount": 900,
+	"price": 960,
+	"fullPrice": 900,
 	"colorsAvailable": ["spacegray", "gold", "silver"],
 	"color": "silver",
 	"images": [

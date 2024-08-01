@@ -1,11 +1,11 @@
 {
     "id": "apple-iphone-11-pro-max-256gb-spacegray",
-	"namespaceId": "apple-iphone-11-pro-max",
+	"itemId": "apple-iphone-11-pro-max",
 	"name": "Apple iPhone 11 Pro Max 256GB Spacegray",
 	"capacityAvailable": ["64GB", "256GB", "512GB"],
 	"capacity": "256GB",
-	"priceRegular": 1776,
-	"priceDiscount": 1680,
+	"price": 1776,
+	"fullPrice": 1680,
 	"colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
 	"color": "spacegray",
 	"images": [
