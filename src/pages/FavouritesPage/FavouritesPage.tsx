@@ -13,9 +13,9 @@ export const FavouritesPage: React.FC = () => {
 
   return (
     <Container>
-      <div className="cart__back">
+      <div className="favourites__back">
         <img src="/img/icons/arrow-right.svg" alt="Arrov right" />
-        <Link className="cart__back--text" to={'/'}>
+        <Link className="favourites__back--text" to={'/'}>
           Back
         </Link>
       </div>
