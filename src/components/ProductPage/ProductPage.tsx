@@ -3,13 +3,11 @@ import './ProductPage.scss';
 import { useParams } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 
-import { Product } from '../types';
-import { getPhones } from '../services';
-import { Loader } from '../components/Loader';
-import { Container } from '../components/Container';
-import { colorHexMap } from '../types/colors';
-
-
+import { Product } from '../../types';
+import { getPhones } from '../../services';
+import { Loader } from '../Loader';
+import { Container } from '../Container';
+import { colorHexMap } from '../../types/colors';
 
 export const ProductPage: React.FC = () => {
   const { category, itemId } = useParams<{ category: string; itemId: string }>();

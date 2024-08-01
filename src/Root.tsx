@@ -3,12 +3,11 @@ import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 import { App } from './App';
 import { PageNotFound } from './components/PageNotFound/PageNotFound';
 import { Cart } from './components/Cart/Cart';
-import { ProductPage } from './ProductPage';
+import { ProductPage } from './components/ProductPage';
 import { ActionUserProvider } from './Contexts/UserActionProvider';
 import { HomePage } from './pages/HomePage';
 import { PhonePage } from './pages/PhonePage';
 import { FavouritesPage } from './pages/FavouritesPage';
-
 
 export const Root = () => (
   <Router>
