@@ -1,4 +1,3 @@
-// ProductPage.tsx
 import React, { useState, useEffect } from 'react';
 import './ProductPage.scss';
 import { useParams } from 'react-router-dom';
@@ -11,8 +10,8 @@ import { Container } from '../Container';
 import { colorHexMap } from '../../types/colors';
 import { TechSpecs } from '../TechSpecs';
 import { ItemCardAboutSection } from '../ItemCardAboutSection';
-// import { AddToCartButton } from '../AddToCartButton';
-// import { AddToFavButton } from '../AddToFavButton';
+import { AddToCartButton } from '../AddToCartButton';
+import { AddToFavButton } from '../AddToFavButton';
 
 export const ProductPage: React.FC = () => {
   const { category, itemId } = useParams<{ category: string; itemId: string }>();
@@ -154,30 +153,47 @@ export const ProductPage: React.FC = () => {
                   </div>
                 ))}
               </div>
-              {/* <div className="product-page__buttons">
-              <AddToCartButton
-                text="Add to cart"
-                handler={() => console.log('Add to cart clicked')}
-                disabled={false}
+            </div>
+            <div className="product-page__prices">
+                <span className="product-page__prices-discount">${product.priceDiscount}</span>
+                <span className="product-page__prices-full">${product.priceRegular}</span>
+              </div>
+            <div className="product-page__buttons">
+                <AddToCartButton
+                  text="Add to cart"
+                  handler={() => console.log('Add to cart clicked')}
+                  disabled={false}
+                />
+                <AddToFavButton
+                  isFavorites={false}
+                  handler={() => console.log('Add to favorites clicked')}
+                />
+            </div>
+            <div className="product-page__tech-specs">
+              <TechSpecs
+                screen={product.screen}
+                resolution={product.resolution}
+                processor={product.processor}
+                ram={product.ram}
+                fullSpecs={false}
               />
-              <AddToFavButton
-                isFavorites={false}
-                handler={() => console.log('Add to favorites clicked')}
-              />
-            </div> */}
             </div>
           </div>
         </div>
-        <ItemCardAboutSection description={product.description} />
-        <TechSpecs
-          screen={product.screen}
-          resolution={product.resolution}
-          processor={product.processor}
-          ram={product.ram}
-          camera={product.camera}
-          zoom={product.zoom}
-          cell={product.cell}
-        />
+        <div className="product-page__about">
+          <ItemCardAboutSection description={product.description} />
+        </div>
+        <div className="product-page__tech-specs-full">
+          <TechSpecs
+            screen={product.screen}
+            resolution={product.resolution}
+            processor={product.processor}
+            ram={product.ram}
+            camera={product.camera}
+            zoom={product.zoom}
+            cell={product.cell}
+          />
+        </div>
       </div>
     </Container>
   );
