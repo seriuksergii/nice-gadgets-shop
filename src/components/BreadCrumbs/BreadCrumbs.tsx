@@ -10,7 +10,7 @@ export const BreadCrumbs: React.FC = () => {
     <div className="bread-crumbs">
       <Link to="/" title="Return to the Homepage">
         <img
-          src="../../../public/img/icons/home.svg"
+          src="/img/icons/home.svg"
           alt="home icon"
           className="ico ico-home"
         />
@@ -22,7 +22,7 @@ export const BreadCrumbs: React.FC = () => {
         return (
           <React.Fragment key={to}>
             <img
-              src="../../../public/img/icons/right.svg"
+              src="/img/icons/right.svg"
               alt="arrow right icon"
               className="ico ico-right"
             />
