@@ -9,7 +9,7 @@ import { SortBy } from '../SortBy/SortBy';
 import { SortOptions } from '../../types/SortOptions';
 import { PagesCount } from '../../types/PagesCount';
 import { getProductSort } from '../../services/getProductSort';
-import { ProductList } from '../ProductList/ProductList';
+import { ProductList } from '../../components/ProductList/ProductList';
 
 interface Props {
   category: Category;
