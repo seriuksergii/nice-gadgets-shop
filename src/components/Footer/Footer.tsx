@@ -2,14 +2,16 @@ import React from 'react';
 import styles from './Footer.module.scss';
 import buttonBackToTop from '../../images/icons/buttonBackToTop.png';
 import { Logo } from '../Logo/Logo';
+import { Link } from 'react-router-dom';
+
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
 
   return (
     <footer className={styles.footer}>
@@ -21,25 +23,35 @@ export const Footer: React.FC = () => {
           <a href="https://github.com/fs-apr24-Tech-Titans" className={styles.item} target="_blank">
             GitHub
           </a>
-          <a href="https://github.com/fs-apr24-Tech-Titans" className={styles.item} target="_blank">
+          <Link
+            to={'aboutUs'}
+            className={styles.item}
+          >
             About us
-          </a>
-          <a href="https://github.com/fs-apr24-Tech-Titans" className={styles.item} target="_blank">
+          </Link>
+          <a
+            href="https://github.com/fs-apr24-Tech-Titans"
+            className={styles.item}
+            target="_blank"
+          >
             Rights
           </a>
         </nav>
-        <div className={styles.backToTop} onClick={scrollToTop}>
-          <p className={styles.backToTopText}>Back to top</p>
-          <button
-            aria-label="Scroll to top"
-            type="button"
-            id="back-to-top"
-            onClick={scrollToTop}
-            className={styles.backToTopButton}
-          >
-            <img src={buttonBackToTop} alt="back to top" className={styles.backToTopIcon} />
-          </button>
-        </div>
+        <div className={styles.backToTop}   onClick={scrollToTop}>
+  <p className={styles.backToTopText}>Back to top</p>
+  <button
+    aria-label="Scroll to top"
+    type="button"
+    id="back-to-top"
+    className={styles.backToTopButton}
+  >
+    <img
+      src={buttonBackToTop}
+      alt="back to top"
+      className={styles.backToTopIcon}
+    />
+  </button>
+</div>
       </div>
     </footer>
   );

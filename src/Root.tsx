@@ -10,6 +10,7 @@ import { PhonePage } from './pages/PhonePage';
 import { FavouritesPage } from './pages/FavouritesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
+import AboutUs from './components/AboutUs/AboutUs';
 
 export const Root = () => (
   <Router>
@@ -25,6 +26,7 @@ export const Root = () => (
             <Route path="favorites" element={<FavouritesPage />} />
             <Route path=":category/:itemId" element={<ProductPage />} />
             <Route path="*" element={<PageNotFound />} />
+            <Route path="aboutUs" element={<AboutUs />} />
           </Route>
         </Routes>
       </React.StrictMode>
