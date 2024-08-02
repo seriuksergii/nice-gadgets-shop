@@ -8,6 +8,8 @@ import { ActionUserProvider } from './Contexts/UserActionProvider';
 import { HomePage } from './pages/HomePage';
 import { PhonePage } from './pages/PhonePage';
 import { FavouritesPage } from './pages/FavouritesPage';
+import { TabletsPage } from './pages/TabletsPage';
+import { AccessoriesPage } from './pages/AccessoriesPage';
 
 export const Root = () => (
   <Router>
@@ -17,6 +19,8 @@ export const Root = () => (
           <Route element={<App />}>
             <Route path="/" element={<HomePage />} />
             <Route path="phone" element={<PhonePage />} />
+            <Route path="tablets" element={<TabletsPage />} />
+            <Route path="accessories" element={<AccessoriesPage/>} />
             <Route path="cart" element={<Cart />} />
             <Route path="favorites" element={<FavouritesPage />} />
             <Route path=":category/:itemId" element={<ProductPage />} />

@@ -1,15 +1,4 @@
-import React, { useState } from 'react';
-import { Pagination } from '../Pagination';
+import './PhonePage.scss';
+import { ProductsPage } from '../ProductsPage';
 
-
-
-export const PhonePage: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  
-
-  return (
-    <div>
-      <Pagination currentPage={currentPage} totalPages={15} setCurrentPage={setCurrentPage} />
-    </div>
-  );
-};
+export const PhonePage: React.FC = () => <ProductsPage category={'phones'} title="Mobile phones" />;

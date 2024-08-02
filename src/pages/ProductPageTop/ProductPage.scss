@@ -1,0 +1,22 @@
+.pages-top {
+  &__back {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    @include title-1;
+  }
+
+  &__count {
+    @include body-text;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}

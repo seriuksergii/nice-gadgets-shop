@@ -33,8 +33,8 @@
   }
 
   &__title {
-    @include title-1;
     margin-bottom: 8px;
+    @include title-1;
   }
 
   &__count {

@@ -1,0 +1,19 @@
+.product-page {
+  @include productPagePadding;
+
+  &__main {
+    padding-top: 24px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__pagination {
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+}
