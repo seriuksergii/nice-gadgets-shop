@@ -6,6 +6,7 @@ import { Cart } from './components/Cart/Cart';
 import { ProductPage } from './components/ProductPage/ProductPage';
 import { ActionUserProvider } from './Contexts/UserActionProvider';
 import { HomePage } from './pages/HomePage';
+import AboutUs from './components/AboutUs/AboutUs';
 
 
 export const Root = () => (
@@ -18,6 +19,7 @@ export const Root = () => (
             <Route path="cart" element={<Cart />} />
             <Route path=":category/:itemId" element={<ProductPage />} />
             <Route path="*" element={<PageNotFound />} />
+            <Route path="aboutUs" element={<AboutUs />} />
           </Route>
         </Routes>
       </React.StrictMode>
