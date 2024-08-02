@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styles from './CartItem.module.scss';
 import cn from 'classnames';
 import deleteIcon from '../../images/icons/delete-icon.svg';

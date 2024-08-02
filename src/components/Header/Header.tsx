@@ -1,13 +1,15 @@
 import './Header.scss';
 import { Navigation } from '../Navigation/Navigation';
-import { Logo } from '../Logo/Logo';
 import { FavAndCartBlock } from '../FavAndCartBlock/FavAndCartBlock';
 import { useState } from 'react';
 import { Burger } from '../Burger';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../../Contexts/ThemeContext';
+import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
 export const Header = () => {
   const [isActive, setIsActive] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const closeBurger = () => {
     setIsActive(!isActive);
@@ -19,11 +21,26 @@ export const Header = () => {
   return (<header className="header">
     <div className='header__container'>
     <div className="header__logo">
-      <Logo src="/img/icons/logo-pink.svg" />
+      <Link to="/" title="Go to Home page">
+        <img 
+          src={theme === 'light' ? '/img/icons/logo-pink.svg' : '/img/icons/logo-white.svg'}
+          alt="Nice Gagets logo"
+        />
+      </Link>
     </div>
+
+
 
     <div className="header__nav">
       <Navigation />
+    </div>
+
+    <div className="theme-button" title='Switch theme'>
+      <DarkModeSwitch
+        checked={theme === 'dark'}
+        onChange={toggleTheme}
+        size={23}
+      />
     </div>
 
     <div className="header__icons header__icons--info">

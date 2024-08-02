@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './Footer.module.scss';
 import buttonBackToTop from '../../images/icons/buttonBackToTop.png';
-import { Logo } from '../Logo/Logo';
 import { Link } from 'react-router-dom';
-
+import { useTheme } from '../../Contexts/ThemeContext';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -13,12 +12,26 @@ export const Footer: React.FC = () => {
   });
 };
 
+  const { theme } = useTheme();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.wrapper}>
-        <a href="https://github.com/fs-apr24-Tech-Titans" className={styles.logoLink}>
-          <Logo src="/img/icons/logo-pink.svg" />
-        </a>
+      {theme === 'light' ? (
+          <Link to="/" className={styles.logoLink}>
+            <img
+              src="/img/icons/logo-pink.svg"
+              alt="Nice Gadgets Logo"
+            />
+          </Link>
+        ) : (
+          <Link to="/" className={styles.logoLink}>
+            <img
+              src="/img/icons/logo-white.svg"
+              alt="Nice Gadgets Logo"
+            />
+          </Link>
+        )}
         <nav className={styles.nav}>
           <a href="https://github.com/fs-apr24-Tech-Titans" className={styles.item} target="_blank">
             GitHub
