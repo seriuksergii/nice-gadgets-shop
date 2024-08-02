@@ -1,11 +1,16 @@
-// TechSpecs.tsx
 import React from 'react';
 import './TechSpecs.scss';
-import { Product } from '../../types';
 
-type TechSpecsProps = Pick<Product, 'screen' | 'resolution' | 'processor' | 'ram' | 'camera' | 'zoom' | 'cell'> & {
-  fullSpecs?: boolean;
-};
+interface TechSpecsProps {
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  camera?: string;
+  zoom?: string;
+  cell?: string[];
+  fullSpecs: boolean;
+}
 
 export const TechSpecs: React.FC<TechSpecsProps> = ({
   screen,
@@ -15,7 +20,7 @@ export const TechSpecs: React.FC<TechSpecsProps> = ({
   camera,
   zoom,
   cell,
-  fullSpecs = true,
+  fullSpecs,
 }) => {
   return (
     <section className="tech-specs">
@@ -43,7 +48,7 @@ export const TechSpecs: React.FC<TechSpecsProps> = ({
             <>
               <span>{camera}</span>
               <span>{zoom}</span>
-              <span>{cell.join(', ')}</span>
+              <span>{cell?.join(', ')}</span>
             </>
           )}
         </div>

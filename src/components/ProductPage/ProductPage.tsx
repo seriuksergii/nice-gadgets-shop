@@ -94,6 +94,8 @@ export const ProductPage: React.FC = () => {
     return <div>Product not found</div>;
   }
 
+  
+
   return (
     <Container>
       <div className="product-page">
@@ -159,15 +161,15 @@ export const ProductPage: React.FC = () => {
                 <span className="product-page__prices-full">${product.fullPrice}</span>
               </div>
             <div className="product-page__buttons">
-                <AddToCartButton
-                  text="Add to cart"
-                  handler={() => console.log('Add to cart clicked')}
-                  disabled={false}
-                />
-                <AddToFavButton
-                  isFavorites={false}
-                  handler={() => console.log('Add to favorites clicked')}
-                />
+              <AddToCartButton
+                text="Add to cart"
+                handler={() => console.log('Add to cart clicked')}
+                disabled={false}
+              />
+              <AddToFavButton
+                isFavorites={false}
+                handler={() => console.log('Add to favorites clicked')}
+              />
             </div>
             <div className="product-page__tech-specs">
               <TechSpecs
@@ -192,6 +194,7 @@ export const ProductPage: React.FC = () => {
             camera={product.camera}
             zoom={product.zoom}
             cell={product.cell}
+            fullSpecs={true}
           />
         </div>
       </div>
