@@ -1,8 +1,8 @@
 import './ProductList.scss';
 import React from 'react';
 import { Product } from '../../types';
-import { ProductCard } from '../../components/ProductCard';
-import { Loader } from '../../components/Loader';
+import { ProductCard } from '../ProductCard';
+import { Loader } from '../Loader';
 
 interface Props {
   products: Product[];
@@ -15,9 +15,9 @@ export const ProductList: React.FC<Props> = ({ products, isLoading }) => {
       {isLoading ? (
         <Loader />
       ) : (
-        <ul className='product-list'>
+        <ul className="product-list">
           {products.map((product) => (
-            <li className='product-list__item' key={product.id}>
+            <li className="product-list__item" key={product.id}>
               <ProductCard product={product} />
             </li>
           ))}
