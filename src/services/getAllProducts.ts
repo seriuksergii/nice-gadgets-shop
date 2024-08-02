@@ -1,19 +1,23 @@
 import { getData } from '../utils';
 
-import { Product, ProductDetailed } from '../types';
+import { Category, Product, ProductDetailed } from '../types';
 
 export const getAllProducts = () => {
-  return getData<Product[]>("/products.json");
-}
+  return getData<Product[]>('/products.json');
+};
 
 export const getPhones = () => {
-  return getData<ProductDetailed[]>("/phones.json");
-}
+  return getData<ProductDetailed[]>('/phones.json');
+};
 
 export const getTablets = () => {
-  return getData<ProductDetailed[]>("/tablets.json");
-}
+  return getData<ProductDetailed[]>('/tablets.json');
+};
 
 export const getAccessories = () => {
-  return getData<ProductDetailed[]>("/accessories.json");
-}
+  return getData<ProductDetailed[]>('/accessories.json');
+};
+
+export const getProducts = (category: Category) => {
+  return getAllProducts().then((data) => data.filter((product) => product.category === category));
+};

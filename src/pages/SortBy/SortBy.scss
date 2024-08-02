@@ -1,0 +1,72 @@
+.sort {
+  display: flex;
+  gap: 16px;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__label {
+    @include small-text;
+  }
+
+  &__options,
+  &__select {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-surface);
+    border-radius: 8px;
+    padding-inline: 12px;
+  }
+
+  &__select {
+    @include button-text;
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    width: 136px;
+    position: relative;
+   
+    &--is-open {
+      border-color: var(--color-primary);
+      background: url('img/icons/arrow-up.svg') no-repeat right 12px center;
+    }
+
+    &--is-close {
+      background: url('img/icons/arrow-down.svg') no-repeat right 12px center;
+    }
+
+    &--option {
+      @include on-tablet {
+        width: 190px;
+      }
+    }
+
+    &:hover {
+      border-color: var(--color-primary);
+    }
+  }
+
+  &__options {
+    @include body-text;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    transform: translateY(100%);
+    border: 1px solid var(--color-surface);
+    width: 100%;
+    background-color: var(--color-background);
+  }
+
+  &__option {
+    height: 32px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}

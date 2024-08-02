@@ -4,12 +4,12 @@ import { calculatePageRange } from '../../services';
 
 interface Props {
   currentPage: number;
-  totalPages: number;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  totalProduct: number;
+  setCurrentPage:  React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const Pagination: React.FC<Props> = ({ currentPage, totalPages, setCurrentPage }) => {
-  const { startPage, endPage } = calculatePageRange(currentPage, totalPages);
+export const Pagination: React.FC<Props> = ({ currentPage, totalProduct, setCurrentPage }) => {
+  const { startPage, endPage } = calculatePageRange(currentPage,  totalProduct);
 
   const pages = [];
   for (let i = startPage; i <= endPage; i++) {
@@ -50,7 +50,7 @@ export const Pagination: React.FC<Props> = ({ currentPage, totalPages, setCurren
       <button
         className="pagination__button pagination__button--next"
         onClick={handlerNext}
-        disabled={currentPage === totalPages}
+        disabled={currentPage === totalProduct}
       ></button>
     </div>
   );
