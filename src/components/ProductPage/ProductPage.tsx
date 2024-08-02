@@ -155,8 +155,8 @@ export const ProductPage: React.FC = () => {
               </div>
             </div>
             <div className="product-page__prices">
-                <span className="product-page__prices-discount">${product.priceDiscount}</span>
-                <span className="product-page__prices-full">${product.priceRegular}</span>
+                <span className="product-page__prices-discount">${product.price}</span>
+                <span className="product-page__prices-full">${product.fullPrice}</span>
               </div>
             <div className="product-page__buttons">
                 <AddToCartButton
