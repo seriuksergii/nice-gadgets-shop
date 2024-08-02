@@ -4,12 +4,14 @@ import { useParams } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 
 import { Product } from '../../types';
-import { getAllProducts } from '../../services';
-import { Loader } from '../../components/Loader';
-import { Container } from '../../components/Container';
-
-const colors = ['#FCDBC1', '#5F7170', '#4C4C4C', '#F0F0F0'];
-const capacities = ['64 GB', '256 GB', '512 GB'];
+import { getPhones } from '../../services';
+import { Loader } from '../Loader';
+import { Container } from '../Container';
+import { colorHexMap } from '../../types/colors';
+import { TechSpecs } from '../TechSpecs';
+import { ItemCardAboutSection } from '../ItemCardAboutSection';
+import { AddToCartButton } from '../AddToCartButton';
+import { AddToFavButton } from '../AddToFavButton';
 
 export const ProductPage: React.FC = () => {
   const { category, itemId } = useParams<{ category: string; itemId: string }>();
@@ -23,13 +25,13 @@ export const ProductPage: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const products = await getAllProducts();
-        const foundProduct = products.find((p) => p.category === category && p.itemId === itemId);
+        const products = await getPhones();
+        const foundProduct = products.find((p) => p.category === category && p.id === itemId);
         if (foundProduct) {
           setProduct(foundProduct);
           setModelColor(foundProduct.color);
           setSelectedCapacity(foundProduct.capacity);
-          setImages(generateImageUrls(foundProduct.image));
+          setImages(foundProduct.images);
         }
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -38,20 +40,15 @@ export const ProductPage: React.FC = () => {
       }
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchProducts();
   }, [category, itemId]);
-
-  const generateImageUrls = (baseImage: string) => {
-    const baseFileName = baseImage.substring(0, baseImage.lastIndexOf('00.webp'));
-    const imageUrls = Array.from({ length: 4 }, (_, i) => `${baseFileName}0${i}.webp`);
-    return imageUrls;
-  };
 
   const handleColorClick = (color: string) => {
     setModelColor(color);
     if (product) {
-      const updatedBaseImage = product.image.replace(product.color, color);
-      setImages(generateImageUrls(updatedBaseImage));
+      const updatedImages = product.images.map((image) => image.replace(product.color, color));
+      setImages(updatedImages);
     }
   };
 
@@ -78,8 +75,19 @@ export const ProductPage: React.FC = () => {
     trackMouse: true,
   });
 
+  const getTitle = () => {
+    if (!product) return '';
+    const baseTitle = product.name.split(' ').slice(0, -3).join(' ');
+    const currentCapacity = selectedCapacity || product.capacity;
+    return `${baseTitle} ${currentCapacity} ${modelColor.charAt(0).toUpperCase() + modelColor.slice(1)}`;
+  };
+
   if (loading) {
-    return <Loader />;
+    return (
+      <div className="loader-container">
+        <Loader />
+      </div>
+    );
   }
 
   if (!product) {
@@ -89,7 +97,7 @@ export const ProductPage: React.FC = () => {
   return (
     <Container>
       <div className="product-page">
-        <h1 className="product-page__title">{product.name}</h1>
+        <h1 className="product-page__title">{getTitle()}</h1>
         <div className="product-page__main-content">
           <div className="product-page__images" {...swipeHandlers}>
             <img
@@ -104,7 +112,9 @@ export const ProductPage: React.FC = () => {
                   src={`/${imgSrc}`}
                   alt={`${product.name} ${index}`}
                   className={`product-page__images__thumbnails__thumbnail ${
-                    activeImageIndex === index ? 'product-page__images__thumbnails__thumbnail--active' : ''
+                    activeImageIndex === index
+                      ? 'product-page__images__thumbnails__thumbnail--active'
+                      : ''
                   }`}
                   onClick={() => handleThumbnailClick(index)}
                 />
@@ -115,13 +125,13 @@ export const ProductPage: React.FC = () => {
             <div className="product-page__colors">
               <h2 className="product-page__colors__title">Available Colors</h2>
               <div className="product-page__colors__palette">
-                {colors.map((color) => (
+                {product.colorsAvailable.map((color) => (
                   <div
                     key={color}
                     className={`product-page__colors__circle ${
                       modelColor === color ? 'product-page__colors__circle--active' : ''
                     }`}
-                    style={{ backgroundColor: color }}
+                    style={{ backgroundColor: colorHexMap[color] }}
                     onClick={() => handleColorClick(color)}
                   ></div>
                 ))}
@@ -130,7 +140,7 @@ export const ProductPage: React.FC = () => {
             <div className="product-page__capacity">
               <h2 className="product-page__capacity__title">Select Capacity</h2>
               <div className="product-page__capacity__blocks">
-                {capacities.map((capacity) => (
+                {product.capacityAvailable.map((capacity) => (
                   <div
                     key={capacity}
                     className={`product-page__capacity__block ${
@@ -144,7 +154,45 @@ export const ProductPage: React.FC = () => {
                 ))}
               </div>
             </div>
+            <div className="product-page__prices">
+                <span className="product-page__prices-discount">${product.price}</span>
+                <span className="product-page__prices-full">${product.fullPrice}</span>
+              </div>
+            <div className="product-page__buttons">
+                <AddToCartButton
+                  text="Add to cart"
+                  handler={() => console.log('Add to cart clicked')}
+                  disabled={false}
+                />
+                <AddToFavButton
+                  isFavorites={false}
+                  handler={() => console.log('Add to favorites clicked')}
+                />
+            </div>
+            <div className="product-page__tech-specs">
+              <TechSpecs
+                screen={product.screen}
+                resolution={product.resolution}
+                processor={product.processor}
+                ram={product.ram}
+                fullSpecs={false}
+              />
+            </div>
           </div>
+        </div>
+        <div className="product-page__about">
+          <ItemCardAboutSection description={product.description} />
+        </div>
+        <div className="product-page__tech-specs-full">
+          <TechSpecs
+            screen={product.screen}
+            resolution={product.resolution}
+            processor={product.processor}
+            ram={product.ram}
+            camera={product.camera}
+            zoom={product.zoom}
+            cell={product.cell}
+          />
         </div>
       </div>
     </Container>

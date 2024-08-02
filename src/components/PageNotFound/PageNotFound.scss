@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 100px;
   }
 
   &__title {
@@ -19,7 +20,6 @@
     display: flex;
     justify-content: center;
     height: 300px;
-    margin-block: 32px;
   }
 
   &__img {

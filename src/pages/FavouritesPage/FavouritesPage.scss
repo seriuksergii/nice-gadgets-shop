@@ -1,0 +1,81 @@
+@import '/src/styles/utils/variables';
+@import '/src/styles/utils/mixins';
+
+.favourites {
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 24px 0;
+
+    @include on-desktop {
+      margin: 40px 0 16px;
+    }
+
+    &--text {
+      @include small-text;
+      line-height: 12px;
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+    @include title-1;
+  }
+
+  &__count {
+    @include body-text;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 40px 16px;
+  }
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+}
+
+.favIsEmpty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  &__message,
+  &__advice {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 639px) {
+    &__message,
+    &__advice {
+      font-size: 18px;
+    }
+  }
+}

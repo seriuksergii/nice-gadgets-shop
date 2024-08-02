@@ -1,0 +1,38 @@
+@import '../../styles/utils/mixins';
+
+.cartIsEmpty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / -1;
+
+  &__message {
+    font-size: 16px;
+    font-weight: 500;
+
+    @include on-tablet {
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
+
+  &__advice {
+    font-size: 16px;
+    font-weight: 500;
+
+    @include on-tablet {
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    max-width: 150px;
+
+    @include on-tablet {
+      max-width: 300px;
+    }
+  }
+}

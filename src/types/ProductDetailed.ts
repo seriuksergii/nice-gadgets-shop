@@ -3,12 +3,12 @@ import { Category } from './Category';
 export interface ProductDetailed {
   id: string;
   category: Category;
-  namespaceId: string;
+  itemId: string;
   name: string;
   capacityAvailable: string[];
   capacity: string;
-  priceRegular: number;
-  priceDiscount: number;
+  price: number;
+  fullPrice: number;
   colorsAvailable: string[];
   color: string;
   images: string[];

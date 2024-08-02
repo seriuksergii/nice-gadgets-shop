@@ -8,12 +8,16 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { SliderSwiperData } from './SliderSwiperData';
 
 export const SliderSwiper: React.FC = () => {
+  const handleSlideClick = (url: string) => {
+    window.location.href = url;
+  };
+
   return (
     <Swiper
       spaceBetween={30}
       centeredSlides={true}
       autoplay={{
-        delay: 8000,
+        delay: 10000,
         disableOnInteraction: false,
       }}
       pagination={{
@@ -25,18 +29,20 @@ export const SliderSwiper: React.FC = () => {
       className="mySwiper"
     >
       {SliderSwiperData.map((slide, index) => (
-        <SwiperSlide key={index}>
-          <a href={slide.linkUrl}>
-            <video
-              src={slide.imgUrl}
-              className="video-slider"
-              autoPlay
-              loop
-              muted
-              playsInline
-              controlsList="nodownload nofullscreen noremoteplayback"
-            />
-          </a>
+        <SwiperSlide
+          key={index}
+          onClick={() => handleSlideClick(slide.linkUrl)}
+          className="clickable-slide"
+        >
+          <video
+            src={slide.imgUrl}
+            className="video-slider"
+            autoPlay
+            loop
+            muted
+            playsInline
+            controlsList="nodownload nofullscreen noremoteplayback"
+          />
         </SwiperSlide>
       ))}
     </Swiper>

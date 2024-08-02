@@ -1,30 +1,53 @@
+// TechSpecs.tsx
+import React from 'react';
 import './TechSpecs.scss';
+import { Product } from '../../types';
 
-export const TechSpecs: React.FC = () => {
+type TechSpecsProps = Pick<Product, 'screen' | 'resolution' | 'processor' | 'ram' | 'camera' | 'zoom' | 'cell'> & {
+  fullSpecs?: boolean;
+};
+
+export const TechSpecs: React.FC<TechSpecsProps> = ({
+  screen,
+  resolution,
+  processor,
+  ram,
+  camera,
+  zoom,
+  cell,
+  fullSpecs = true,
+}) => {
   return (
     <section className="tech-specs">
-      <h3 className="tech-specs__title">Tech specs</h3>
+      {fullSpecs && <h3 className="tech-specs__title">Tech specs</h3>}
       <div className="tech-specs__description">
         <div className="tech-specs__labels">
           <span>Screen</span>
           <span>Resolution</span>
           <span>Processor</span>
           <span>RAM</span>
-          <span>Camera</span>
-          <span>Zoom</span>
-          <span>Cell</span>
+          {fullSpecs && (
+            <>
+              <span>Camera</span>
+              <span>Zoom</span>
+              <span>Cell</span>
+            </>
+          )}
         </div>
         <div className="tech-specs__values">
-          <span>6.5'' OLED</span>
-          <span>2688x1242</span>
-          <span>Apple A12 Bionic</span>
-          <span>3 GB</span>
-          <span>12 MP</span>
-          <span>10x</span>
-          <span>5G</span>
+          <span>{screen}</span>
+          <span>{resolution}</span>
+          <span>{processor}</span>
+          <span>{ram}</span>
+          {fullSpecs && (
+            <>
+              <span>{camera}</span>
+              <span>{zoom}</span>
+              <span>{cell.join(', ')}</span>
+            </>
+          )}
         </div>
       </div>
     </section>
   );
 };
-

@@ -1,11 +1,11 @@
 {
     "id": "apple-iphone-11-pro-max-512gb-gold",
-	"namespaceId": "apple-iphone-11-pro-max",
+	"itemId": "apple-iphone-11-pro-max",
 	"name": "Apple iPhone 11 Pro Max 512GB Gold",
 	"capacityAvailable": ["64GB", "256GB", "512GB"],
 	"capacity": "512GB",
-	"priceRegular": 2020,
-	"priceDiscount": 1930,
+	"price": 2020,
+	"fullPrice": 1930,
 	"colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
 	"color": "gold",
 	"images": [

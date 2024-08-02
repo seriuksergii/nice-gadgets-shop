@@ -1,0 +1,48 @@
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+
+  &__pages {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-elements);
+    border-radius: 50%;
+    background-color: transparent;
+    &--page {
+      @include body-text;
+      color: var(--color-primary);
+      font-weight: normal;
+    }
+    &:hover {
+      border-color: var(--color-primary);
+    }
+
+    &--page:disabled {
+      background-color: var(--color-primary);
+      color: var(--color-background);
+    }
+
+    &--back {
+      background: url(/img/icons/left-dark.svg) center no-repeat;
+    }
+
+    &--next {
+      background: url(/img/icons/right-dark.svg) center no-repeat;
+    }
+
+    &--back,
+    &--next {
+      &:disabled {
+        border-color: var(--color-elements);
+        background-image: url(/img/icons/left.svg);
+      }
+    }
+  }
+}

@@ -1,15 +1,26 @@
 export interface Product {
-  map(arg0: (product: any) => import("react/jsx-runtime").JSX.Element): import("react").ReactNode;
   id: number;
   category: string;
   itemId: string;
   name: string;
-  fullPrice: number;
-  price: number;
-  screen: string;
+  capacityAvailable: string[];
   capacity: string;
+  price: number;
+  fullPrice: number;
+  colorsAvailable: string[];
   color: string;
-  ram: string;
-  year: number;
+  images: string[];
   image: string;
+  description: {
+    title: string;
+    text: string[];
+  }[];
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  camera: string;
+  zoom: string;
+  year: number;
+  cell: string[];
 }

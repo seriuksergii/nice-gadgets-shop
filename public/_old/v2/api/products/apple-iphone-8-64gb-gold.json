@@ -1,11 +1,11 @@
 {
     "id": "apple-iphone-8-64gb-gold",
-	"namespaceId": "apple-iphone-8",
+	"itemId": "apple-iphone-8",
 	"name": "Apple iPhone 8 64GB Gold",
 	"capacityAvailable": ["64GB"],
 	"capacity": "64GB",
-	"priceRegular": 600,
-	"priceDiscount": 550,
+	"price": 600,
+	"fullPrice": 550,
 	"colorsAvailable": ["spacegray", "gold", "silver"],
 	"color": "gold",
 	"images": [
