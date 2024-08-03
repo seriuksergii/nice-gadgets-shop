@@ -1,15 +1,18 @@
 import './ProductsPage.scss';
 import React, { useEffect, useState } from 'react';
-import { Pagination } from '../Pagination';
 import { Category, Product } from '../../types';
 import { getProducts } from '../../services';
 import { Container } from '../../components/Container';
-import { ProductPageTop } from '../ProductPageTop/ProductPageTop';
-import { SortBy } from '../SortBy/SortBy';
+
 import { SortOptions } from '../../types/SortOptions';
-import { PagesCount } from '../../types/PagesCount';
+import { PerPageCount } from '../../types/PerPageCount';
 import { getProductSort } from '../../services/getProductSort';
 import { ProductList } from '../../components/ProductList/ProductList';
+import { ProductPageTop } from '../../components/ProductPageTop';
+import { useSearchParams } from 'react-router-dom';
+import { SortBy } from '../../components/SortBy/SortBy';
+import { Pagination } from '../../components/Pagination/Pagination';
+import { SearchParamsType } from '../../types/SearchParamsType';
 
 interface Props {
   category: Category;
@@ -17,12 +20,15 @@ interface Props {
 }
 
 export const ProductsPage: React.FC<Props> = ({ category, title }) => {
-  const [sortOption, setSortOption] = useState<SortOptions>(SortOptions.Newest);
-  const [countPerPage, setCountPages] = useState<PagesCount>(PagesCount.Eight);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState<Product[] | []>([]);
   const [error, setError] = useState('');
+
+  const sortOption = (searchParams.get(SearchParamsType.sort) as keyof typeof SortOptions) || 'age';
+  const countPerPage = (searchParams.get(SearchParamsType.perPage) as PerPageCount) || PerPageCount.All;
+  const currentPage = +(searchParams.get(SearchParamsType.page) ?? '1');
 
   const count = products.length;
 
@@ -34,36 +40,31 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  const onSetSortOptions = (option: SortOptions) => {
-    setSortOption(option);
-  };
-
-  const onSetCountPages = (value: PagesCount) => {
-    setCountPages(value);
-  };
+  useEffect(() => {
+    const newParams = new URLSearchParams(searchParams);
+    countPerPage === PerPageCount.All
+      ? newParams.delete(SearchParamsType.page)
+      : newParams.set(SearchParamsType.page, `${currentPage}`);
+    setSearchParams(newParams);
+  }, [countPerPage]);
 
   const sortedProducts = getProductSort(products, sortOption);
 
   let currentPageProducts = sortedProducts;
 
-  if (countPerPage !== PagesCount.All) {
-    const endProductIndex = currentPage * Number(countPerPage);
+  if (countPerPage !== PerPageCount.All) {
+    const endProductIndex = +currentPage * Number(countPerPage);
     const startProductIndex = endProductIndex - Number(countPerPage);
     currentPageProducts = sortedProducts.slice(startProductIndex, endProductIndex);
   }
 
-  const isPagination = Number(countPerPage) < count && countPerPage !== PagesCount.All;
+  const isPagination = Number(countPerPage) < count && countPerPage !== PerPageCount.All;
 
   return (
     <Container>
       <section className="product-page">
         <ProductPageTop count={count} title={title} />
-        <SortBy
-          option={sortOption}
-          countPerPage={countPerPage}
-          onSetSortOption={onSetSortOptions}
-          onSetCountPages={onSetCountPages}
-        />
+        <SortBy />
 
         <div className="product-page__main">
           {!!error && <p>Something is wrong</p>}
@@ -72,11 +73,7 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
 
         {isPagination && (
           <div className="product-page__pagination">
-            <Pagination
-              currentPage={currentPage}
-              totalProduct={count}
-              setCurrentPage={setCurrentPage}
-            />
+            <Pagination totalPages={Math.ceil(count / Number(countPerPage))} />
           </div>
         )}
       </section>

@@ -1,6 +1,6 @@
 export enum SortOptions {
-  Newest = "Newest",
-  Alphabetically = "Alphabetically",
-  Cheapest = "Cheapest"
+  age = "Newest",
+  title = "Alphabetically",
+  price = "Cheapest"
 }
 
