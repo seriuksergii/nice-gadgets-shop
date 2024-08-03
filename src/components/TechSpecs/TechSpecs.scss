@@ -13,9 +13,15 @@
     justify-content: space-between;
   }
 
-  &__labels,
-  &__values {
+  &__labels {
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__values {
+    text-align: right;
     display: flex;
     flex-direction: column;
     gap: 8px;

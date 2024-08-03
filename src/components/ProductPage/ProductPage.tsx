@@ -1,23 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import './ProductPage.scss';
-import { useParams } from 'react-router-dom';
-import { useSwipeable } from 'react-swipeable';
+import React, { useState, useEffect } from "react";
+import "./ProductPage.scss";
+import { useParams } from "react-router-dom";
+import { useSwipeable } from "react-swipeable";
 
-import { Product } from '../../types';
-import { getPhones } from '../../services';
-import { Loader } from '../Loader';
-import { Container } from '../Container';
-import { colorHexMap } from '../../types/colors';
-import { TechSpecs } from '../TechSpecs';
-import { ItemCardAboutSection } from '../ItemCardAboutSection';
-import { AddToCartButton } from '../AddToCartButton';
-import { AddToFavButton } from '../AddToFavButton';
+import { Product } from "../../types";
+import { getPhones } from "../../services";
+import { Loader } from "../Loader";
+import { Container } from "../Container";
+import { colorHexMap } from "../../types/colors";
+import { TechSpecs } from "../TechSpecs";
+import { AddToCartButton } from "../AddToCartButton";
+import { AddToFavButton } from "../AddToFavButton";
+import { ItemCardAboutSection } from "../ItemCardAboutSection";
 
 export const ProductPage: React.FC = () => {
-  const { category, itemId } = useParams<{ category: string; itemId: string }>();
+  const { category, itemId } = useParams<{
+    category: string;
+    itemId: string;
+  }>();
   const [product, setProduct] = useState<Product | null>(null);
-  const [modelColor, setModelColor] = useState<string>('');
-  const [selectedCapacity, setSelectedCapacity] = useState<string>('');
+  const [modelColor, setModelColor] = useState<string>("");
+  const [selectedCapacity, setSelectedCapacity] = useState<string>("");
   const [images, setImages] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
@@ -26,7 +29,9 @@ export const ProductPage: React.FC = () => {
     const fetchProducts = async () => {
       try {
         const products = await getPhones();
-        const foundProduct = products.find((p) => p.category === category && p.id === itemId);
+        const foundProduct = products.find(
+          (p) => p.category === category && p.id === itemId
+        );
         if (foundProduct) {
           setProduct(foundProduct);
           setModelColor(foundProduct.color);
@@ -34,20 +39,21 @@ export const ProductPage: React.FC = () => {
           setImages(foundProduct.images);
         }
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchProducts();
   }, [category, itemId]);
 
   const handleColorClick = (color: string) => {
     setModelColor(color);
     if (product) {
-      const updatedImages = product.images.map((image) => image.replace(product.color, color));
+      const updatedImages = product.images.map((image) =>
+        image.replace(product.color, color)
+      );
       setImages(updatedImages);
     }
   };
@@ -65,7 +71,9 @@ export const ProductPage: React.FC = () => {
   };
 
   const handleSwipeRight = () => {
-    setActiveImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setActiveImageIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
   };
 
   const swipeHandlers = useSwipeable({
@@ -76,10 +84,12 @@ export const ProductPage: React.FC = () => {
   });
 
   const getTitle = () => {
-    if (!product) return '';
-    const baseTitle = product.name.split(' ').slice(0, -3).join(' ');
+    if (!product) return "";
+    const baseTitle = product.name.split(" ").slice(0, -3).join(" ");
     const currentCapacity = selectedCapacity || product.capacity;
-    return `${baseTitle} ${currentCapacity} ${modelColor.charAt(0).toUpperCase() + modelColor.slice(1)}`;
+    return `${baseTitle} ${currentCapacity} ${
+      modelColor.charAt(0).toUpperCase() + modelColor.slice(1)
+    }`;
   };
 
   if (loading) {
@@ -94,97 +104,107 @@ export const ProductPage: React.FC = () => {
     return <div>Product not found</div>;
   }
 
-  
-
   return (
     <Container>
       <div className="product-page">
         <h1 className="product-page__title">{getTitle()}</h1>
-        <div className="product-page__main-content">
-          <div className="product-page__images" {...swipeHandlers}>
-            <img
-              src={`/${images[activeImageIndex]}`}
-              alt={`${product.name} primary`}
-              className="product-page__images__primary"
-            />
-            <div className="product-page__images__thumbnails">
-              {images.map((imgSrc, index) => (
-                <img
-                  key={index}
-                  src={`/${imgSrc}`}
-                  alt={`${product.name} ${index}`}
-                  className={`product-page__images__thumbnails__thumbnail ${
-                    activeImageIndex === index
-                      ? 'product-page__images__thumbnails__thumbnail--active'
-                      : ''
+
+        <div className="product-page__image" {...swipeHandlers}>
+          <img
+            src={`/${images[activeImageIndex]}`}
+            alt={`${product.name} primary`}
+            className="product-page__image__primary"
+          />
+        </div>
+
+        
+          <div className="product-page__image__thumbnails">
+            {images.map((imgSrc, index) => (
+              <img
+                key={index}
+                src={`/${imgSrc}`}
+                alt={`${product.name} ${index}`}
+                className={`product-page__image__thumbnails__thumbnail ${
+                  activeImageIndex === index
+                    ? "product-page__image__thumbnails__thumbnail--active"
+                    : ""
+                }`}
+                onClick={() => handleThumbnailClick(index)}
+              />
+            ))}
+          </div>
+
+        <div className="product-page__details">
+          <div className="product-page__colors">
+            <h2 className="product-page__colors__title">Available Colors</h2>
+            <div className="product-page__colors__palette">
+              {product.colorsAvailable.map((color) => (
+                <div
+                  key={color}
+                  className={`product-page__colors__circle ${
+                    modelColor === color
+                      ? "product-page__colors__circle--active"
+                      : ""
                   }`}
-                  onClick={() => handleThumbnailClick(index)}
-                />
+                  style={{ backgroundColor: colorHexMap[color] }}
+                  onClick={() => handleColorClick(color)}
+                ></div>
               ))}
             </div>
           </div>
-          <div className="product-page__details">
-            <div className="product-page__colors">
-              <h2 className="product-page__colors__title">Available Colors</h2>
-              <div className="product-page__colors__palette">
-                {product.colorsAvailable.map((color) => (
-                  <div
-                    key={color}
-                    className={`product-page__colors__circle ${
-                      modelColor === color ? 'product-page__colors__circle--active' : ''
-                    }`}
-                    style={{ backgroundColor: colorHexMap[color] }}
-                    onClick={() => handleColorClick(color)}
-                  ></div>
-                ))}
-              </div>
-            </div>
-            <div className="product-page__capacity">
-              <h2 className="product-page__capacity__title">Select Capacity</h2>
-              <div className="product-page__capacity__blocks">
-                {product.capacityAvailable.map((capacity) => (
-                  <div
-                    key={capacity}
-                    className={`product-page__capacity__block ${
-                      selectedCapacity === capacity ? 'product-page__capacity__block--active' : ''
-                    }`}
-                    role="button"
-                    onClick={() => handleCapacityClick(capacity)}
-                  >
-                    {capacity}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="product-page__prices">
-                <span className="product-page__prices-discount">${product.price}</span>
-                <span className="product-page__prices-full">${product.fullPrice}</span>
-              </div>
-            <div className="product-page__buttons">
-              <AddToCartButton
-                text="Add to cart"
-                handler={() => console.log('Add to cart clicked')}
-                disabled={false}
-              />
-              <AddToFavButton
-                isFavorites={false}
-                handler={() => console.log('Add to favorites clicked')}
-              />
-            </div>
-            <div className="product-page__tech-specs">
-              <TechSpecs
-                screen={product.screen}
-                resolution={product.resolution}
-                processor={product.processor}
-                ram={product.ram}
-                fullSpecs={false}
-              />
+          <div className="product-page__capacity">
+            <h2 className="product-page__capacity__title">Select Capacity</h2>
+            <div className="product-page__capacity__blocks">
+              {product.capacityAvailable.map((capacity) => (
+                <div
+                  key={capacity}
+                  className={`product-page__capacity__block ${
+                    selectedCapacity === capacity
+                      ? "product-page__capacity__block--active"
+                      : ""
+                  }`}
+                  role="button"
+                  onClick={() => handleCapacityClick(capacity)}
+                >
+                  {capacity}
+                </div>
+              ))}
             </div>
           </div>
+          <div className="product-page__prices">
+            <span className="product-page__prices-discount">
+              ${product.price}
+            </span>
+            <span className="product-page__prices-full">
+              ${product.fullPrice}
+            </span>
+          </div>
+          <div className="product-page__buttons">
+            <AddToCartButton
+              text="Add to cart"
+              handler={() => console.log("Add to cart clicked")}
+              disabled={false}
+            />
+            <AddToFavButton
+              isFavorites={false}
+              handler={() => console.log("Add to favorites clicked")}
+            />
+          </div>
+          <div className="product-page__tech-specs">
+            <TechSpecs
+              screen={product.screen}
+              resolution={product.resolution}
+              processor={product.processor}
+              ram={product.ram}
+              fullSpecs={false}
+            />
+          </div>
         </div>
+
         <div className="product-page__about">
-          <ItemCardAboutSection description={product.description} />
-        </div>
+            <ItemCardAboutSection description={product.description} />
+          </div>
+          
         <div className="product-page__tech-specs-full">
           <TechSpecs
             screen={product.screen}
