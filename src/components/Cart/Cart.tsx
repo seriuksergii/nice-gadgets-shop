@@ -7,6 +7,7 @@ import { CartItem } from '../CartItem';
 import { useUserActions } from '../../Contexts/useUserActions';
 import { EmptyCart } from '../../pages/EmptyCart';
 import { useTranslation } from 'react-i18next';
+import { Fade } from 'react-awesome-reveal';
 
 export const Cart: React.FC = () => {
   const { userAction } = useUserActions();
@@ -24,7 +25,8 @@ export const Cart: React.FC = () => {
 
   return (
     <section className="cart">
-      <Container>
+        <Container>
+           <Fade direction='up' triggerOnce={true}>
         <div className="cart__back">
           <img src="/img/icons/arrow-right.svg" alt="Arrov right" />
           <Link className="cart__back--text" to={'/'}>
@@ -32,17 +34,18 @@ export const Cart: React.FC = () => {
           </Link>
         </div>
         <h1 className="cart__title">{t('cart.title')}</h1>
-
+      </Fade>  
         <div className="cart__content">
           {cart.length === 0 ? (
             <EmptyCart />
           ) : (
-            <Grid>
+                    <Fade>
+                    <Grid>
               <div className="cart__items">
                 {cart.map((product) => (
                   <CartItem product={product} key={product.id} />
                 ))}
-              </div>
+                          </div>
               <div className="cart__info">
                 <div className="cart__check">
                   <p className="cart__total">${calculateTotalPrice}</p>
@@ -56,8 +59,10 @@ export const Cart: React.FC = () => {
                 </button>
               </div>
             </Grid>
+            </Fade>   
           )}
-        </div>
+              </div>
+              
       </Container>
     </section>
   );

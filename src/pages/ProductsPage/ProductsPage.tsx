@@ -13,6 +13,7 @@ import { useSearchParams } from 'react-router-dom';
 import { SortBy } from '../../components/SortBy/SortBy';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { SearchParamsType } from '../../types/SearchParamsType';
+import { Fade } from 'react-awesome-reveal';
 
 interface Props {
   category: Category;
@@ -61,11 +62,12 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
   const isPagination = Number(countPerPage) < count && countPerPage !== PerPageCount.All;
 
   return (
-    <Container>
+     <Container>
       <section className="product-page">
+        <Fade direction='up' triggerOnce={true}>
         <ProductPageTop count={count} title={title} />
         <SortBy />
-
+       </Fade>
         <div className="product-page__main">
           {!!error && <p>Something is wrong</p>}
           <ProductList products={currentPageProducts} isLoading={isLoading} />
@@ -76,7 +78,7 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
             <Pagination totalPages={Math.ceil(count / Number(countPerPage))} />
           </div>
         )}
-      </section>
+           </section>
     </Container>
   );
 };

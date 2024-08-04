@@ -13,6 +13,7 @@ import { ItemCardAboutSection } from '../ItemCardAboutSection';
 import { AddToCartButton } from '../AddToCartButton';
 import { AddToFavButton } from '../AddToFavButton';
 import { useTranslation } from 'react-i18next';
+import { Fade } from 'react-awesome-reveal';
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
@@ -97,7 +98,8 @@ export const ProductPage: React.FC = () => {
   }
 
   return (
-    <Container>
+     <Container>
+        <Fade>
       <div className="product-page">
         <h1 className="product-page__title">{getTitle()}</h1>
         <div className="product-page__main-content">
@@ -197,7 +199,8 @@ export const ProductPage: React.FC = () => {
             fullSpecs={true}
           />
         </div>
-      </div>
+           </div>
+           </Fade>
     </Container>
   );
 };
