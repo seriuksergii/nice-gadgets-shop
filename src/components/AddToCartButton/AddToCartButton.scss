@@ -1,6 +1,5 @@
 .button {
   @include button;
-
   color: var(--color-button-text);
 
   &:hover {

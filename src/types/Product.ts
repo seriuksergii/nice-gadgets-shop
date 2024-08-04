@@ -1,5 +1,5 @@
 export interface Product {
-  id: string;
+  id: number;
   category: string;
   namespaceId: string;
   itemId: string;
@@ -10,6 +10,7 @@ export interface Product {
   fullPrice: number;
   colorsAvailable: string[];
   color: string;
+  image: string;
   images: string[];
   description: {
     title: string;
