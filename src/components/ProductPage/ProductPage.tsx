@@ -3,7 +3,7 @@ import "./ProductPage.scss";
 import { useParams } from "react-router-dom";
 import { useSwipeable } from "react-swipeable";
 
-import { Product } from '../../types';
+import { ProductDetailed } from '../../types';
 import { getPhones } from '../../services';
 import { Loader } from '../Loader';
 import { Container } from '../Container';
@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next';
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
   const { category, itemId } = useParams<{ category: string; itemId: string }>();
-  const [product, setProduct] = useState<Product | null>(null);
+  const [product, setProduct] = useState<ProductDetailed | null>(null);
   const [modelColor, setModelColor] = useState<string>("");
   const [selectedCapacity, setSelectedCapacity] = useState<string>("");
   const [images, setImages] = useState<string[]>([]);
@@ -173,13 +173,10 @@ export const ProductPage: React.FC = () => {
             </div>
             <div className="product-page__buttons">
               <AddToCartButton
-                text="Add to cart"
-                handler={() => console.log('Add to cart clicked')}
-                disabled={false}
+               product={product}
               />
               <AddToFavButton
-                isFavorites={false}
-                handler={() => console.log('Add to favorites clicked')}
+                product={product}
               />
             </div>
             <div className="product-page__tech-specs">
