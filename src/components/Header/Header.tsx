@@ -49,7 +49,11 @@ export const Header = () => {
 
     <div className="header__icons header__icons--burger">
       <Link to={"menu"} className="icon icon--burgerMenu">
-        <img onClick={showBurger} src="\img\icons\menu.svg" alt="burger menu" />
+        <img 
+          onClick={showBurger} 
+          src={theme === 'light' ? '/img/icons/menu.svg' : '/img/icons/menu-white.svg'}
+          alt="burger menu"
+        />
       </Link>
       </div>
     </div>

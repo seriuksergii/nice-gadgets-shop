@@ -14,9 +14,7 @@
     justify-content: space-between;
   }
 
-  &:hover {
-    background-color: #fafbfc;
-  }
+  @include hover(box-shadow, var(--hover-shadow-color));
 }
 .mainContainer {
   display: flex;
@@ -86,6 +84,7 @@
   justify-content: center;
   width: 32px;
   border: 1px solid var(--color-surface);
+  border-radius: 48px;
   background-color: var(--color-icons);
   height: 32px;
   cursor: pointer;

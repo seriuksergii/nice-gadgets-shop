@@ -1,8 +1,10 @@
 import './BreadCrumbs.scss';
 import React from 'react';
+import { useTheme } from '../../Contexts/ThemeContext';
 import { Link, useLocation } from 'react-router-dom';
 
 export const BreadCrumbs: React.FC = () => {
+  const { theme } = useTheme();
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter((x) => x);
 
@@ -10,9 +12,8 @@ export const BreadCrumbs: React.FC = () => {
     <div className="bread-crumbs">
       <Link to="/" title="Return to the Homepage">
         <img
-          src="/img/icons/home.svg"
+          src={theme === 'light' ? "/img/icons/home.svg" : "/img/icons/home-white.svg"}
           alt="home icon"
-          className="ico ico-home"
         />
       </Link>
       {pathnames.map((value, index) => {
@@ -24,7 +25,6 @@ export const BreadCrumbs: React.FC = () => {
             <img
               src="/img/icons/right.svg"
               alt="arrow right icon"
-              className="ico ico-right"
             />
             {!isLast ? (
               <Link to={to} className='bread-crumbs__cat-name'>
