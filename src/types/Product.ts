@@ -22,4 +22,5 @@ export interface Product {
   camera: string;
   zoom: string;
   cell: string[];
+  year: number;
 }

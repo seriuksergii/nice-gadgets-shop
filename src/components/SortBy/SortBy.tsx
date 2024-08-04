@@ -6,21 +6,32 @@ import cn from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 import { SearchParamsType } from '../../types/SearchParamsType';
 
+import { useTranslation } from 'react-i18next';
+
 export const SortBy: React.FC = () => {
+  const { t } = useTranslation();
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [isOpenOptions, setIsOpenOptions] = useState(false);
   const [isOpenCountPage, setIsOpenCountPage] = useState(false);
 
   const sortOption = (searchParams.get(SearchParamsType.sort) ?? 'age') as keyof typeof SortOptions;
-  const countPerPage = (searchParams.get(SearchParamsType.perPage) as PerPageCount) || PerPageCount.All;
+
+  const countPerPage =
+    (searchParams.get(SearchParamsType.perPage) as PerPageCount) || PerPageCount.All;
+
 
   const optionsRef = useRef<HTMLDivElement>(null);
   const countPageRef = useRef<HTMLDivElement>(null);
 
   const setSerchSortOption = (value: keyof typeof SortOptions) => {
     const newParams = new URLSearchParams(searchParams);
-    value === 'age' ? newParams.delete(SearchParamsType.sort) : newParams.set(SearchParamsType.sort, value);
+
+    value === 'age'
+      ? newParams.delete(SearchParamsType.sort)
+      : newParams.set(SearchParamsType.sort, value);
+
     setSearchParams(newParams);
   };
 
@@ -61,7 +72,9 @@ export const SortBy: React.FC = () => {
   return (
     <div className="sort">
       <div className="sort__group">
-        <div className="sort__label">Sort by</div>
+
+        <div className="sort__label">{t('sort_by.sort_by')}</div>
+
         <div
           ref={optionsRef}
           className={cn('sort__select sort__select--option', {
@@ -89,7 +102,9 @@ export const SortBy: React.FC = () => {
         </div>
       </div>
       <div className="sort__group">
-        <div className="sort__label">Items on page</div>
+
+        <div className="sort__label">{t('sort_by.items_on_page')}</div>
+
         <div
           ref={countPageRef}
           className={cn('sort__select', {
