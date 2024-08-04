@@ -1,5 +1,5 @@
 export interface Product {
-  id: string;
+  id: number;
   category: string;
   namespaceId: string;
   itemId: string;
@@ -8,6 +8,8 @@ export interface Product {
   capacity: string;
   price: number;
   fullPrice: number;
+  year: number;
+  image: string;
   colorsAvailable: string[];
   color: string;
   images: string[];
