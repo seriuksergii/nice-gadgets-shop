@@ -1,15 +1,17 @@
 import React from 'react';
 import './Pagination.scss';
 import { calculatePageRange } from '../../services';
+import { useSearchParams } from 'react-router-dom';
+import { SearchParamsType } from '../../types/SearchParamsType';
 
 interface Props {
-  currentPage: number;
-  totalProduct: number;
-  setCurrentPage:  React.Dispatch<React.SetStateAction<number>>;
+  totalPages: number;
 }
 
-export const Pagination: React.FC<Props> = ({ currentPage, totalProduct, setCurrentPage }) => {
-  const { startPage, endPage } = calculatePageRange(currentPage,  totalProduct);
+export const Pagination: React.FC<Props> = ({ totalPages }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentPage = +(searchParams.get(SearchParamsType.page) ?? '1');
+  const { startPage, endPage } = calculatePageRange(currentPage, totalPages);
 
   const pages = [];
   for (let i = startPage; i <= endPage; i++) {
@@ -17,15 +19,21 @@ export const Pagination: React.FC<Props> = ({ currentPage, totalProduct, setCurr
   }
 
   const onPageChange = (page: number) => {
-    setCurrentPage(page);
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set(SearchParamsType.page, page.toString());
+    setSearchParams(newParams);
   };
 
   const handlerBack = () => {
-    setCurrentPage((prevPage) => prevPage - 1);
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set(SearchParamsType.page, `${currentPage - 1}`);
+    setSearchParams(newParams);
   };
 
   const handlerNext = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set(SearchParamsType.page, `${currentPage + 1}`);
+    setSearchParams(newParams);
   };
 
   return (
@@ -50,7 +58,7 @@ export const Pagination: React.FC<Props> = ({ currentPage, totalProduct, setCurr
       <button
         className="pagination__button pagination__button--next"
         onClick={handlerNext}
-        disabled={currentPage === totalProduct}
+        disabled={currentPage === totalPages}
       ></button>
     </div>
   );

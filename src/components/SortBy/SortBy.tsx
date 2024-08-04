@@ -1,29 +1,35 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { SortOptions } from '../../types/SortOptions';
-import { PagesCount } from '../../types/PagesCount';
+import { PerPageCount } from '../../types/PerPageCount';
 import './SortBy.scss';
 import cn from 'classnames';
-import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
+import { SearchParamsType } from '../../types/SearchParamsType';
 
-interface Props {
-  option: SortOptions;
-  countPerPage: PagesCount;
-  onSetSortOption: (value: SortOptions) => void;
-  onSetCountPages: (value: PagesCount) => void;
-}
+export const SortBy: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
 
-export const SortBy: React.FC<Props> = ({
-  option,
-  countPerPage,
-  onSetCountPages,
-  onSetSortOption,
-}) => {
-  const { t } = useTranslation();
   const [isOpenOptions, setIsOpenOptions] = useState(false);
   const [isOpenCountPage, setIsOpenCountPage] = useState(false);
 
+  const sortOption = (searchParams.get(SearchParamsType.sort) ?? 'age') as keyof typeof SortOptions;
+  const countPerPage = (searchParams.get(SearchParamsType.perPage) as PerPageCount) || PerPageCount.All;
+
   const optionsRef = useRef<HTMLDivElement>(null);
   const countPageRef = useRef<HTMLDivElement>(null);
+
+  const setSerchSortOption = (value: keyof typeof SortOptions) => {
+    const newParams = new URLSearchParams(searchParams);
+    value === 'age' ? newParams.delete(SearchParamsType.sort) : newParams.set(SearchParamsType.sort, value);
+    setSearchParams(newParams);
+  };
+
+  const setSerchPerPage = (value: PerPageCount) => {
+    const newParams = new URLSearchParams(searchParams);
+    value === PerPageCount.All ? newParams.delete('perPage') : newParams.set('perPage', value);
+    newParams.set(SearchParamsType.page, '1');
+    setSearchParams(newParams);
+  };
 
   const handlerShowOptions = () => {
     setIsOpenOptions((prev) => !prev);
@@ -64,12 +70,18 @@ export const SortBy: React.FC<Props> = ({
           })}
           onClick={handlerShowOptions}
         >
-          {option}
+          {SortOptions[sortOption]}
           {isOpenOptions && (
             <div className="sort__options">
-              {Object.values(SortOptions).map((option) => (
-                <div className="sort__option" key={option} onClick={() => onSetSortOption(option)}>
-                  {option}
+              {Object.keys(SortOptions).map((key) => (
+                <div
+                  className="sort__option"
+                  key={key}
+                  onClick={() => {
+                    setSerchSortOption(key as keyof typeof SortOptions);
+                  }}
+                >
+                  {SortOptions[key as keyof typeof SortOptions]}
                 </div>
               ))}
             </div>
@@ -89,12 +101,12 @@ export const SortBy: React.FC<Props> = ({
           {countPerPage}
           {isOpenCountPage && (
             <div className="sort__options">
-              {Object.values(PagesCount).map((value) => (
+              {Object.values(PerPageCount).map((value) => (
                 <div
                   className="sort__option"
                   key={value}
                   onClick={() => {
-                    onSetCountPages(value);
+                    setSerchPerPage(value);
                   }}
                 >
                   {value}

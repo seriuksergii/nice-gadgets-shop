@@ -44,5 +44,17 @@
         background-image: url(/img/icons/left.svg);
       }
     }
+
+    &--back{
+      &:disabled {
+        background-image: url(/img/icons/left.svg);
+      }
+    }
+
+    &--next{
+      &:disabled {
+        background-image: url(/img/icons/right.svg);
+      }
+    }
   }
 }
