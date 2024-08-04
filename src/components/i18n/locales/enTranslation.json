@@ -34,7 +34,7 @@
   },
   "product_card": {
     "add": "Add to cart",
-    "added": "Added",
+    "added": "Added to cart",
     "screen": "Screen",
     "сapacity": "Capacity",
     "ram": "Ram"
@@ -96,5 +96,8 @@
   },
   "perPage": {
     "all": "All"
+  },
+  "phone_page": {
+    "title": "Mobile phones"
   }
 }
