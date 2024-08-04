@@ -5,7 +5,6 @@ import './SortBy.scss';
 import cn from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 import { SearchParamsType } from '../../types/SearchParamsType';
-
 import { useTranslation } from 'react-i18next';
 
 export const SortBy: React.FC = () => {
@@ -20,7 +19,6 @@ export const SortBy: React.FC = () => {
 
   const countPerPage =
     (searchParams.get(SearchParamsType.perPage) as PerPageCount) || PerPageCount.All;
-
 
   const optionsRef = useRef<HTMLDivElement>(null);
   const countPageRef = useRef<HTMLDivElement>(null);
@@ -69,10 +67,22 @@ export const SortBy: React.FC = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const translatedSortOptions = {
+    age: t('sort_by.nevest'),
+    title: t('sort_by.alphabetically'),
+    price: t('sort_by.cheapest'),
+  };
+
+  const translatedPerPageOptions = {
+    [PerPageCount.Four]: PerPageCount.Four,
+    [PerPageCount.Eight]: PerPageCount.Eight,
+    [PerPageCount.Sixteen]: PerPageCount.Sixteen,
+    [PerPageCount.All]: t('perPage.all'),
+  };
+
   return (
     <div className="sort">
       <div className="sort__group">
-
         <div className="sort__label">{t('sort_by.sort_by')}</div>
 
         <div
@@ -83,7 +93,7 @@ export const SortBy: React.FC = () => {
           })}
           onClick={handlerShowOptions}
         >
-          {SortOptions[sortOption]}
+          {translatedSortOptions[sortOption]}
           {isOpenOptions && (
             <div className="sort__options">
               {Object.keys(SortOptions).map((key) => (
@@ -94,7 +104,7 @@ export const SortBy: React.FC = () => {
                     setSerchSortOption(key as keyof typeof SortOptions);
                   }}
                 >
-                  {SortOptions[key as keyof typeof SortOptions]}
+                  {translatedSortOptions[key as keyof typeof SortOptions]}
                 </div>
               ))}
             </div>
@@ -102,7 +112,6 @@ export const SortBy: React.FC = () => {
         </div>
       </div>
       <div className="sort__group">
-
         <div className="sort__label">{t('sort_by.items_on_page')}</div>
 
         <div
@@ -113,7 +122,7 @@ export const SortBy: React.FC = () => {
           })}
           onClick={handlerShowCountPage}
         >
-          {countPerPage}
+          {translatedPerPageOptions[countPerPage]}
           {isOpenCountPage && (
             <div className="sort__options">
               {Object.values(PerPageCount).map((value) => (
@@ -124,7 +133,7 @@ export const SortBy: React.FC = () => {
                     setSerchPerPage(value);
                   }}
                 >
-                  {value}
+                  {translatedPerPageOptions[value]}
                 </div>
               ))}
             </div>
