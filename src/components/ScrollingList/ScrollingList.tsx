@@ -15,6 +15,7 @@ interface Props {
 }
 
 export const ScrollingList: React.FC<Props> = ({  title, products }) => {
+
   const {
     itemsRef,
     canScrollLeft,

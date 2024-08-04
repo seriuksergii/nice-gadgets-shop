@@ -3,6 +3,7 @@ import { SortOptions } from '../../types/SortOptions';
 import { PagesCount } from '../../types/PagesCount';
 import './SortBy.scss';
 import cn from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   option: SortOptions;
@@ -15,8 +16,9 @@ export const SortBy: React.FC<Props> = ({
   option,
   countPerPage,
   onSetCountPages,
-  onSetSortOption
+  onSetSortOption,
 }) => {
+  const { t } = useTranslation();
   const [isOpenOptions, setIsOpenOptions] = useState(false);
   const [isOpenCountPage, setIsOpenCountPage] = useState(false);
 
@@ -32,7 +34,6 @@ export const SortBy: React.FC<Props> = ({
     setIsOpenCountPage((prev) => !prev);
     if (isOpenOptions) setIsOpenOptions(false);
   };
-
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -54,7 +55,7 @@ export const SortBy: React.FC<Props> = ({
   return (
     <div className="sort">
       <div className="sort__group">
-        <div className="sort__label">Sort by</div>
+        <div className="sort__label">{t('sort_by.sort_by')}</div>
         <div
           ref={optionsRef}
           className={cn('sort__select sort__select--option', {
@@ -76,7 +77,7 @@ export const SortBy: React.FC<Props> = ({
         </div>
       </div>
       <div className="sort__group">
-        <div className="sort__label">Items on page</div>
+        <div className="sort__label">{t('sort_by.items_on_page')}</div>
         <div
           ref={countPageRef}
           className={cn('sort__select', {

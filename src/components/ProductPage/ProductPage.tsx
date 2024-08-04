@@ -12,8 +12,10 @@ import { TechSpecs } from '../TechSpecs';
 import { ItemCardAboutSection } from '../ItemCardAboutSection';
 import { AddToCartButton } from '../AddToCartButton';
 import { AddToFavButton } from '../AddToFavButton';
+import { useTranslation } from 'react-i18next';
 
 export const ProductPage: React.FC = () => {
+  const { t } = useTranslation();
   const { category, itemId } = useParams<{ category: string; itemId: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [modelColor, setModelColor] = useState<string>('');
@@ -94,8 +96,6 @@ export const ProductPage: React.FC = () => {
     return <div>Product not found</div>;
   }
 
-  
-
   return (
     <Container>
       <div className="product-page">
@@ -125,7 +125,7 @@ export const ProductPage: React.FC = () => {
           </div>
           <div className="product-page__details">
             <div className="product-page__colors">
-              <h2 className="product-page__colors__title">Available Colors</h2>
+              <h2 className="product-page__colors__title">{t('product_page.available_colors')}</h2>
               <div className="product-page__colors__palette">
                 {product.colorsAvailable.map((color) => (
                   <div
@@ -140,7 +140,7 @@ export const ProductPage: React.FC = () => {
               </div>
             </div>
             <div className="product-page__capacity">
-              <h2 className="product-page__capacity__title">Select Capacity</h2>
+              <h2 className="product-page__capacity__title">{t('product_page.select_capacity')}</h2>
               <div className="product-page__capacity__blocks">
                 {product.capacityAvailable.map((capacity) => (
                   <div
@@ -157,9 +157,9 @@ export const ProductPage: React.FC = () => {
               </div>
             </div>
             <div className="product-page__prices">
-                <span className="product-page__prices-discount">${product.price}</span>
-                <span className="product-page__prices-full">${product.fullPrice}</span>
-              </div>
+              <span className="product-page__prices-discount">${product.price}</span>
+              <span className="product-page__prices-full">${product.fullPrice}</span>
+            </div>
             <div className="product-page__buttons">
               <AddToCartButton
                 text="Add to cart"

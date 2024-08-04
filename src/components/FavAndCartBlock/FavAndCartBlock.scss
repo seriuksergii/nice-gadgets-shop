@@ -58,3 +58,33 @@
   font-weight: 700;
   text-align: center;
 }
+
+.buttons-lng-wrp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 16px;
+}
+
+.buttons-lng-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-weight: 400;
+  background-color: var(--color-whole-page);
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 12px;
+
+  @include on-tablet {
+    width: 48px;
+    height: 48px;
+  }
+
+  @include on-desktop {
+    width: 64px;
+    height: 64px;
+  }
+}
