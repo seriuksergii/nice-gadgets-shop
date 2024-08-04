@@ -1,5 +1,6 @@
 .tech-specs {
   &__title {
+    color: var(--color-primary);
     margin-bottom: 25px;
     font-weight: 800;
     font-size: 22px;
@@ -28,14 +29,14 @@
   }
 
   &__labels span {
-    color: #89939A;
+    color: var(--color-secondary);
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
   }
 
   &__values span {
-    color: #0F0F11;
+    color: var(--color-primary);
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;

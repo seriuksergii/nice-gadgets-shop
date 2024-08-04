@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import './Cart.scss';
 import { Link } from 'react-router-dom';
 import { Grid } from '../Grid/Grid';
+import { useTheme } from '../../Contexts/ThemeContext';
 import { Container } from '../Container';
 import { CartItem } from '../CartItem';
 import { useUserActions } from '../../Contexts/useUserActions';
@@ -15,6 +16,7 @@ export const Cart: React.FC = () => {
   const { cart } = userAction;
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { theme } = useTheme();
 
 
   const totalPrice  = useMemo(() => {
@@ -33,7 +35,10 @@ export const Cart: React.FC = () => {
     <section className="cart">
       <Container>
         <div className="cart__back">
-          <img src="/img/icons/arrow-right.svg" alt="Arrov right" />
+          <img 
+            src={theme === 'light' ? "/img/icons/arrow-right.svg" : "/img/icons/arrow-left-white.svg"}
+            alt="Arrov right"
+          />
           <Link className="cart__back--text" to={'/'}>
             {t('buttons.back')}
           </Link>

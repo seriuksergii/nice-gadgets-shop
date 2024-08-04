@@ -2,6 +2,7 @@ import React from 'react';
 import './FavouritesPage.scss';
 import { Container } from '../../components/Container';
 import { ProductCard } from '../../components/ProductCard';
+import { useTheme } from '../../Contexts/ThemeContext';
 import { useUserActions } from '../../Contexts/useUserActions';
 import { EmptyFavouritesPage } from '../EmptyFavouritesPage/EmptyFavouritesPage';
 import { Link } from 'react-router-dom';
@@ -11,12 +12,16 @@ export const FavouritesPage: React.FC = () => {
   const { t } = useTranslation();
   const { userAction } = useUserActions();
   const { favorites } = userAction;
+  const { theme } = useTheme();
   const count = favorites.length;
 
   return (
     <Container>
       <div className="favourites__back">
-        <img src="/img/icons/arrow-right.svg" alt="Arrov right" />
+        <img 
+          src={theme === 'light' ? "/img/icons/arrow-right.svg" : "/img/icons/arrow-left-white.svg"}
+          alt="Arrov right"
+        />
         <Link className="favourites__back--text" to={'/'}>
           {t('buttons.back')}
         </Link>

@@ -15,14 +15,16 @@ $effect-duration: 0.3s;
    --color-icon:#0F0F11;
    --color-elements: #E2E6E9;
    --color-hover: #FAFBFC;
+   --bg-color-card: #fff;
    --color-button: #216CFF;
+   --color-button-text: #fff;
+   --hover-shadow-color: 0 2px 16px 0 #0000001A;
 
    --hight-header-mobile: 48px;
    --hight-header-desktop: 64px;
    --spacing-small: 20px;
    --spacing-medium: 24px;
    --spacing-large: 64px;
-   --hover-shadow-color: 0 2px 16px 0 #0000001A;
 }
 
 [data-theme='dark'] {
@@ -37,5 +39,7 @@ $effect-duration: 0.3s;
   --color-icon:#F1F2F9;
   --color-elements: #3B3E4A;
   --color-hover: #323542;
-  --color-button: #905BFF; 
+  --bg-color-card: #161827;
+  --color-button: #905BFF;
+  --hover-shadow-color: 0 2px 16px 0 #4e4e4e;
 }
