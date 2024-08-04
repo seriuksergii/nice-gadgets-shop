@@ -3,21 +3,20 @@ import "./ProductPage.scss";
 import { useParams } from "react-router-dom";
 import { useSwipeable } from "react-swipeable";
 
-import { Product } from "../../types";
-import { getPhones } from "../../services";
-import { Loader } from "../Loader";
-import { Container } from "../Container";
-import { colorHexMap } from "../../types/colors";
-import { TechSpecs } from "../TechSpecs";
-import { AddToCartButton } from "../AddToCartButton";
-import { AddToFavButton } from "../AddToFavButton";
-import { ItemCardAboutSection } from "../ItemCardAboutSection";
+import { Product } from '../../types';
+import { getPhones } from '../../services';
+import { Loader } from '../Loader';
+import { Container } from '../Container';
+import { colorHexMap } from '../../types/colors';
+import { TechSpecs } from '../TechSpecs';
+import { ItemCardAboutSection } from '../ItemCardAboutSection';
+import { AddToCartButton } from '../AddToCartButton';
+import { AddToFavButton } from '../AddToFavButton';
+import { useTranslation } from 'react-i18next';
 
 export const ProductPage: React.FC = () => {
-  const { category, itemId } = useParams<{
-    category: string;
-    itemId: string;
-  }>();
+  const { t } = useTranslation();
+  const { category, itemId } = useParams<{ category: string; itemId: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [modelColor, setModelColor] = useState<string>("");
   const [selectedCapacity, setSelectedCapacity] = useState<string>("");
@@ -118,86 +117,80 @@ export const ProductPage: React.FC = () => {
         </div>
 
         
-          <div className="product-page__image__thumbnails">
-            {images.map((imgSrc, index) => (
-              <img
-                key={index}
-                src={`/${imgSrc}`}
-                alt={`${product.name} ${index}`}
-                className={`product-page__image__thumbnails__thumbnail ${
-                  activeImageIndex === index
-                    ? "product-page__image__thumbnails__thumbnail--active"
-                    : ""
-                }`}
-                onClick={() => handleThumbnailClick(index)}
-              />
-            ))}
-          </div>
+        <div className="product-page__image__thumbnails">
+          {images.map((imgSrc, index) => (
+            <img
+              key={index}
+              src={`/${imgSrc}`}
+              alt={`${product.name} ${index}`}
+              className={`product-page__image__thumbnails__thumbnail ${
+                activeImageIndex === index
+                  ? "product-page__image__thumbnails__thumbnail--active"
+                  : ""
+              }`}
+              onClick={() => handleThumbnailClick(index)}
+            />
+          ))}
+        </div>
 
         <div className="product-page__details">
-          <div className="product-page__colors">
-            <h2 className="product-page__colors__title">Available Colors</h2>
-            <div className="product-page__colors__palette">
-              {product.colorsAvailable.map((color) => (
-                <div
-                  key={color}
-                  className={`product-page__colors__circle ${
-                    modelColor === color
-                      ? "product-page__colors__circle--active"
-                      : ""
-                  }`}
-                  style={{ backgroundColor: colorHexMap[color] }}
-                  onClick={() => handleColorClick(color)}
-                ></div>
-              ))}
+          <div className="product-page__details">
+            <div className="product-page__colors">
+              <h2 className="product-page__colors__title">{t('product_page.available_colors')}</h2>
+              <div className="product-page__colors__palette">
+                {product.colorsAvailable.map((color) => (
+                  <div
+                    key={color}
+                    className={`product-page__colors__circle ${
+                      modelColor === color ? 'product-page__colors__circle--active' : ''
+                    }`}
+                    style={{ backgroundColor: colorHexMap[color] }}
+                    onClick={() => handleColorClick(color)}
+                  ></div>
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="product-page__capacity">
-            <h2 className="product-page__capacity__title">Select Capacity</h2>
-            <div className="product-page__capacity__blocks">
-              {product.capacityAvailable.map((capacity) => (
-                <div
-                  key={capacity}
-                  className={`product-page__capacity__block ${
-                    selectedCapacity === capacity
-                      ? "product-page__capacity__block--active"
-                      : ""
-                  }`}
-                  role="button"
-                  onClick={() => handleCapacityClick(capacity)}
-                >
-                  {capacity}
-                </div>
-              ))}
+            <div className="product-page__capacity">
+              <h2 className="product-page__capacity__title">{t('product_page.select_capacity')}</h2>
+              <div className="product-page__capacity__blocks">
+                {product.capacityAvailable.map((capacity) => (
+                  <div
+                    key={capacity}
+                    className={`product-page__capacity__block ${
+                      selectedCapacity === capacity ? 'product-page__capacity__block--active' : ''
+                    }`}
+                    role="button"
+                    onClick={() => handleCapacityClick(capacity)}
+                  >
+                    {capacity}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="product-page__prices">
-            <span className="product-page__prices-discount">
-              ${product.price}
-            </span>
-            <span className="product-page__prices-full">
-              ${product.fullPrice}
-            </span>
-          </div>
-          <div className="product-page__buttons">
-            <AddToCartButton
-              text="Add to cart"
-              handler={() => console.log("Add to cart clicked")}
-              disabled={false}
-            />
-            <AddToFavButton
-              isFavorites={false}
-              handler={() => console.log("Add to favorites clicked")}
-            />
-          </div>
-          <div className="product-page__tech-specs">
-            <TechSpecs
-              screen={product.screen}
-              resolution={product.resolution}
-              processor={product.processor}
-              ram={product.ram}
-              fullSpecs={false}
-            />
+            <div className="product-page__prices">
+              <span className="product-page__prices-discount">${product.price}</span>
+              <span className="product-page__prices-full">${product.fullPrice}</span>
+            </div>
+            <div className="product-page__buttons">
+              <AddToCartButton
+                text="Add to cart"
+                handler={() => console.log('Add to cart clicked')}
+                disabled={false}
+              />
+              <AddToFavButton
+                isFavorites={false}
+                handler={() => console.log('Add to favorites clicked')}
+              />
+            </div>
+            <div className="product-page__tech-specs">
+              <TechSpecs
+                screen={product.screen}
+                resolution={product.resolution}
+                processor={product.processor}
+                ram={product.ram}
+                fullSpecs={false}
+              />
+            </div>
           </div>
         </div>
 

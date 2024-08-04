@@ -1,5 +1,6 @@
 import React from 'react';
 import './TechSpecs.scss';
+import { useTranslation } from 'react-i18next';
 
 interface TechSpecsProps {
   screen: string;
@@ -22,20 +23,22 @@ export const TechSpecs: React.FC<TechSpecsProps> = ({
   cell,
   fullSpecs,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <section className="tech-specs">
-      {fullSpecs && <h3 className="tech-specs__title">Tech specs</h3>}
+      {fullSpecs && <h3 className="tech-specs__title">{t('product_page.tech_spec_title')}</h3>}
       <div className="tech-specs__description">
         <div className="tech-specs__labels">
-          <span>Screen</span>
-          <span>Resolution</span>
-          <span>Processor</span>
-          <span>RAM</span>
+          <span>{t('product_page.screen')}</span>
+          <span>{t('product_page.resolution')}</span>
+          <span>{t('product_page.processor')}</span>
+          <span>{t('product_page.ram')}</span>
           {fullSpecs && (
             <>
-              <span>Camera</span>
-              <span>Zoom</span>
-              <span>Cell</span>
+              <span>{t('product_page.camera')}</span>
+              <span>{t('product_page.zoom')}</span>
+              <span>{t('product_page.cell')}</span>
             </>
           )}
         </div>

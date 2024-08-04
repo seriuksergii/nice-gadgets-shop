@@ -1,5 +1,6 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import './Team.scss';
+import { useTranslation } from 'react-i18next';
 
 interface TeamMemberProps {
   name: string;
@@ -11,18 +12,23 @@ interface TeamMemberProps {
   email: string;
 }
 
-const TeamMember: React.FC<TeamMemberProps> = ({ name, role, imageUrl, bio, linkedinUrl, githubUrl, email }) => {
+const TeamMember: React.FC<TeamMemberProps> = ({
+  name,
+  role,
+  imageUrl,
+  bio,
+  linkedinUrl,
+  githubUrl,
+  email,
+}) => {
   const [showTooltip, setShowTooltip] = useState(false);
+  const { t } = useTranslation();
   const copyToClipboard = () => {
     navigator.clipboard.writeText(email);
   };
-   
-  
 
   return (
-     <div className="team-member"
-       
-     >
+    <div className="team-member">
       <div className="team-member__bio-container">
         <p className="team-member__bio">`{bio}`</p>
       </div>
@@ -55,11 +61,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({ name, role, imageUrl, bio, link
               className="link__icon"
               style={{ cursor: 'pointer' }}
             />
-            {showTooltip && (
-              <div className="team-member__tooltip">
-                Click to copy email
-              </div>
-            )}
+            {showTooltip && <div className="team-member__tooltip">{t('about_us.copy_email')}</div>}
           </div>
         </div>
       </div>

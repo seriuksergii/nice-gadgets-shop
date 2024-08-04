@@ -9,9 +9,11 @@ import { Container } from '../../components/Container';
 import { SliderSwiper } from '../../components/SliderSwiper';
 import { ScrollingList } from '../../components/ScrollingList';
 import { ShopByCategory } from '../../components/ShopByCategory';
+import { useTranslation } from 'react-i18next';
 
 export const HomePage = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const { t } = useTranslation();
 
   const getNewModels = (models: Product[]) => models.filter((model) => model.year === 2022);
 
@@ -29,13 +31,13 @@ export const HomePage = () => {
   return (
     <Container>
       <div className="homepage">
-        <h1 className="homepage__title">Welcome to Nice Gadgets store!</h1>
+        <h1 className="homepage__title">{t('welcome')}</h1>
         <section className="sliderswiper-wrapper">
           <SliderSwiper />
         </section>
-        <ScrollingList products={newModels} title={'Brand new models'} />
+        <ScrollingList products={newModels} title={t('sliders.new')} />
         <ShopByCategory products={allProducts} />
-        <ScrollingList products={hotPrices} title={'Hot prices'} />
+        <ScrollingList products={hotPrices} title={t('sliders.hot')} />
       </div>
     </Container>
   );
