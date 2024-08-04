@@ -173,13 +173,10 @@ export const ProductPage: React.FC = () => {
             </div>
             <div className="product-page__buttons">
               <AddToCartButton
-                text="Add to cart"
-                handler={() => console.log('Add to cart clicked')}
-                disabled={false}
+               product={product}
               />
               <AddToFavButton
-                isFavorites={false}
-                handler={() => console.log('Add to favorites clicked')}
+                product={product}
               />
             </div>
             <div className="product-page__tech-specs">

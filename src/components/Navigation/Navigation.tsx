@@ -16,7 +16,7 @@ export const Navigation: React.FC = () => {
         </li>
         <li className="nav__item">
           <NavLink
-            to={'/phones'}
+            to={'phones'}
             className={({ isActive }) => getNavlinkStyle(isActive, 'nav__link')}
           >
             {t('nav.phones')}

@@ -1,25 +1,32 @@
 import React, { useMemo } from 'react';
 import './Cart.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Grid } from '../Grid/Grid';
 import { Container } from '../Container';
 import { CartItem } from '../CartItem';
 import { useUserActions } from '../../Contexts/useUserActions';
 import { EmptyCart } from '../../pages/EmptyCart';
+import { ActionTypes } from '../../Contexts/reduser';
 import { useTranslation } from 'react-i18next';
 
+
 export const Cart: React.FC = () => {
-  const { userAction } = useUserActions();
+  const { userAction, dispatch } = useUserActions();
   const { cart } = userAction;
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const calculateTotalPrice = useMemo(() => {
+
+  const totalPrice  = useMemo(() => {
     return cart.reduce((total, { price, quantity }) => total + price * quantity, 0);
   }, [cart]);
 
   const handlerCheckout = () => {
-    navigate('/');
+      const userConfirmed = confirm("Checkout is not implemented yet. Do you want to clear the Cart?");
+      
+      if (userConfirmed) {
+        dispatch({ type: ActionTypes.clearCart });
+      }
   };
 
   return (
@@ -45,7 +52,7 @@ export const Cart: React.FC = () => {
               </div>
               <div className="cart__info">
                 <div className="cart__check">
-                  <p className="cart__total">${calculateTotalPrice}</p>
+                  <p className="cart__total">${totalPrice}</p>
                   <p className="cart__count">
                     {t('cart.total_for')} {cart.length} {t('cart.items')}
                   </p>

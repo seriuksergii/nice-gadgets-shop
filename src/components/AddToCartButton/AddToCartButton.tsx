@@ -1,22 +1,34 @@
 import React from 'react';
 import './AddToCartButton.scss';
 import cn from 'classnames';
+import { Product } from '../../types';
+import { useUserActions } from '../../Contexts/useUserActions';
+import { ActionTypes } from '../../Contexts/reduser';
 interface Props {
-  text: string;
-  handler: () => void;
-  disabled: boolean;
+ product: Product
 }
 
-export const AddToCartButton: React.FC<Props> = ({ text, handler, disabled }) => {
+export const AddToCartButton: React.FC<Props> = ({ product }) => {
+
+  const { userAction, dispatch } = useUserActions();
+  const { cart } = userAction;
+
+  const isInCart = cart.some((p) => p.id === product.id);
+
+  const handlerOnAddToCart = () => {
+    dispatch({ type: ActionTypes.onAddToCart, payload: product });
+  };
+
+
   return (
     <button
       className={cn('button', {
-        "button--disabled": disabled,
+        "button--disabled": isInCart,
       })}
-      onClick={handler}
-      disabled={disabled}
+      onClick={handlerOnAddToCart}
+      disabled={isInCart}
     >
-      {text}
+      {isInCart ? 'Added to cart' : 'Add  to cart'}
     </button>
   );
 };

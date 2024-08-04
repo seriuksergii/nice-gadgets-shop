@@ -1,6 +1,5 @@
 .button {
   @include button;
-  color: var(--color-button-text);
 
   &:hover {
     box-shadow: 0px 3px 13px 0px #17203166;

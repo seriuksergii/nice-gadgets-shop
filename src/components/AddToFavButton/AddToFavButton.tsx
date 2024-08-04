@@ -1,16 +1,31 @@
 import React from "react";
 import "./AddToFavButton.scss";
 import cn from "classnames";
+import { Product } from "../../types";
+import { useUserActions } from "../../Contexts/useUserActions";
+import { KEY_FAVORITES } from "../../services/localStorageHelper";
+import { ActionTypes } from "../../Contexts/reduser";
 
 interface Props {
-  isFavorites: boolean;
-  handler: () => void;
+  product: Product;
 }
 
-export const AddToFavButton: React.FC<Props> = ({ isFavorites, handler }) => {
+export const AddToFavButton: React.FC<Props> = ({ product }) => {
+
+  const { userAction, dispatch } = useUserActions();
+  const { favorites} = userAction;
+
+  const isFavorites = favorites.some((p) => p.id === product.id);
+
+  const toggleFavorites = () => {
+    console.log(!isFavorites);
+    !isFavorites
+      ? dispatch({ type: ActionTypes.onAddToFavorites, payload: product })
+      : dispatch({ type: ActionTypes.onDelete, payload: { id: product.id, key: KEY_FAVORITES } });
+  };
   
   return (
-    <button onClick={handler} className={cn("fav", {
+    <button onClick={toggleFavorites} className={cn("fav", {
       "add-to-fav": !isFavorites,
       "is-fav": isFavorites
     })}>
