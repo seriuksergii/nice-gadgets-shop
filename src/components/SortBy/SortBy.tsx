@@ -5,22 +5,27 @@ import './SortBy.scss';
 import cn from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 import { SearchParamsType } from '../../types/SearchParamsType';
+import { useTranslation } from 'react-i18next';
 
 export const SortBy: React.FC = () => {
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [isOpenOptions, setIsOpenOptions] = useState(false);
   const [isOpenCountPage, setIsOpenCountPage] = useState(false);
 
   const sortOption = (searchParams.get(SearchParamsType.sort) ?? 'age') as keyof typeof SortOptions;
-  const countPerPage = (searchParams.get(SearchParamsType.perPage) as PerPageCount) || PerPageCount.All;
+  const countPerPage =
+    (searchParams.get(SearchParamsType.perPage) as PerPageCount) || PerPageCount.All;
 
   const optionsRef = useRef<HTMLDivElement>(null);
   const countPageRef = useRef<HTMLDivElement>(null);
 
   const setSerchSortOption = (value: keyof typeof SortOptions) => {
     const newParams = new URLSearchParams(searchParams);
-    value === 'age' ? newParams.delete(SearchParamsType.sort) : newParams.set(SearchParamsType.sort, value);
+    value === 'age'
+      ? newParams.delete(SearchParamsType.sort)
+      : newParams.set(SearchParamsType.sort, value);
     setSearchParams(newParams);
   };
 
