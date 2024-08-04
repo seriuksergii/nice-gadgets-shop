@@ -1,12 +1,14 @@
-import { deleteProduct, getData, KEY_CART, KEY_FAVORITES } from '../services/localStorageHelper';
+import { deleteProductCart, deleteProductFavorites, getData, KEY_CART, KEY_FAVORITES } from '../services/localStorageHelper';
 import { Product } from '../types';
-import { ProductCart } from '../types/ProductCart';
+import { ProductCart, SimpleProduct } from '../types/ProductCart';
+import { ProductFavorites } from '../types/ProductFavorites';
 import { UserAction } from '../types/UserAction';
 
 export enum ActionTypes {
   onGet = 'onGet',
   onAddToFavorites = 'onAddToFavorites',
-  onDelete = 'onDelete',
+  onDeleteCart = 'onDeleteCart',
+  onDeleteFavorites = 'onDeleteFavorites',
   onAddToCart = 'onAddToCart',
   increaseQuantity = 'increaseQuantity',
   decreaseQuantity = 'decreaseQuantity',
@@ -15,11 +17,12 @@ export enum ActionTypes {
 
 export type Action =
   | { type: ActionTypes.onGet }
-  | { type: ActionTypes.onAddToFavorites; payload: Product }
-  | { type: ActionTypes.onDelete; payload: { id: number; key: string } }
-  | { type: ActionTypes.onAddToCart; payload: Product }
-  | { type: ActionTypes.increaseQuantity; payload: number }
-  | { type: ActionTypes.decreaseQuantity; payload: number }
+  | { type: ActionTypes.onAddToFavorites; payload: ProductFavorites }
+  | { type: ActionTypes.onDeleteCart; payload: string}
+  | { type: ActionTypes.onDeleteFavorites; payload: string}
+  | { type: ActionTypes.onAddToCart; payload: SimpleProduct }
+  | { type: ActionTypes.increaseQuantity; payload: string }
+  | { type: ActionTypes.decreaseQuantity; payload: string }
   | { type: ActionTypes.clearCart}
 
 export const userActionReducer = (state: UserAction, action: Action): UserAction => {
@@ -38,16 +41,21 @@ export const userActionReducer = (state: UserAction, action: Action): UserAction
       return { ...state, cart };
     }
 
-    case ActionTypes.onDelete: {
-      deleteProduct(action.payload.id, action.payload.key);
-      const updatedFavorites = getData<Product>(KEY_FAVORITES);
-      const updatedCart = getData<ProductCart>(KEY_CART);
-      return { ...state, favorites: updatedFavorites, cart: updatedCart };
+    case ActionTypes.onDeleteCart: {
+      deleteProductCart(action.payload);
+      const updatedCart = state.cart.filter(p=> p.itemId !== action.payload)
+      return { ...state, cart: updatedCart };
+    }
+      
+    case ActionTypes.onDeleteFavorites: {
+      deleteProductFavorites(action.payload);
+      const updatedFavorites = state.favorites.filter(product => product.itemId !== action.payload)
+      return { ...state, favorites: updatedFavorites};
     }
 
     case ActionTypes.increaseQuantity: {
       const cart = [...state.cart];
-      const productIndex = cart.findIndex((p) => p.id === action.payload);
+      const productIndex = cart.findIndex((p) => p.itemId === action.payload);
 
       if (productIndex !== -1) {
         cart[productIndex].quantity += 1;
@@ -59,13 +67,13 @@ export const userActionReducer = (state: UserAction, action: Action): UserAction
 
     case ActionTypes.decreaseQuantity: {
       const cart = [...state.cart];
-      const productIndex = cart.findIndex((p) => p.id === action.payload);
+      const productIndex = cart.findIndex((p) => p.itemId === action.payload);
 
       if (productIndex !== -1) {
         if (cart[productIndex].quantity > 1) {
           cart[productIndex].quantity -= 1;
         } else {
-          deleteProduct(action.payload, KEY_CART);
+          deleteProductCart(action.payload);
         }
         localStorage.setItem(KEY_CART, JSON.stringify(cart));
       }

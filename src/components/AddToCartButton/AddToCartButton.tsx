@@ -1,11 +1,11 @@
 import React from 'react';
 import './AddToCartButton.scss';
 import cn from 'classnames';
-import { Product } from '../../types';
+import { SimpleProduct } from '../../types';
 import { useUserActions } from '../../Contexts/useUserActions';
 import { ActionTypes } from '../../Contexts/reduser';
 interface Props {
- product: Product
+ product: SimpleProduct
 }
 
 export const AddToCartButton: React.FC<Props> = ({ product }) => {
@@ -13,7 +13,7 @@ export const AddToCartButton: React.FC<Props> = ({ product }) => {
   const { userAction, dispatch } = useUserActions();
   const { cart } = userAction;
 
-  const isInCart = cart.some((p) => p.id === product.id);
+  const isInCart = cart.some((p) => p.itemId === product.itemId);
 
   const handlerOnAddToCart = () => {
     dispatch({ type: ActionTypes.onAddToCart, payload: product });

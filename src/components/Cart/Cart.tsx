@@ -13,7 +13,6 @@ import { useTranslation } from 'react-i18next';
 export const Cart: React.FC = () => {
   const { userAction, dispatch } = useUserActions();
   const { cart } = userAction;
-  const navigate = useNavigate();
   const { t } = useTranslation();
 
 
@@ -47,7 +46,7 @@ export const Cart: React.FC = () => {
             <Grid>
               <div className="cart__items">
                 {cart.map((product) => (
-                  <CartItem product={product} key={product.id} />
+                  <CartItem product={product} key={product.itemId} />
                 ))}
               </div>
               <div className="cart__info">

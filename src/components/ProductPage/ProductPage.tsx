@@ -3,8 +3,8 @@ import "./ProductPage.scss";
 import { useParams } from "react-router-dom";
 import { useSwipeable } from "react-swipeable";
 
-import { ProductDetailed } from '../../types';
-import { getPhones } from '../../services';
+import { Category, ProductDetailed } from '../../types';
+import { getProductsDetaied } from '../../services';
 import { Loader } from '../Loader';
 import { Container } from '../Container';
 import { colorHexMap } from '../../types/colors';
@@ -13,10 +13,11 @@ import { ItemCardAboutSection } from '../ItemCardAboutSection';
 import { AddToCartButton } from '../AddToCartButton';
 import { AddToFavButton } from '../AddToFavButton';
 import { useTranslation } from 'react-i18next';
+import { BreadCrumbs } from "../BreadCrumbs";
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
-  const { category, itemId } = useParams<{ category: string; itemId: string }>();
+  const { category, itemId } = useParams<{ category: Category; itemId: string }>();
   const [product, setProduct] = useState<ProductDetailed | null>(null);
   const [modelColor, setModelColor] = useState<string>("");
   const [selectedCapacity, setSelectedCapacity] = useState<string>("");
@@ -25,26 +26,24 @@ export const ProductPage: React.FC = () => {
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const products = await getPhones();
-        const foundProduct = products.find(
-          (p) => p.category === category && p.id === itemId
-        );
-        if (foundProduct) {
-          setProduct(foundProduct);
-          setModelColor(foundProduct.color);
-          setSelectedCapacity(foundProduct.capacity);
-          setImages(foundProduct.images);
-        }
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
+    if (category && itemId) {
+      getProductsDetaied(category)
+        .then((products) => {
+          const foundProduct = products.find((p) => p.id === itemId);
+          if (foundProduct) {
+            setProduct(foundProduct);
+            setModelColor(foundProduct.color);
+            setSelectedCapacity(foundProduct.capacity);
+            setImages(foundProduct.images);
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching products:", error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
   }, [category, itemId]);
 
   const handleColorClick = (color: string) => {
@@ -105,6 +104,7 @@ export const ProductPage: React.FC = () => {
 
   return (
     <Container>
+       <BreadCrumbs/>
       <div className="product-page">
         <h1 className="product-page__title">{getTitle()}</h1>
 
@@ -173,10 +173,10 @@ export const ProductPage: React.FC = () => {
             </div>
             <div className="product-page__buttons">
               <AddToCartButton
-               product={product}
+                product={{ ...product, image: images[activeImageIndex], itemId:product.id }}
               />
               <AddToFavButton
-                product={product}
+                product={{ ...product, image: images[activeImageIndex], itemId:product.id }}
               />
             </div>
             <div className="product-page__tech-specs">

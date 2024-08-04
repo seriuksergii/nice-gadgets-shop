@@ -7,7 +7,6 @@ import minusIcon from '../../images/icons/minus-icon.svg';
 import { ProductCart } from '../../types';
 import { ActionTypes } from '../../Contexts/reduser';
 import { useUserActions } from '../../Contexts/useUserActions';
-import { KEY_CART } from '../../services/localStorageHelper';
 import { Link } from 'react-router-dom';
 
 interface Props {
@@ -16,21 +15,21 @@ interface Props {
 
 export const CartItem: React.FC<Props> = ({ product }) => {
   const { dispatch } = useUserActions();
-  const { name, price, category, itemId,  image, quantity, id } = product;
+  const { name, price, category, itemId,  image, quantity} = product;
   const total = price * quantity;
 
   const URL = `/${category}/${itemId}`;
 
   const handleIncrease = () => {
-    dispatch({ type: ActionTypes.increaseQuantity, payload: id });
+    dispatch({ type: ActionTypes.increaseQuantity, payload: itemId });
   };
 
   const handleDecrease = () => {
-    dispatch({ type: ActionTypes.decreaseQuantity, payload: id });
+    dispatch({ type: ActionTypes.decreaseQuantity, payload: itemId });
   };
 
   const handleDeleteItem = () => {
-    dispatch({ type: ActionTypes.onDelete, payload: { id: id, key: KEY_CART } });
+    dispatch({ type: ActionTypes.onDeleteCart, payload: itemId });
   };
 
   return (
