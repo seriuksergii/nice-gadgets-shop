@@ -3,8 +3,10 @@ import styles from './Footer.module.scss';
 import buttonBackToTop from '../../images/icons/buttonBackToTop.png';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../../Contexts/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 export const Footer: React.FC = () => {
+  const { t } = useTranslation();
   const scrollToTop = () => {
   window.scrollTo({
     top: 0,
@@ -40,18 +42,18 @@ export const Footer: React.FC = () => {
             to={'aboutUs'}
             className={styles.item}
           >
-            About us
+            {t('footer.about_us')}
           </Link>
           <a
             href="https://github.com/fs-apr24-Tech-Titans"
             className={styles.item}
             target="_blank"
           >
-            Rights
+            {t('footer.rights')}
           </a>
         </nav>
         <div className={styles.backToTop}   onClick={scrollToTop}>
-  <p className={styles.backToTopText}>Back to top</p>
+  <p className={styles.backToTopText}>{t('footer.back_to_top')}</p>
   <button
     aria-label="Scroll to top"
     type="button"

@@ -5,8 +5,10 @@ import { ProductCard } from '../../components/ProductCard';
 import { useUserActions } from '../../Contexts/useUserActions';
 import { EmptyFavouritesPage } from '../EmptyFavouritesPage/EmptyFavouritesPage';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const FavouritesPage: React.FC = () => {
+  const { t } = useTranslation();
   const { userAction } = useUserActions();
   const { favorites } = userAction;
   const count = favorites.length;
@@ -16,12 +18,16 @@ export const FavouritesPage: React.FC = () => {
       <div className="favourites__back">
         <img src="/img/icons/arrow-right.svg" alt="Arrov right" />
         <Link className="favourites__back--text" to={'/'}>
-          Back
+          {t('buttons.back')}
         </Link>
       </div>
       <section className="favourites">
-        <h1 className="favourites__title">Favourites</h1>
-        {count > 0 && <p className="favourites__count">{count} items</p>}
+        <h1 className="favourites__title">{t('favourites.title')}</h1>
+        {count > 0 && (
+          <p className="favourites__count">
+            {count} {t('favourites.count_items')}
+          </p>
+        )}
 
         <div className="favourites__content">
           <ul className="favourites__items">

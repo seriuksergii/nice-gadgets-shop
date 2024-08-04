@@ -13,6 +13,7 @@ import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import AboutUs from './components/AboutUs/AboutUs';
 
+
 export const Root = () => (
   <Router>
     <ThemeProvider>

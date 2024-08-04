@@ -62,17 +62,17 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
 
   return (
     <Container>
-      <section className="product-page">
+      <section className="products-page">
         <ProductPageTop count={count} title={title} />
         <SortBy />
 
-        <div className="product-page__main">
+        <div className="products-page__main">
           {!!error && <p>Something is wrong</p>}
           <ProductList products={currentPageProducts} isLoading={isLoading} />
         </div>
 
         {isPagination && (
-          <div className="product-page__pagination">
+          <div className="products-page__pagination">
             <Pagination totalPages={Math.ceil(count / Number(countPerPage))} />
           </div>
         )}

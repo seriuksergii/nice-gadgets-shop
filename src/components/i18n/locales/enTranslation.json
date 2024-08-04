@@ -1,0 +1,100 @@
+{
+  "nav": {
+    "home": "Home",
+    "phones": "Phones",
+    "tablets": "Tablets",
+    "accessories": "Accessories"
+  },
+  "welcome": "Welcome to Gadgets Depot store!",
+  "sliders": {
+    "new": "Brand new models",
+    "hot": "Hot prices",
+    "also": "You also may like"
+  },
+  "categories": {
+    "title": "Shop by category",
+    "mobile": "Mobile phones",
+    "tablet": "Tablets",
+    "accessories": "Accessories",
+    "models": "models"
+  },
+  "buttons": {
+    "cart": "Add to cart",
+    "cart-added": "Added",
+    "fav": "Add to favourites",
+    "back": "Back"
+  },
+  "cart": {
+    "title": "Cart",
+    "empty_cart_message": "Oooops! You cart is empty!",
+    "empty_cart_advice": "Add your goods!",
+    "total_for": "Total for",
+    "items": "items",
+    "checkout": "Checkout"
+  },
+  "product_card": {
+    "add": "Add to cart",
+    "added": "Added",
+    "screen": "Screen",
+    "сapacity": "Capacity",
+    "ram": "Ram"
+  },
+  "footer": {
+    "about_us": "About us",
+    "rights": "Rights",
+    "back_to_top": "Back to top"
+  },
+  "favourites": {
+    "title": "Favourites",
+    "message": "Oooops! You favourites is empty!",
+    "advice": "Explore our catalog!",
+    "count_items": "товари"
+  },
+  "page_not_found": {
+    "message": "Oooops!"
+  },
+  "sort_by": {
+    "sort_by": "Sort by",
+    "items_on_page": "Items on page",
+    "nevest": "Newest",
+    "alphabetically": "Alphabetically",
+    "cheapest": "Cheapest"
+  },
+  "about_us": {
+    "title": "We believe that the coolest creations come from the coolest people. It is never wrong to do the right thing.",
+    "our_team": "Our team",
+    "YP": "Yulia Pelypenko",
+    "OS": "Oleksandr Spyrydonov",
+    "IK": "Illia Kocherovets",
+    "SS": "Serhii Serdiuk",
+    "OP": "Oleksandr Pushyshyn",
+    "about_project": "About Project",
+    "paragraph1": "Tech Titans is a website forged by a dynamic team of five coding wizards. Armed with the magic of React, TypeScript, and SASS, they conjured up an electrifying platform featuring a treasure trove of gadgets. The grand quest? To create a site where users can embark on epic adventures to explore and purchase an array of gadgets. With built-in shopping spells, users can effortlessly add their desired gadgets to their carts.",
+    "paragraph2": "The site is as user-friendly as a friendly dragon, boasting an interface that makes navigating through gadget info—like model, manufacturer, specs, and prices—a breeze. Need to filter your search? No problem! The site lets you sift through gadgets like a seasoned treasure hunter.",
+    "paragraph3": "The team didn’t just stop at making the site look good; they made sure it’s as smooth as a wizard’s silk robe and adaptable as a shapeshifter. Whether you’re on a desktop, tablet, or smartphone, the site morphs to fit your screen, ensuring a magical experience no matter what device you’re using.",
+    "paragraph4": "Thanks to the collective sorcery of the programming team, the Tech Titans project brought to life the concept of a gadget database with top-notch shopping functionality. It provides users a fun and convenient way to choose and purchase gadgets while delivering an enchanting interface and a spellbinding user experience.",
+    "copy_email": "Click to copy email"
+  },
+  "product_page": {
+    "available_colors": "Available Colors",
+    "select_capacity": "Select Capacity",
+    "screen": "Screen",
+    "resolution": "Resolution",
+    "processor": "Processor",
+    "ram": "RAM",
+    "camera": "Camera",
+    "zoom": "Zoom",
+    "cell": "Cell",
+    "tech_spec_title": "Tech specs",
+    "about": "About"
+  },
+  "tablets_page": {
+    "title": "Tablets"
+  },
+  "accessories_page": {
+    "title": "Accessories"
+  },
+  "perPage": {
+    "all": "All"
+  }
+}

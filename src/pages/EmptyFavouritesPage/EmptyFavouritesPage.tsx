@@ -1,13 +1,15 @@
 import './EmptyFavouritesPage.scss';
+import { useTranslation } from 'react-i18next';
 
 export const EmptyFavouritesPage = () => {
+  const { t } = useTranslation();
   return (
     <div className="favIsEmpty">
-      <h1 className="favIsEmpty__message">Oooops! You favourites is empty!</h1>
-      <h2 className="favIsEmpty__advice">Explore our catalog!</h2>
+      <h1 className="favIsEmpty__message">{t('favourites.message')}</h1>
+      <h2 className="favIsEmpty__advice">{t('favourites.advice')}</h2>
 
       <div className="favIsEmpty__image-wrapper">
-        <img src="/img/emptyFavourites.jpeg" alt="fav-is-empty" className="favIsEmpty__img" />
+        <img src="/img/EmptyFavourites.png" alt="fav-is-empty" className="favIsEmpty__img" />
       </div>
     </div>
   );
