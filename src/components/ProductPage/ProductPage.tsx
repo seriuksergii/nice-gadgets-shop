@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ProductPage.scss';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 
 import { Category, ProductDetailed, Product } from '../../types';
@@ -21,6 +21,7 @@ import { Fade } from 'react-awesome-reveal';
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
   const { category, itemId } = useParams<{ category: Category; itemId: string }>();
+  const navigate = useNavigate();
   const [product, setProduct] = useState<ProductDetailed | null>(null);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [modelColor, setModelColor] = useState<string>('');
@@ -59,14 +60,12 @@ export const ProductPage: React.FC = () => {
 
   const handleColorClick = (color: string) => {
     setModelColor(color);
-    if (product) {
-      const updatedImages = product.images.map((image) => image.replace(product.color, color));
-      setImages(updatedImages);
-    }
+    navigate(`/${category}/${product?.itemId}-${selectedCapacity.toLowerCase()}-${color}`, { replace: true });
   };
 
   const handleCapacityClick = (capacity: string) => {
     setSelectedCapacity(capacity);
+    navigate(`/${category}/${product?.itemId}-${capacity.toLowerCase()}-${modelColor}`, { replace: true });
   };
 
   const handleThumbnailClick = (index: number) => {
@@ -88,15 +87,6 @@ export const ProductPage: React.FC = () => {
     trackMouse: true,
   });
 
-  const getTitle = () => {
-    if (!product) return '';
-    const baseTitle = product.name.split(' ').slice(0, -3).join(' ');
-    const currentCapacity = selectedCapacity || product.capacity;
-    return `${baseTitle} ${currentCapacity} ${
-      modelColor.charAt(0).toUpperCase() + modelColor.slice(1)
-    }`;
-  };
-
   if (loading) {
     return (
       <div className="loader-container">
@@ -115,7 +105,7 @@ export const ProductPage: React.FC = () => {
         <BreadCrumbs />
         <Back />
         <div className="product-page">
-          <h1 className="product-page__title">{getTitle()}</h1>
+          <h1 className="product-page__title">{product.name}</h1>
 
           <div className="product-page__image" {...swipeHandlers}>
             <img
