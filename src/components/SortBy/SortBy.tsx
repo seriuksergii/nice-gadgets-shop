@@ -98,7 +98,9 @@ export const SortBy: React.FC = () => {
             <div className="sort__options">
               {Object.keys(SortOptions).map((key) => (
                 <div
-                  className="sort__option"
+                  className={cn('sort__option', {
+                    'sort__option--selected': key === sortOption,
+                  })}
                   key={key}
                   onClick={() => {
                     setSerchSortOption(key as keyof typeof SortOptions);
@@ -127,7 +129,9 @@ export const SortBy: React.FC = () => {
             <div className="sort__options">
               {Object.values(PerPageCount).map((value) => (
                 <div
-                  className="sort__option"
+                  className={cn('sort__option', {
+                    'sort__option--selected': value === countPerPage,
+                  })}
                   key={value}
                   onClick={() => {
                     setSerchPerPage(value);
