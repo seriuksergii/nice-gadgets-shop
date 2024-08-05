@@ -22,13 +22,13 @@ export const AddToCartButton: React.FC<Props> = ({ product }) => {
     dispatch({ type: ActionTypes.onAddToCart, payload: product });
   };
 
-  const notify = () => toast.success('Product added to cart!', {
+  const notify = () => toast.success(t('pop_up.message_cart'), {
     style: {
-      border: '5px solid #27AE60',
+      border: '5px solid #F447AF',
       borderRadius: '20px',
-      padding: '25px 30px 25px 30px',
-      color: '#fff',
-      backgroundColor: '#27AE60',
+      padding: '10px',
+      color: '#F447AF',
+      backgroundColor: '#fff',
       fontSize: '20px',
     },
     iconTheme: {
