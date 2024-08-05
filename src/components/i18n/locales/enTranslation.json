@@ -99,5 +99,10 @@
   },
   "phone_page": {
     "title": "Mobile phones"
+  },
+  "pop_up": {
+    "message_cart": "Product added to cart!",
+    "message_favourites": "Product added to favourites!",
+    "message_favourites_removed": "Product delete from favourites!"
   }
 }

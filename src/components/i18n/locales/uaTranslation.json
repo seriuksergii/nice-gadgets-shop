@@ -99,5 +99,10 @@
   },
   "phone_page": {
     "title": "Мобільні телефони"
+  },
+  "pop_up": {
+    "message_cart": "Товар додано до кошика!",
+    "message_favourites": "Товар додано до обраних!",
+    "message_favourites_removed": "Товар видалено з обраних!"
   }
 }
