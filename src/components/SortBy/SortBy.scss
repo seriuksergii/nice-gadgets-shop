@@ -32,11 +32,11 @@
    
     &--is-open {
       border-color: var(--color-primary);
-      background: url('img/icons/arrow-up.svg') no-repeat right 12px center;
+      background: url('/public/img/icons/arrow-up.svg') no-repeat right 12px center;
     }
 
     &--is-close {
-      background: url('img/icons/arrow-down.svg') no-repeat right 12px center;
+      background: url('/public/img/icons/arrow-down.svg') no-repeat right 12px center;
     }
 
     &--option {
