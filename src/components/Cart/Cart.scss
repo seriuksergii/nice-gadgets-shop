@@ -1,26 +1,15 @@
 .cart {
-  &__content {
-    padding-block: 32px;
+  padding-block: 0 56px;
+
+  @include on-tablet {
+    padding-block: 0 64px;
   }
 
-  &__back {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    margin: 24px 0;
-
-    @include on-desktop {
-      margin: 40px 0 16px;
-    }
-
-    &--text {
-      @include small-text;
-      line-height: 12px;
-
-      &:hover {
-        color: var(--color-primary);
-      }
-    }
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+  &__content {
+    padding-block: 32px;
   }
 
   &__title {

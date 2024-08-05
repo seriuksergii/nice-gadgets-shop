@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import './Cart.scss';
-import { Link } from 'react-router-dom';
 import { Grid } from '../Grid/Grid';
 import { Container } from '../Container';
 import { CartItem } from '../CartItem';
@@ -8,6 +7,7 @@ import { useUserActions } from '../../Contexts/useUserActions';
 import { EmptyCart } from '../../pages/EmptyCart';
 import { ActionTypes } from '../../Contexts/reduser';
 import { useTranslation } from 'react-i18next';
+import { Back } from '../Back';
 
 
 export const Cart: React.FC = () => {
@@ -31,12 +31,7 @@ export const Cart: React.FC = () => {
   return (
     <section className="cart">
       <Container>
-        <div className="cart__back">
-          <img src="/img/icons/arrow-right.svg" alt="Arrov right" />
-          <Link className="cart__back--text" to={'/'}>
-            {t('buttons.back')}
-          </Link>
-        </div>
+        <Back />
         <h1 className="cart__title">{t('cart.title')}</h1>
 
         <div className="cart__content">

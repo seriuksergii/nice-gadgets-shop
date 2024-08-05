@@ -14,6 +14,7 @@ import { AddToCartButton } from '../AddToCartButton';
 import { AddToFavButton } from '../AddToFavButton';
 import { useTranslation } from 'react-i18next';
 import { BreadCrumbs } from "../BreadCrumbs";
+import { Back } from "../Back";
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
@@ -104,7 +105,8 @@ export const ProductPage: React.FC = () => {
 
   return (
     <Container>
-       <BreadCrumbs/>
+      <BreadCrumbs />
+      <Back />
       <div className="product-page">
         <h1 className="product-page__title">{getTitle()}</h1>
 
