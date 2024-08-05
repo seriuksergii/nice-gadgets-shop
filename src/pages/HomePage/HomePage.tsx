@@ -1,6 +1,5 @@
 import './HomePage.scss';
 import { useEffect, useState } from 'react';
-
 import { Product } from '../../types';
 
 import { getAllProducts } from '../../services';
@@ -30,7 +29,7 @@ export const HomePage = () => {
   const hotPrices = getHotPrices(allProducts);
 
   return (
-     <Container>
+    <Container>
         <div className="homepage">
            <Fade direction='up' triggerOnce={true}>
               <h1 className="homepage__title">{t('welcome')}</h1>

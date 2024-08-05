@@ -48,13 +48,13 @@ export const Header = () => {
     </div>
 
     <div className="header__icons header__icons--burger">
-      <Link to={"menu"} className="icon icon--burgerMenu">
+      <a className="icon icon--burgerMenu">
         <img 
           onClick={showBurger} 
           src={theme === 'light' ? '/img/icons/menu.svg' : '/img/icons/menu-white.svg'}
           alt="burger menu"
         />
-      </Link>
+      </a>
       </div>
     </div>
     <Burger isActive = {isActive} closeBurger={closeBurger}/>
