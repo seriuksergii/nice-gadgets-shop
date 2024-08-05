@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Fade} from 'react-awesome-reveal';
 import './Team.scss';
 import TeamMember from './TeamMember';
 import { useTranslation } from 'react-i18next';
@@ -53,16 +53,10 @@ const AboutUs = () => {
       email: 'o.pushyshyn@gmail.com',
     },
   ];
-
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }, []);
-
+   
   return (
-    <div className="team">
+     <div className="team">
+        <Fade direction='up' triggerOnce={true}>
       <div className="team__discription">
         <div className="titleAndText">
           <h1 className="title">Tech Titans</h1>
@@ -72,7 +66,7 @@ const AboutUs = () => {
       </div>
       <h1 className="team__title">{t('about_us.our_team')}</h1>
       <div className="team__members">
-        {teamMembers.map((member, index) => (
+              {teamMembers.map((member, index) => (
           <TeamMember
             key={index}
             name={member.name}
@@ -96,7 +90,8 @@ const AboutUs = () => {
           <hr />
           {t('about_us.paragraph4')}
         </p>
-      </div>
+           </div>
+           </Fade>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import './Cart.scss';
 import { Grid } from '../Grid/Grid';
+import { useTheme } from '../../Contexts/ThemeContext';
 import { Container } from '../Container';
 import { CartItem } from '../CartItem';
 import { useUserActions } from '../../Contexts/useUserActions';
@@ -8,12 +9,15 @@ import { EmptyCart } from '../../pages/EmptyCart';
 import { ActionTypes } from '../../Contexts/reduser';
 import { useTranslation } from 'react-i18next';
 import { Back } from '../Back';
+import { Fade } from 'react-awesome-reveal';
+
 
 
 export const Cart: React.FC = () => {
   const { userAction, dispatch } = useUserActions();
   const { cart } = userAction;
   const { t } = useTranslation();
+  const { theme } = useTheme();
 
 
   const totalPrice  = useMemo(() => {
@@ -31,19 +35,21 @@ export const Cart: React.FC = () => {
   return (
     <section className="cart">
       <Container>
+         <Fade direction='up' triggerOnce={true}>
         <Back />
         <h1 className="cart__title">{t('cart.title')}</h1>
-
+      </Fade>  
         <div className="cart__content">
           {cart.length === 0 ? (
             <EmptyCart />
           ) : (
-            <Grid>
+                    <Fade>
+                    <Grid>
               <div className="cart__items">
                 {cart.map((product) => (
                   <CartItem product={product} key={product.itemId} />
                 ))}
-              </div>
+                          </div>
               <div className="cart__info">
                 <div className="cart__check">
                   <p className="cart__total">${totalPrice}</p>
@@ -57,8 +63,10 @@ export const Cart: React.FC = () => {
                 </button>
               </div>
             </Grid>
+            </Fade>   
           )}
-        </div>
+              </div>
+              
       </Container>
     </section>
   );

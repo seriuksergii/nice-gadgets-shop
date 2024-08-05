@@ -15,6 +15,7 @@ import { AddToFavButton } from '../AddToFavButton';
 import { useTranslation } from 'react-i18next';
 import { BreadCrumbs } from "../BreadCrumbs";
 import { Back } from "../Back";
+import { Fade } from 'react-awesome-reveal';
 
 export const ProductPage: React.FC = () => {
   const { t } = useTranslation();
@@ -105,6 +106,7 @@ export const ProductPage: React.FC = () => {
 
   return (
     <Container>
+       <Fade>
       <BreadCrumbs />
       <Back />
       <div className="product-page">
@@ -209,7 +211,8 @@ export const ProductPage: React.FC = () => {
             fullSpecs={true}
           />
         </div>
-      </div>
+           </div>
+           </Fade>
     </Container>
   );
 };
