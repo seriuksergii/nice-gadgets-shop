@@ -63,12 +63,12 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
 
   return (
      <Container>
-      <section className="product-page">
+      <section className="products-page">
         <Fade direction='up' triggerOnce={true}>
         <ProductPageTop count={count} title={title} />
         <SortBy />
        </Fade>
-        <div className="product-page__main">
+        <div className="products-page__main">
           {!!error && <p>Something is wrong</p>}
           <ProductList products={currentPageProducts} isLoading={isLoading} />
         </div>

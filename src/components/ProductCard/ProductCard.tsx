@@ -22,7 +22,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
      <article className="productCard">
-        <Fade triggerOnce={true}>
+        <Fade triggerOnce={true} />
         <Link to={URL}>
            <Zoom triggerOnce={true}>
               <img className="productCard__image" src={image} alt={name} />
