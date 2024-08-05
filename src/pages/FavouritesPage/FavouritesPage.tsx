@@ -5,9 +5,9 @@ import { ProductCard } from '../../components/ProductCard';
 import { useTheme } from '../../Contexts/ThemeContext';
 import { useUserActions } from '../../Contexts/useUserActions';
 import { EmptyFavouritesPage } from '../EmptyFavouritesPage/EmptyFavouritesPage';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Fade} from 'react-awesome-reveal';
+import { Back } from '../../components/Back';
 
 export const FavouritesPage: React.FC = () => {
   const { t } = useTranslation();
@@ -18,17 +18,9 @@ export const FavouritesPage: React.FC = () => {
 
   return (
     <Container>
-      <div className="favourites__back">
       <Fade direction='up' triggerOnce={true}>
-        <img 
-          src={theme === 'light' ? "/img/icons/arrow-right.svg" : "/img/icons/arrow-left-white.svg"}
-          alt="Arrov right"
-        />
-        <Link className="favourites__back--text" to={'/'}>
-          {t('buttons.back')}
-              </Link>
+              <Back />
               </Fade>
-      </div>
         <section className="favourites">
            <Fade direction='up' triggerOnce={true}>
            <h1 className="favourites__title">{t('favourites.title')}</h1>
