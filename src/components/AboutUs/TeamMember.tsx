@@ -24,6 +24,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
   const [showTooltip, setShowTooltip] = useState(false);
   const { t } = useTranslation();
   const copyToClipboard = () => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     navigator.clipboard.writeText(email);
   };
 
@@ -41,12 +42,12 @@ const TeamMember: React.FC<TeamMemberProps> = ({
         <div className="team-member__links">
           {linkedinUrl && (
             <a href={linkedinUrl} target="_blank" rel="noopener noreferrer">
-              <img src="src/images/linkedin.png" alt="LinkedIn profile" className="link__icon" />
+              <img src="public/img/icons/linkedin.png" alt="LinkedIn profile" className="link__icon" />
             </a>
           )}
           {githubUrl && (
             <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-              <img src="src/images/github.png" alt="GitHub profile" className="link__icon" />
+              <img src="public/img/icons/github.png" alt="GitHub profile" className="link__icon" />
             </a>
           )}
           <div
@@ -56,7 +57,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
             onClick={copyToClipboard}
           >
             <img
-              src="src/images/email.png"
+              src="public/img/icons/email.png"
               alt="Email icon"
               className="link__icon"
               style={{ cursor: 'pointer' }}

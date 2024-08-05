@@ -10,7 +10,7 @@ const AboutUs = () => {
     {
       name: t('about_us.YP'),
       role: 'Team Lead | Full-stack Developer',
-      imageUrl: 'src/images/yulia.jpg',
+      imageUrl: 'public/img/icons/yulia.jpg',
       bio: t('about_us.YP.bio'),
       githubUrl: 'https://github.com/yuliaPel',
       linkedinUrl: 'https://linkedin.com/',
@@ -19,7 +19,7 @@ const AboutUs = () => {
     {
       name: t('about_us.OS'),
       role: 'Full-stack Developer',
-      imageUrl: 'src/images/sasha.jpg',
+      imageUrl: 'public/img/icons/sasha.jpg',
       bio: t('about_us.OS.bio'),
       githubUrl: 'https://github.com/OSpyrydonov',
       linkedinUrl: 'https://linkedin.com/',
@@ -28,7 +28,7 @@ const AboutUs = () => {
     {
       name: t('about_us.IK'),
       role: 'Full-stack Developer',
-      imageUrl: 'src/images/illia2.jpg',
+      imageUrl: 'public/img/icons/illia2.jpg',
       bio: t('about_us.IK.bio'),
       githubUrl: 'https://github.com/ikocherovets',
       linkedinUrl: 'https://linkedin.com/',
@@ -37,7 +37,7 @@ const AboutUs = () => {
     {
       name: t('about_us.SS'),
       role: 'Full-stack Developer',
-      imageUrl: 'src/images/serhi-photo1.jpg',
+      imageUrl: 'public/img/icons/serhi-photo1.jpg',
       bio: t('about_us.SS.bio'),
       githubUrl: 'https://github.com/seriuksergii',
       linkedinUrl: 'https://linkedin.com/',
@@ -46,7 +46,7 @@ const AboutUs = () => {
     {
       name: t('about_us.OP'),
       role: 'Full-stack Developer',
-      imageUrl: 'src/images/oleksandr1.jpg',
+      imageUrl: 'public/img/icons/oleksandr1.jpg',
       bio:t('about_us.OP.bio'),
       githubUrl: 'https://github.com/pushyshyn',
       linkedinUrl: 'https://linkedin.com/',
@@ -62,7 +62,7 @@ const AboutUs = () => {
           <h1 className="title">Tech Titans</h1>
           <p className="text">{t('about_us.title')}</p>
         </div>
-        <img src="src/images/teamPhoto1.jpg" alt="team photo" className="team__img" />
+        <img src="public/img/icons/teamPhoto1.jpg" alt="team photo" className="team__img" />
       </div>
       <h1 className="team__title">{t('about_us.our_team')}</h1>
       <div className="team__members">
