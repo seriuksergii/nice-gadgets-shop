@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { Outlet } from 'react-router-dom';
 import { Footer } from './components/Footer/Footer';
 import './components/i18n/i18n.js';
+import { Toaster } from 'react-hot-toast';
 
 export const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ export const App: React.FC = () => {
         <Outlet />
       </main>
       <Footer />
+      <Toaster position='top-right'/>
     </>
   );
 };
