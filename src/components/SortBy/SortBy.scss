@@ -1,6 +1,7 @@
 .sort {
   display: flex;
   gap: 16px;
+  margin-bottom: 32px;
 
   &__group {
     display: flex;
@@ -53,7 +54,7 @@
   &__options {
     @include body-text;
     position: absolute;
-    bottom: -4px;
+    bottom: 100%;
     left: 0;
     transform: translateY(100%);
     border: 1px solid var(--color-surface);
@@ -71,4 +72,8 @@
       color: var(--color-primary);
     }
   }
+}
+
+.sort__option--selected {
+  color: var(--color-primary);
 }
