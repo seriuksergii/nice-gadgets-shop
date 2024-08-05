@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './FavAndCartBlock.scss';
 import { NavLink } from 'react-router-dom';
 import { getNavlinkStyle } from '../../services/styleHelpers';
 import { useUserActions } from '../../Contexts/useUserActions';
 import { useTheme } from '../../Contexts/ThemeContext';
-import i18n from '../i18n/i18n';
 
 export const FavAndCartBlock: React.FC = () => {
   const { userAction } = useUserActions();
@@ -15,42 +14,19 @@ export const FavAndCartBlock: React.FC = () => {
   const cartCount = cart.length;
   const favoritesCount = favorites.length;
 
-  const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
-
-  useEffect(() => {
-    const handleLanguageChange = (lng: string) => {
-      setCurrentLanguage(lng);
-    };
-
-    i18n.on('languageChanged', handleLanguageChange);
-
-    return () => {
-      i18n.off('languageChanged', handleLanguageChange);
-    };
-  }, []);
-
-  const changeLanguage = async () => {
-    const newLanguage = currentLanguage === 'en' ? 'ua' : 'en';
-    await i18n.changeLanguage(newLanguage);
-    localStorage.setItem('language', newLanguage);
-  };
-
   return (
     <>
-      <div className="buttons-lng-wrp">
-        <button onClick={changeLanguage} className="buttons-lng-btn">
-          {currentLanguage === 'en' ? 'UA' : 'EN'}
-        </button>
-      </div>
       <div className="info-buttons">
         <NavLink
           to={'/favorites'}
           className={({ isActive }) => getNavlinkStyle(isActive, 'info-buttons__link')}
         >
-          <img 
-            className="icon" 
-            src={theme === 'light' ? '/img/icons/favourites.svg' : '/img/icons/favourites-white.svg'}
-            alt="favorites" 
+          <img
+            className="icon"
+            src={
+              theme === 'light' ? '/img/icons/favourites.svg' : '/img/icons/favourites-white.svg'
+            }
+            alt="favorites"
           />
           {favoritesCount > 0 && (
             <span className="count">
@@ -64,9 +40,13 @@ export const FavAndCartBlock: React.FC = () => {
           className={({ isActive }) => getNavlinkStyle(isActive, 'info-buttons__link')}
         >
           <img
-           className="icon"
-           src={theme === 'light' ? '/img/icons/shopping-bag.svg' : '/img/icons/shopping-bag-white.svg'}
-           alt="cart"
+            className="icon"
+            src={
+              theme === 'light'
+                ? '/img/icons/shopping-bag.svg'
+                : '/img/icons/shopping-bag-white.svg'
+            }
+            alt="cart"
           />
           {cartCount > 0 && (
             <span className="count">
