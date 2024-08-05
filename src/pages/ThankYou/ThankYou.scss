@@ -1,0 +1,31 @@
+.thank-you {
+  padding-top: 50px;
+  text-align: center;
+
+  @include on-tablet {
+    padding-top: 80px;
+  }
+
+  &__image {
+    width: 200px; 
+    animation: bounce 2s infinite;
+  }
+
+  &__title {
+    padding-top: 40px;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  &__message {
+    padding-block: 20px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  &__details {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+

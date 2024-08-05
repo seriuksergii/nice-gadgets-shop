@@ -1,6 +1,5 @@
 import './HomePage.scss';
 import { useEffect, useState } from 'react';
-
 import { Product } from '../../types';
 
 import { getAllProducts } from '../../services';
