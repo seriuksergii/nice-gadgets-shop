@@ -15,14 +15,17 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr); 
   column-gap: 16px;
+  padding-bottom: 56px;
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(12, 1fr);
+    padding-bottom: 64px;
   }
 
   @media (min-width: 1200px) {
     grid-template-columns: repeat(24, 32px);
-  }
+    padding-bottom: 81px;
+}
   
   &__title {
     @include title-1;
@@ -276,5 +279,20 @@
       grid-column: 15 / 24;
       margin-top: 64px;
     }
+  }
+}
+
+.recommended_products {
+  grid-column: span 4;
+  margin-top: 56px;
+
+  @media (min-width: 640px) {
+    grid-column: span 12;
+    margin-top: 64px;
+  }
+
+  @media (min-width: 1200px) {
+    grid-column: span 24;
+    margin-top: 80px;
   }
 }
