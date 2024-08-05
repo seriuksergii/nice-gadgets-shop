@@ -19,6 +19,7 @@ export const FavouritesPage: React.FC = () => {
   return (
     <Container>
       <div className="favourites__back">
+      <Fade direction='up' triggerOnce={true}>
         <img 
           src={theme === 'light' ? "/img/icons/arrow-right.svg" : "/img/icons/arrow-left-white.svg"}
           alt="Arrov right"

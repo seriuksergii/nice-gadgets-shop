@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import './Cart.scss';
 import { Grid } from '../Grid/Grid';
-import { useTheme } from '../../Contexts/ThemeContext';
 import { Container } from '../Container';
 import { CartItem } from '../CartItem';
 import { useUserActions } from '../../Contexts/useUserActions';
@@ -17,7 +16,6 @@ export const Cart: React.FC = () => {
   const { userAction, dispatch } = useUserActions();
   const { cart } = userAction;
   const { t } = useTranslation();
-  const { theme } = useTheme();
 
 
   const totalPrice  = useMemo(() => {
