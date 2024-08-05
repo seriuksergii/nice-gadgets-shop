@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Footer.module.scss';
-import buttonBackToTop from '../../images/icons/buttonBackToTop.png';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../../Contexts/ThemeContext';
 import { useTranslation } from 'react-i18next';
@@ -61,7 +60,7 @@ export const Footer: React.FC = () => {
     className={styles.backToTopButton}
   >
     <img
-      src={buttonBackToTop}
+      src={theme === 'light' ? '/img/buttonBackToTop.png' : '/img/buttonBackToTop-white.png'}
       alt="back to top"
       className={styles.backToTopIcon}
     />

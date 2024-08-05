@@ -1,26 +1,35 @@
 import React, { useMemo } from 'react';
 import './Cart.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Grid } from '../Grid/Grid';
+import { useTheme } from '../../Contexts/ThemeContext';
 import { Container } from '../Container';
 import { CartItem } from '../CartItem';
 import { useUserActions } from '../../Contexts/useUserActions';
 import { EmptyCart } from '../../pages/EmptyCart';
+import { ActionTypes } from '../../Contexts/reduser';
 import { useTranslation } from 'react-i18next';
 import { Fade } from 'react-awesome-reveal';
 
+
 export const Cart: React.FC = () => {
-  const { userAction } = useUserActions();
+  const { userAction, dispatch } = useUserActions();
   const { cart } = userAction;
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { theme } = useTheme();
 
-  const calculateTotalPrice = useMemo(() => {
+
+  const totalPrice  = useMemo(() => {
     return cart.reduce((total, { price, quantity }) => total + price * quantity, 0);
   }, [cart]);
 
   const handlerCheckout = () => {
-    navigate('/');
+      const userConfirmed = confirm("Checkout is not implemented yet. Do you want to clear the Cart?");
+      
+      if (userConfirmed) {
+        dispatch({ type: ActionTypes.clearCart });
+      }
   };
 
   return (
@@ -28,7 +37,10 @@ export const Cart: React.FC = () => {
         <Container>
            <Fade direction='up' triggerOnce={true}>
         <div className="cart__back">
-          <img src="/img/icons/arrow-right.svg" alt="Arrov right" />
+          <img 
+            src={theme === 'light' ? "/img/icons/arrow-right.svg" : "/img/icons/arrow-left-white.svg"}
+            alt="Arrov right"
+          />
           <Link className="cart__back--text" to={'/'}>
             {t('buttons.back')}
           </Link>
@@ -48,7 +60,7 @@ export const Cart: React.FC = () => {
                           </div>
               <div className="cart__info">
                 <div className="cart__check">
-                  <p className="cart__total">${calculateTotalPrice}</p>
+                  <p className="cart__total">${totalPrice}</p>
                   <p className="cart__count">
                     {t('cart.total_for')} {cart.length} {t('cart.items')}
                   </p>

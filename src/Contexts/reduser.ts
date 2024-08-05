@@ -10,6 +10,7 @@ export enum ActionTypes {
   onAddToCart = 'onAddToCart',
   increaseQuantity = 'increaseQuantity',
   decreaseQuantity = 'decreaseQuantity',
+  clearCart = 'clearCart'
 }
 
 export type Action =
@@ -18,7 +19,8 @@ export type Action =
   | { type: ActionTypes.onDelete; payload: { id: number; key: string } }
   | { type: ActionTypes.onAddToCart; payload: Product }
   | { type: ActionTypes.increaseQuantity; payload: number }
-  | { type: ActionTypes.decreaseQuantity; payload: number };
+  | { type: ActionTypes.decreaseQuantity; payload: number }
+  | { type: ActionTypes.clearCart}
 
 export const userActionReducer = (state: UserAction, action: Action): UserAction => {
   switch (action.type) {
@@ -76,6 +78,14 @@ export const userActionReducer = (state: UserAction, action: Action): UserAction
       localStorage.setItem(KEY_FAVORITES, JSON.stringify(favorites));
       return { ...state, favorites };
     }
+
+    case ActionTypes.clearCart: {
+      localStorage.removeItem(KEY_CART);
+      return {
+        ...state,
+        cart: [],
+      }
+    }  
 
     default:
       return state;

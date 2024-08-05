@@ -74,7 +74,7 @@ export const ProductsPage: React.FC<Props> = ({ category, title }) => {
         </div>
 
         {isPagination && (
-          <div className="product-page__pagination">
+          <div className="products-page__pagination">
             <Pagination totalPages={Math.ceil(count / Number(countPerPage))} />
           </div>
         )}

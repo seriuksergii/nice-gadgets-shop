@@ -34,7 +34,7 @@
   },
   "product_card": {
     "add": "Add to cart",
-    "added": "Added",
+    "added": "Added to cart",
     "screen": "Screen",
     "сapacity": "Capacity",
     "ram": "Ram"
@@ -56,7 +56,9 @@
   "sort_by": {
     "sort_by": "Sort by",
     "items_on_page": "Items on page",
-    "nevest": "Newest"
+    "nevest": "Newest",
+    "alphabetically": "Alphabetically",
+    "cheapest": "Cheapest"
   },
   "about_us": {
     "title": "We believe that the coolest creations come from the coolest people. It is never wrong to do the right thing.",
@@ -88,5 +90,14 @@
   },
   "tablets_page": {
     "title": "Tablets"
+  },
+  "accessories_page": {
+    "title": "Accessories"
+  },
+  "perPage": {
+    "all": "All"
+  },
+  "phone_page": {
+    "title": "Mobile phones"
   }
 }

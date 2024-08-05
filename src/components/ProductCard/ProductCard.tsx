@@ -6,11 +6,9 @@ import { Product } from '../../types';
 
 import { AddToCartButton } from '../AddToCartButton';
 import { AddToFavButton } from '../AddToFavButton';
-import { useUserActions } from '../../Contexts/useUserActions';
-import { ActionTypes } from '../../Contexts/reduser';
-import { KEY_FAVORITES } from '../../services/localStorageHelper';
 import { useTranslation } from 'react-i18next';
 import { Fade, Zoom } from 'react-awesome-reveal';
+
 
 interface Props {
   product: Product;
@@ -21,23 +19,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const { id, itemId, category, image, name, price, fullPrice, screen, capacity, ram } = product;
 
   const URL = `/${category}/${itemId}`;
-
-  const { userAction, dispatch } = useUserActions();
-  const { favorites, cart } = userAction;
-
-  const isFavorites = favorites.some((p) => p.id === id);
-  const isInCart = cart.some((p) => p.id == id);
-
-  const handlerOnAddToCart = () => {
-    dispatch({ type: ActionTypes.onAddToCart, payload: product });
-  };
-
-  const toggleFavorites = () => {
-    console.log(!isFavorites);
-    !isFavorites
-      ? dispatch({ type: ActionTypes.onAddToFavorites, payload: product })
-      : dispatch({ type: ActionTypes.onDelete, payload: { id: id, key: KEY_FAVORITES } });
-  };
 
   return (
      <article className="productCard">
@@ -71,13 +52,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="productCard__buttons">
         <AddToCartButton
-          text={isInCart ? t('product_card.added') : t('product_card.add')}
-          handler={handlerOnAddToCart}
-          disabled={isInCart}
+         product={product}
         />
-        <AddToFavButton isFavorites={isFavorites} handler={toggleFavorites} />
-           </div>
-     </Fade>
-     </article>
+        
+        <AddToFavButton product={product} />
+      </div>
+    </article>
   );
 };
