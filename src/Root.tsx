@@ -13,9 +13,12 @@ import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import AboutUs from './components/AboutUs/AboutUs';
 import { ThankYou } from './pages/ThankYou/ThankYou';
+import ScrollToTop from './services/ScrollToTop';
+
 
 export const Root = () => (
-  <Router>
+   <Router>
+   <ScrollToTop />
     <ThemeProvider>
       <ActionUserProvider>
         <React.StrictMode>

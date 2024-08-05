@@ -29,20 +29,18 @@ export const HomePage = () => {
   const hotPrices = getHotPrices(allProducts);
 
   return (
-    <Container>
+     <Container>
+        <Fade>
         <div className="homepage">
-           <Fade direction='up' triggerOnce={true}>
               <h1 className="homepage__title">{t('welcome')}</h1>
-              </Fade>
         <section className="sliderswiper-wrapper">
-        <Fade direction='up' triggerOnce={true}>
           <SliderSwiper />
-           </Fade>
         </section>
         <ScrollingList products={newModels} title={t('sliders.new')} />
         <ShopByCategory products={allProducts} />
         <ScrollingList products={hotPrices} title={t('sliders.hot')} />
            </div>
+           </Fade>
     </Container>
   );
 };

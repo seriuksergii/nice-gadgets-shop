@@ -21,19 +21,22 @@ export const Pagination: React.FC<Props> = ({ totalPages }) => {
   const onPageChange = (page: number) => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set(SearchParamsType.page, page.toString());
-    setSearchParams(newParams);
+     setSearchParams(newParams);
+      window.scrollTo(0, 0);
   };
 
   const handlerBack = () => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set(SearchParamsType.page, `${currentPage - 1}`);
-    setSearchParams(newParams);
+     setSearchParams(newParams);
+     window.scrollTo(0, 0);
   };
 
   const handlerNext = () => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set(SearchParamsType.page, `${currentPage + 1}`);
-    setSearchParams(newParams);
+     setSearchParams(newParams);
+     window.scrollTo(0, 0);
   };
 
   return (
