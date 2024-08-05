@@ -1,7 +1,8 @@
-import { Product } from "./Product";
 import { ProductCart } from "./ProductCart";
+import { ProductFavorites } from "./ProductFavorites";
+
 
 export interface UserAction {
-  favorites: Product[];
+  favorites: ProductFavorites[];
   cart: ProductCart[];
 }

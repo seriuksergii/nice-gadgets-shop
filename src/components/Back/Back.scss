@@ -1,0 +1,23 @@
+.back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-block: 24px 16px;
+
+  @include on-tablet {
+    padding-top: 40px
+  }
+
+  &__text {
+    @include small-text;
+    line-height: 12px;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  @include on-desktop {
+    padding-bottom: 16px;
+  }
+}

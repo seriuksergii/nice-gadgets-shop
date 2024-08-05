@@ -2,21 +2,21 @@ import React from 'react';
 import './ProductCard.scss';
 import { Link } from 'react-router-dom';
 
-import { Product } from '../../types';
+import { Product} from '../../types';
 
 import { AddToCartButton } from '../AddToCartButton';
 import { AddToFavButton } from '../AddToFavButton';
 import { useTranslation } from 'react-i18next';
+import { ProductFavorites } from '../../types/ProductFavorites';
 import { Fade, Zoom } from 'react-awesome-reveal';
 
-
 interface Props {
-  product: Product;
+  product: Product | ProductFavorites;
 }
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { t } = useTranslation();
-  const { id, itemId, category, image, name, price, fullPrice, screen, capacity, ram } = product;
+  const { itemId, category, image, name, price, fullPrice, screen, capacity, ram } = product;
 
   const URL = `/${category}/${itemId}`;
 
@@ -51,10 +51,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="productCard__buttons">
-        <AddToCartButton
-         product={product}
-        />
-        
+        <AddToCartButton product={product} />
         <AddToFavButton product={product} />
       </div>
     </article>

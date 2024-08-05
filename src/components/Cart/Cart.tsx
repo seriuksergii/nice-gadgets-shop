@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import './Cart.scss';
-import { Link } from 'react-router-dom';
 import { Grid } from '../Grid/Grid';
 import { useTheme } from '../../Contexts/ThemeContext';
 import { Container } from '../Container';
@@ -9,13 +8,14 @@ import { useUserActions } from '../../Contexts/useUserActions';
 import { EmptyCart } from '../../pages/EmptyCart';
 import { ActionTypes } from '../../Contexts/reduser';
 import { useTranslation } from 'react-i18next';
+import { Back } from '../Back';
 import { Fade } from 'react-awesome-reveal';
+
 
 
 export const Cart: React.FC = () => {
   const { userAction, dispatch } = useUserActions();
   const { cart } = userAction;
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const { theme } = useTheme();
 
@@ -34,17 +34,9 @@ export const Cart: React.FC = () => {
 
   return (
     <section className="cart">
-        <Container>
-           <Fade direction='up' triggerOnce={true}>
-        <div className="cart__back">
-          <img 
-            src={theme === 'light' ? "/img/icons/arrow-right.svg" : "/img/icons/arrow-left-white.svg"}
-            alt="Arrov right"
-          />
-          <Link className="cart__back--text" to={'/'}>
-            {t('buttons.back')}
-          </Link>
-        </div>
+      <Container>
+         <Fade direction='up' triggerOnce={true}>
+        <Back />
         <h1 className="cart__title">{t('cart.title')}</h1>
       </Fade>  
         <div className="cart__content">
@@ -55,7 +47,7 @@ export const Cart: React.FC = () => {
                     <Grid>
               <div className="cart__items">
                 {cart.map((product) => (
-                  <CartItem product={product} key={product.id} />
+                  <CartItem product={product} key={product.itemId} />
                 ))}
                           </div>
               <div className="cart__info">

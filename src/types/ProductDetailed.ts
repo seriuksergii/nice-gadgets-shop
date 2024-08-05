@@ -1,19 +1,28 @@
 import { Category } from '.';
-import { Product } from './Product';
 
-export interface ProductDetailed extends Product {
-  namespaceId: string;
+interface ProductDescription {
+  title: string;
+  text: string[];
+}
+
+export interface ProductDetailed {
+  id: string;
+  category: Category;
+  itemId: string;
+  name: string;
   capacityAvailable: string[];
+  capacity: string;
+  fullPrice: number;
+  price: number;
   colorsAvailable: string[];
+  color: string;
   images: string[];
-  description: {
-    title: string;
-    text: string[];
-  }[];
+  description: ProductDescription[];
+  screen: string;
   resolution: string;
   processor: string;
+  ram: string;
   camera: string;
   zoom: string;
   cell: string[];
-  category: Category;  // if Category type differs from string
 }

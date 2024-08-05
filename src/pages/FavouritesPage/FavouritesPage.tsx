@@ -43,7 +43,7 @@ export const FavouritesPage: React.FC = () => {
               <EmptyFavouritesPage />
             ) : (
               favorites.map((product) => (
-                <li className="item" key={product.id}>
+                <li className="item" key={product.itemId}>
                   {' '}
                   <ProductCard product={product} />{' '}
                 </li>
