@@ -1,6 +1,5 @@
-import { useTranslation } from "react-i18next";
-import "./PageNotFound.scss";
-
+import { useTranslation } from 'react-i18next';
+import './PageNotFound.scss';
 
 export const PageNotFound = () => {
   const { t } = useTranslation();
@@ -10,11 +9,7 @@ export const PageNotFound = () => {
         <h1 className="pageNotFound__title">{t('page_not_found.message')}</h1>
 
         <div className="pageNotFound__image-wrapper">
-          <img
-            src="/src/images/page-not-found.png"
-            alt="page-not-found"
-            className="pageNotFound__img"
-          />
+          <img src="/img/page-not-found.png" alt="page-not-found" className="pageNotFound__img" />
         </div>
       </div>
     </div>
