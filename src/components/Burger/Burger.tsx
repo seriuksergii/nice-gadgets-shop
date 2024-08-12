@@ -3,7 +3,8 @@ import './Burger.scss';
 import { Logo } from '../Logo/Logo';
 import { Navigation } from '../Navigation/Navigation';
 import { FavAndCartBlock } from '../FavAndCartBlock/FavAndCartBlock';
-import  cn from 'classnames';
+
+import cn from 'classnames';
 
 interface Props {
   isActive: boolean;
@@ -19,7 +20,6 @@ export const Burger: React.FC<Props> = ({ isActive, closeBurger }) => {
     }
   }, [isActive]);
 
-
   return (
     <section className={cn('burger', { 'is-active-burger': isActive })}>
       <div className="burger__top">
@@ -27,7 +27,7 @@ export const Burger: React.FC<Props> = ({ isActive, closeBurger }) => {
           <Logo src={'./img/icons/logo-black.svg'} />
         </div>
         <div className="burger__close">
-          <img  onClick={closeBurger} src="./img/icons/close.svg" alt="" />
+          <img onClick={closeBurger} src="./img/icons/close.svg" alt="" />
         </div>
       </div>
 
