@@ -14,7 +14,7 @@ export const App: React.FC = () => {
         <Outlet />
       </main>
       <Footer />
-      <Toaster position='top-right'/>
+      <Toaster position="bottom-right" />
     </>
   );
 };
